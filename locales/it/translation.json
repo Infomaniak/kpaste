@@ -1,0 +1,77 @@
+{
+    "expiration": {
+        "10m": "10 minuti",
+        "1d": "1 giorno",
+        "1h": "1 ora",
+        "1m": "1 mese",
+        "1w": "1 settimana",
+        "5m": "5 minuti"
+    },
+    "footer": {
+        "cgu": "CGU",
+        "know_more": "Per maggiori informazioni su"
+    },
+    "home": {
+        "button": "Invia i tuoi segreti",
+        "link": "Per maggiori informazioni",
+        "subtitle": "Infomaniak Paste è una soluzione protetta al 100% che ti consente di inviare messaggi criptati a tutti i tuoi contatti. ",
+        "text": "In altre parole, i tuoi messaggi non possono essere letti perché rispettiamo la tua privacy.",
+        "title": "Invia i tuoi messaggi in piena riservatezza, come un agente segreto!"
+    },
+    "menu": {
+        "login": "Accesso"
+    },
+    "meta": {
+        "description": "Infomaniak Paste è una soluzione protetta al 100% che ti consente di inviare messaggi criptati a tutti i tuoi contatti.",
+        "title": "Infomaniak Paste 🔐 Inviare messaggi come un agente segreto"
+    },
+    "paste": {
+        "button": {
+            "continue": "Avanti",
+            "go": "Ci siamo!"
+        },
+        "input": {
+            "code": "Codice",
+            "copy": "Copia",
+            "tooltip": "Il mio messaggio è di assoluta importanza e necessita di più spazio"
+        },
+        "label": {
+            "destroy": "Elimina il messaggio dopo il suo recupero ",
+            "input": "Quale è il messaggio?",
+            "validity": "Assegna un periodo di validità a questo messaggio"
+        },
+        "text": {
+            "destroy": "Il messaggio potrà essere letto una sola volta, dopo di che verrà eliminato definitivamente",
+            "validity": "Una volta scaduta la validità, il messaggio si autodistruggerà!"
+        },
+        "title": "Condividi i tuoi segreti!"
+    },
+    "show_paste": {
+        "label": {
+            "burn": "Link monouso",
+            "destroy": "Non chiudere questa finestra poiché il link protetto è monouso!",
+            "message": "Ecco il messaggio che ti abbiamo appena inviato",
+            "validity": "Valido"
+        },
+        "link": {
+            "new_paste": "Vuoi passare anche tu per un agente segreto?",
+            "other_paste": "Invia un nuovo segreto"
+        },
+        "new": {
+            "description": "È stato creato un link protetto. Invia questo link alla persona, degna di fiducia, affinché possa recuperare il tuo messaggio segreto.",
+            "title": "Procedura autoclave per convergenza. Sì, è geniale!"
+        },
+        "subtitle": {
+            "destroy": "Questo messaggio si autodistruggerà tra",
+            "error": "Il messaggio si è autodistrutto o non è mai esistito"
+        },
+        "text": {
+            "error": "Per fortuna non si trattava di salvare il mondo"
+        },
+        "title": {
+            "copy_link": "Copiato!",
+            "error": "Sei arrivato troppo tardi!",
+            "normal": "Silenzio, è un segreto! "
+        }
+    }
+}

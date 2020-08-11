@@ -1,0 +1,57 @@
+server {
+    listen 8080;
+    server_name  localhost;
+    location = /stub_status {
+        stub_status;
+    }
+}
+
+proxy_cache_path /var/tmp/cache levels=1:2 keys_zone=cache_assets:60m max_size=10g
+                 inactive=1200m use_temp_path=off;
+
+server {
+    listen 80 default_server;
+    server_name localhost;
+    server_tokens off;
+    gzip on;
+    gzip_disable "msie6";
+
+    gzip_comp_level 6;
+    gzip_min_length 1100;
+    gzip_buffers 16 8k;
+    gzip_proxied any;
+    gzip_types *;
+
+    root /var/www;
+    index index.html;
+
+    location ~ ^.+\..+$ {
+      rewrite ^/(.*) /site-paste/${PROJECT_BRANCH}/$1 break;
+      proxy_pass https://assets.storage.infomaniak.com;
+      proxy_cache cache_assets;
+      proxy_cache_valid 200 1d;
+      proxy_cache_use_stale error;
+
+      add_header 'Cache-Control' 'max-age=2592000';
+      add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS HEAD';
+      add_header 'Access-Control-Allow-Headers' 'Origin,Content-Type,Accept';
+    }
+
+    location / {
+       rewrite ^/(.*) /site-paste/${PROJECT_BRANCH}/index.html break;
+       proxy_intercept_errors on;
+       error_page 404 500 502 503 504 = @errors;
+       proxy_pass https://assets.storage.infomaniak.com;
+       proxy_cache off;
+       add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+       add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS HEAD';
+       add_header 'Access-Control-Allow-Headers' 'Origin,Content-Type,Accept';
+       add_header 'X-Frame-Options' 'deny';
+       expires off;
+    }
+
+    location @errors {
+        rewrite ^/(.*) /latest/assets/error.html break;
+        proxy_pass https://drive.storage.infomaniak.com;
+    }
+}

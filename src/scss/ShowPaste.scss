@@ -1,0 +1,90 @@
+h2 {
+  font-size: 21px;
+  line-height: 46px;
+}
+
+.expand {
+  #welcome-container-showpaste {
+    padding: 50px 50px 0 50px;
+    flex-grow: 2;
+  }
+
+  .pasteContent {
+    height: 91%;
+  }
+}
+
+#welcome-container-showpaste {
+
+  padding: 100px 0 0 160px;
+
+  #paste_container {
+
+    width: 60%;
+
+    h1#new_paste_title {
+      max-width: 550px;
+    }
+
+    .new_paste_box_description {
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 18px;
+      color: $gray;
+    }
+
+    .MuiPaper-root {
+      margin-top: 30px;
+      padding: 30px;
+
+      div.paste_url_option {
+        span {
+          color: $gray;
+          font-size: 14px;
+        }
+      }
+    }
+
+    a {
+      color: #FFFFFF;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 21px;
+    }
+
+    .pasteMessage {
+      width: 100%;
+    }
+  }
+}
+
+#root.expand {
+
+  #paste_container {
+    width: 100%;
+  }
+
+  .pasteContent {
+    pre {
+      height: auto;
+      min-height: 95%;
+    }
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  #welcome-container-showpaste {
+    padding: 15px;
+
+    #paste_container {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #welcome-container-showpaste {
+    padding: 10px 0 0 0;
+  }
+}

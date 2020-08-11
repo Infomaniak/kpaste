@@ -1,0 +1,237 @@
+image: docker:latest
+
+stages:
+  - audit
+  - build_front
+  - cypress
+  - publish_front
+  - build_docker_image
+  - docker_test
+  - publish_docker_image
+  - deploy_docker_image
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+  SECURE_ANALYZERS_PREFIX: "registry.gitlab.com/gitlab-org/security-products/analyzers"
+  CS_MAJOR_VERSION: 2
+  CI_APPLICATION_REPOSITORY: ${CI_REGISTRY_IMAGE}
+  CI_APPLICATION_TAG: latest
+
+
+.base:
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
+
+.base-dind:
+  extends: .base
+  tags:
+    - docker
+    - dind
+
+.base-shell:
+  extends: .base
+  tags:
+    - docker
+    - shell
+
+.rules_kubernetes: &rules_kubernetes
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - changes:
+        - kubernetes/*
+      when: on_success
+    - when: never
+
+.rules_docker: &rules_docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - changes:
+        - docker/*
+      when: on_success
+    - when: never
+
+# build
+
+build_front:
+  extends: .base-dind
+  image: node:12.18.3
+  stage: build_front
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
+  before_script:
+    - npm i --cache .npm --prefer-offline
+  script:
+    - npm audit
+    - npm run lint
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "master" ]]; then
+        export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
+        export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
+      else
+        export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
+        export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
+      fi
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 days
+    when: always
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .npm
+      - cache/Cypress
+      - node_modules/
+
+# Cypress
+
+cypress_chrome:
+  stage: cypress
+  extends: .base-dind
+  image: cypress/browsers:node12.14.1-chrome83-ff77
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
+  before_script:
+    - npm i --cache .npm --prefer-offline
+  script:
+    - npm run test-chrome
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/*.mp4
+      - cypress/screenshots/*/*.png
+    expire_in: 10 days
+
+cypress_firefox:
+  stage: cypress
+  extends: .base-dind
+  image: cypress/browsers:node12.14.1-chrome83-ff77
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
+  before_script:
+    - npm i --cache .npm --prefer-offline
+  script:
+    - npm run test-firefox
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/*.mp4
+      - cypress/screenshots/*/*.png
+    expire_in: 10 days
+
+# S3
+
+publish_front_latest:
+  stage: publish_front
+  extends: .base-dind
+  image:
+    name: minio/mc:RELEASE.2020-03-06T23-29-45Z
+    entrypoint: [""]
+  before_script:
+    - mc config host add $S3_BUCKET $S3_HOST $S3_KEY $S3_PASSWORD --api s3v4
+  script:
+    - mc cp --recursive dist/ $S3_BUCKET/$S3_BUCKET/site-paste/$CI_COMMIT_BRANCH
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 days
+    when: always
+
+# DOCKER
+
+build_docker_image_latest:
+  stage: build_docker_image
+  extends: .base-shell
+  <<: *rules_docker
+  script:
+    - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} docker
+
+publish_docker_image:
+  stage: publish_docker_image
+  extends: .base-shell
+  <<: *rules_docker
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
+    - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} ${CI_REGISTRY_IMAGE}:latest
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+
+container_scanning:
+  stage: docker_test
+  extends: .base-dind
+  image: $SECURE_ANALYZERS_PREFIX/klar:$CS_MAJOR_VERSION
+  <<: *rules_docker
+  variables:
+    CLAIR_DB_IMAGE_TAG: "latest"
+    CLAIR_DB_IMAGE: "$SECURE_ANALYZERS_PREFIX/clair-vulnerabilities-db:$CLAIR_DB_IMAGE_TAG"
+    GIT_STRATEGY: none
+  allow_failure: true
+  services:
+    - name: $CLAIR_DB_IMAGE
+      alias: clair-vulnerabilities-db
+  script:
+    - /analyzer run
+  artifacts:
+    reports:
+      container_scanning: gl-container-scanning-report.json
+  dependencies: []
+
+container_analysing:
+  stage: docker_test
+  extends: .base-shell
+  allow_failure: true
+  <<: *rules_docker
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker run --rm -i -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest ${CI_REGISTRY_IMAGE}:latest
+
+# Kubernetes
+
+test_kubernetes_syntax:
+  stage: audit
+  extends: .base-dind
+  image:
+    name: garethr/kubeval:0.15.0
+    entrypoint: ['']
+  <<: *rules_kubernetes
+  script:
+    - apk add git
+    - files=$(git diff-tree --no-commit-id --name-only --diff-filter=ACMRTUXB -r $CI_COMMIT_SHA -- *.yaml)
+    - |
+      if [ -z "$files" ]
+      then
+        exit 0
+      else
+        kubeval --exit-on-error --ignore-missing-schemas -d $files
+      fi
+
+deploy_docker_image_preprod:
+  stage: deploy_docker_image
+  extends: .base-dind
+  image:
+    name: bitnami/kubectl:1.18
+    entrypoint: ['']
+  <<: *rules_docker
+  before_script:
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "master" ]]; then
+        export KUBECONFIG=$KUBE_PROD_INFOMANIAK_CONFIG
+      else
+        export KUBECONFIG=$KUBE_PREPROD_INFOMANIAK_CONFIG
+      fi
+  script:
+    - kubectl -npaste --record deployment.apps/paste set image deployment.v1.apps/paste paste=${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}

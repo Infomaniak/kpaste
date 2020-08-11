@@ -1,0 +1,86 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: inherit;
+  position: relative;
+  background-color: #E8A20C;
+  min-height: calc(100% - 66px);
+
+  #header_homepage {
+    flex-direction: column;
+    padding: 100px 0 0 160px;
+    display: flex;
+
+    h1 {
+      font-size: 34px;
+      line-height: 46px;
+    }
+
+    #homepage-container {
+      z-index: 3;
+    }
+
+    #enter_room {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 590px;
+      z-index: 3;
+      padding: 30px;
+      border-radius: 10px;
+
+      button {
+        margin-top: 40px;
+      }
+    }
+
+
+    .header-text-title {
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 46px;
+      margin-bottom: 35px;
+      opacity: 1;
+    }
+
+    .header-text-description {
+      color: $gray;
+      display: inherit;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-bottom: 0;
+      align-self: inherit;
+    }
+
+    .header-text-sub {
+      font-family: "SuisseIntl Medium";
+      font-size: 14px;
+      margin-top: 20px;
+      line-height: 20px;
+
+      span {
+        margin-right: 10px;
+        color: $blue;
+      }
+
+      a {
+        color: $blue;
+      }
+    }
+
+  }
+
+  .welcome-container {
+    max-width: 1280px;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  .welcome #header_homepage {
+    padding: 15px;
+  }
+}

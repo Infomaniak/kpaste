@@ -1,0 +1,192 @@
+@font-face {
+  font-family: "SuisseIntl";
+  font-style: normal;
+  font-weight: normal;
+
+  src: url("../fonts/SuisseIntl-Regular.eot");
+  src: url("../fonts/SuisseIntl-Regular.eot#iefix") format("embedded-opentype"), url("../fonts/SuisseIntl-Regular.woff") format("woff"), url("../fonts/SuisseIntl-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SuisseIntl Medium";
+  font-style: normal;
+  font-weight: bold;
+
+  src: url("../fonts/SuisseIntl-Medium.eot");
+  src: url("../fonts/SuisseIntl-Medium.eot#iefix") format("embedded-opentype"), url("../fonts/SuisseIntl-Medium.woff") format("woff"), url("../fonts/SuisseIntl-Medium.ttf") format("truetype");
+}
+
+$font-url-products: '../fonts/';
+
+@import url('https://fonts.storage.infomaniak.com/current/icons/style.css');
+@import "../../node_modules/@infomaniak/font-assets/products/_infomaniak-products";
+
+@import "Variable";
+@import "Reset";
+@import "Header";
+@import "Footer";
+@import "Home";
+@import "NewPaste";
+@import "ShowPaste";
+
+html,
+body,
+#root {
+  height: 100%;
+  min-width: 250px;
+}
+
+
+body {
+  margin: 0;
+  font-family: SuisseIntl, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  color: $white;
+  background: #f4f6ff !important;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.MuiTooltip-tooltip {
+  box-shadow: 0 4px 10px 0 rgba(51, 51, 51, 0.15);
+}
+
+.MuiContainer-root {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.module-support-sample {
+  display: none;
+}
+
+.MuiButton-root {
+  text-transform: inherit !important;
+}
+
+.MuiButton-containedPrimary {
+  color: #fff !important;
+  background-color: $blue !important;
+  z-index: 2;
+
+  a {
+    color: white;
+  }
+}
+
+.MuiSwitch-colorSecondary.Mui-checked+.MuiSwitch-track {
+  background-color: $blue !important;
+}
+
+.MuiSwitch-track {
+  background-color: #e0e0e0 !important;
+}
+
+h1,
+strong,
+h2,
+.font-medium {
+  font-family: "SuisseIntl Medium";
+  z-index: 2;
+}
+
+.MuiButtonBase-root {
+  .MuiButton-label {
+    a {
+      text-transform: none;
+    }
+  }
+}
+
+
+.MuiPaper-root {
+  box-shadow: none !important;
+}
+
+.Mui-disabled {
+  opacity: 0.5;
+}
+
+textarea {
+  font-family: SuisseIntl;
+  max-height: 200px;
+  overflow: inherit !important;
+  width: 97%;
+}
+
+.button-section {
+  z-index: 2;
+}
+
+.MuiSelect-select:focus,
+.MuiListItem-button:focus {
+  background-color: inherit !important;
+}
+
+.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12) !important;
+}
+
+li.Mui-selected:hover {
+  background: #f5f5f5 !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: inherit;
+  border-width: 1px;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $blue !important;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.illus-container {
+  z-index: 1;
+  height: 89%;
+  width: 44%;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+button.expand_button {
+  background-color: $white !important;
+  border-radius: 5px;
+  height: 35px;
+  width: 35px;
+  min-width: 35px;
+  padding: 0;
+  color: #888888;
+
+  .icon-expand-diagonal {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #welcome-container-newpaste {
+    .expand_button {
+      display: none;
+    }
+  }
+}
+
+.expanded {
+  max-width: 95% !important;
+}

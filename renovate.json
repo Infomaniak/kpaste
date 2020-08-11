@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:base",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "baseBranches": [
+    "develop"
+  ]
+}

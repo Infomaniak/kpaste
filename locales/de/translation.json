@@ -1,0 +1,77 @@
+{
+    "expiration": {
+        "10m": "10 Minuten",
+        "1d": "1 Tag",
+        "1h": "1 Stunde",
+        "1m": "1 Monat",
+        "1w": "1 Woche",
+        "5m": "5 Minuten"
+    },
+    "footer": {
+        "cgu": "CGU",
+        "know_more": "Mehr Infos zu"
+    },
+    "home": {
+        "button": "Ihr Geheimnis versenden",
+        "link": "Weitere Infos",
+        "subtitle": "Infomaniak Paste ist eine 100 % sichere Lösung für den Versand Ihrer verschlüsselten Nachrichten an alle Ihre Kontakte. ",
+        "text": "Das bedeutet, dass man Ihre Nachricht nicht lesen kann, weil wir Ihre Privatsphäre respektieren.",
+        "title": "Kommunizieren Sie Ihre Nachrichten vertraulich, wie ein Geheimagent!"
+    },
+    "menu": {
+        "login": "Anmelden"
+    },
+    "meta": {
+        "description": "Infomaniak Paste ist eine 100 % sichere Lösung für den Versand Ihrer verschlüsselten Nachrichten an alle Ihre Kontakte.",
+        "title": "Infomaniak Paste 🔐 Nachrichten senden wie ein Geheimagent"
+    },
+    "paste": {
+        "button": {
+            "continue": "Weiter",
+            "go": "Los geht‘s!"
+        },
+        "input": {
+            "code": "Code",
+            "copy": "Kopie",
+            "tooltip": "Meine Nachricht ist von grösster Bedeutung und braucht mehr Platz."
+        },
+        "label": {
+            "destroy": "Nachricht nach Wiederherstellung löschen ",
+            "input": "Was ist die Nachricht?",
+            "validity": "Dieser Nachricht eine Gültigkeitsdauer geben"
+        },
+        "text": {
+            "destroy": "Die Nachricht kann nur einmal gelesen werden. Nachdem sie gelesen wurde, wird sie dauerhaft gelöscht",
+            "validity": "Danach zerstört sich diese Nachricht selbst!"
+        },
+        "title": "Verraten Sie Ihr Geheimnis!"
+    },
+    "show_paste": {
+        "label": {
+            "burn": "Link für einmaligen Gebrauch",
+            "destroy": "Schliessen Sie dieses Fenster nicht, denn dieser gesicherte Link ist nur für den einmaligen Gebrauch bestimmt!",
+            "message": "Diese Nachricht wurde Ihnen gerade übermittelt",
+            "validity": "Gültig"
+        },
+        "link": {
+            "new_paste": "Wollen Sie sich auch als Geheimagent ausgeben?",
+            "other_paste": "Ein neues Geheimnis senden"
+        },
+        "new": {
+            "description": "Es wurde ein gesicherter Link erstellt. Leiten Sie diesen Link an eine vertrauenswürdige Person weiter, damit sie Ihre geheime Nachricht abrufen kann.",
+            "title": "Autoklav-Verfahren durch Konvergenz. Toll!"
+        },
+        "subtitle": {
+            "destroy": "Diese Nachricht zerstört sich in",
+            "error": "Die Nachricht hat sich zerstört oder hat nie existiert"
+        },
+        "text": {
+            "error": "Zum Glück geht es nicht darum, die Welt zu retten"
+        },
+        "title": {
+            "copy_link": "Kopiert!",
+            "error": "Sie kommen zu spät!",
+            "normal": "Pssst, das ist ein Geheimnis! "
+        }
+    }
+}

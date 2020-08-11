@@ -1,0 +1,147 @@
+.ik-header {
+  background: white;
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+
+  .flex--v-center {
+    height: 100%;
+    align-items: center;
+  }
+
+  .flex--h-center {
+    justify-content: center;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .user-avatar-wrapper {
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .header-icon-wrapper {
+    width: auto;
+    min-width: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    margin-left: 10px;
+    margin-right: auto;
+
+    .product-name {
+      margin-top: 5px;
+      font-size: 24px;
+      line-height: 28px;
+      color: #333333;
+      font-weight: bold;
+    }
+  }
+
+  .header-title-wrapper {
+    width: 320px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+  }
+
+  .relative {
+    position: relative;
+    z-index: 5;
+  }
+
+  .header-icon {
+    padding: 0 15px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+    > span {
+      cursor: pointer;
+      background-color: #f5f5f5;
+      color: $gray;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      display: -webkit-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .login {
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin-left: 10px;
+    margin-right: auto;
+  }
+
+  .product-name {
+    font-size: 24px;
+  }
+
+  .user-avatar-wrapper {
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .product-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .avatar {
+    background-color: #aaa;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .6);
+    font-weight: 100;
+    object-fit: cover;
+  }
+}
+
+.welcome .header .illus-container {
+  max-height: 90%;
+  min-width: 330px;
+  align-self: flex-end;
+}
+
+@media only screen and (max-width: 1100px) {
+  .illus-container {
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .ik-header .header-title-wrapper {
+    width: 150px;
+  }
+}

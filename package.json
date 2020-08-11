@@ -1,0 +1,107 @@
+{
+  "name": "k-paste",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@infomaniak/font-assets": "1.0.146",
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "base-x": "3.0.8",
+    "highlight.js": "10.1.2",
+    "i18next": "19.6.3",
+    "i18next-browser-languagedetector": "5.0.1",
+    "javascript-time-ago": "2.0.13",
+    "node-sass": "4.14.1",
+    "pako": "1.0.11",
+    "prop-types": "15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "6.1.0",
+    "react-i18next": "11.7.0",
+    "react-router-dom": "5.2.0",
+    "react-time-ago": "6.0.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "server-edge": "http-server ./dist -p 3000 -c-1 --silent --proxy http://localhost:3000?",
+    "server-firefox": "http-server ./dist -p 3001 -c-1 --silent --proxy http://localhost:3001?",
+    "server-chrome": "http-server ./dist -p 3002 -c-1 --silent --proxy http://localhost:3002?",
+    "build": "export NODE_ENV=\"production\" && webpack --mode production",
+    "cy:run-chrome": "$(npm bin)/cypress run --browser chrome",
+    "cy:run-firefox": "$(npm bin)/cypress run --browser firefox",
+    "test-edge": "start-server-and-test server-edge 3000 browserstack-run",
+    "test-firefox": "CYPRESS_BASE_URL=http://localhost:3001 start-server-and-test server-firefox 3001 cy:run-firefox",
+    "test-chrome": "CYPRESS_BASE_URL=http://localhost:3002 start-server-and-test server-chrome 3002 cy:run-chrome",
+    "translations": "node node_modules/i18next-parser/bin/cli.js 'src/**/*.{js,jsx}'",
+    "lint": "eslint --fix --ext .jsx,.js src",
+    "browserstack-run": "browserstack-cypress run",
+    "browserstack-info": "browserstack-cypress build-info"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.1",
+    "@babel/plugin-proposal-class-properties": "7.10.4",
+    "@babel/plugin-proposal-export-default-from": "7.10.4",
+    "@babel/plugin-proposal-export-namespace-from": "7.10.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "7.11.0",
+    "@babel/plugin-transform-flow-strip-types": "7.10.4",
+    "@babel/plugin-transform-runtime": "7.11.0",
+    "@babel/polyfill": "7.10.4",
+    "@babel/preset-env": "7.11.0",
+    "@babel/preset-flow": "7.10.4",
+    "@babel/preset-react": "7.10.4",
+    "@babel/runtime": "7.11.2",
+    "@svgr/webpack": "5.4.0",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "babel-minify-webpack-plugin": "0.3.1",
+    "browserstack-cypress-cli": "1.3.0",
+    "clean-webpack-plugin": "3.0.0",
+    "copy-webpack-plugin": "6.0.3",
+    "css-loader": "3.6.0",
+    "cypress": "4.12.1",
+    "eslint": "7.6.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-react-app": "5.2.1",
+    "eslint-plugin-flowtype": "5.2.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react": "7.20.5",
+    "eslint-plugin-react-hooks": "4.0.8",
+    "file-loader": "5.1.0",
+    "flow-bin": "0.131.0",
+    "html-loader": "1.1.0",
+    "html-webpack-plugin": "4.3.0",
+    "http-server": "0.12.3",
+    "husky": "4.2.5",
+    "i18next-parser": "3.0.1",
+    "mini-css-extract-plugin": "0.10.0",
+    "sass-loader": "9.0.3",
+    "start-server-and-test": "1.11.3",
+    "style-loader": "1.2.1",
+    "url-loader": "4.1.0",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}

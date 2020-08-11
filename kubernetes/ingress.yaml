@@ -1,0 +1,27 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: paste
+  namespace: paste
+  annotations:
+    kubernetes.io/ingress.class: nginx-paste
+spec:
+  tls:
+    - hosts:
+        - kpaste.preprod.dev.infomaniak.ch
+        - kpaste.infomaniak.com
+  rules:
+    - host: kpaste.preprod.dev.infomaniak.ch
+      http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: paste
+              servicePort: http
+    - host: kpaste.infomaniak.com
+      http:
+        paths:
+            - path: "/"
+              backend:
+                serviceName: paste
+                servicePort: http

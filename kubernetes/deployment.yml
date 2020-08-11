@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paste
+  labels:
+    app: paste
+  namespace: paste
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: paste
+  template:
+    metadata:
+      labels:
+        app: paste
+    spec:
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+        - name: docker-registry-secret
+      containers:
+        - image: registry.infomaniak.com:443/infomaniak/paste:latest
+          imagePullPolicy: IfNotPresent
+          name: paste
+          resources:
+            requests:
+              cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            failureThreshold: 6
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            failureThreshold: 6
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: http
+        - name: exporter
+          image: nginx/nginx-prometheus-exporter:0.6.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - -nginx.scrape-uri
+            - http://127.0.0.1:8080/stub_status
+          ports:
+            - name: http-exporter
+              containerPort: 9113

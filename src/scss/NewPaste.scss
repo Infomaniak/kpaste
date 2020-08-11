@@ -1,0 +1,296 @@
+#welcome-container-newpaste {
+  padding: 100px 0 0 160px;
+}
+
+.expand {
+  .welcome-container {
+    max-width: none;
+  }
+
+  #welcome-container-newpaste {
+    padding: 50px 50px 0 50px;
+    flex-grow: 2;
+  }
+
+  #paste_container {
+    width: 100%;
+  }
+
+  .paste_container-main {
+    height: 90%;
+
+    textarea {
+      height: 100% !important;
+      max-height: unset;
+    }
+
+    .expand-continue-container {
+      align-self: flex-end;
+      margin-top: 30px;
+    }
+  }
+
+
+}
+
+#paste_container,
+#paste_information {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 40px;
+    line-height: 46px;
+  }
+
+
+  #new_paste_box,
+  #new_paste_option,
+  #paste_information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 700px;
+    z-index: 2;
+    border-radius: 10px;
+
+    .paste--head {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      line-height: 40px;
+
+      &__toolbelt {
+        align-self: flex-end;
+
+        button {
+          margin: 0 5px;
+        }
+
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 20px;
+      color: #333;
+      background: #f8f8f8;
+
+      .hljs,
+      code {
+        padding: 0;
+      }
+    }
+
+    textarea {
+      margin-top: 15px;
+      border-radius: 5px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #E0E0E0;
+      resize: none;
+      min-height: 40px !important;
+      padding: 10px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .title-section,
+  .destroy-section,
+  .validity-section,
+  .validity-select,
+  .password-section,
+  .button-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .settings-title {
+      font-size: 14px;
+      line-height: 20px;
+      color: black;
+    }
+
+    .settings-text {
+      margin-top: 5px;
+      font-size: 14px;
+      line-height: 16px;
+      color: $gray;
+    }
+
+    .desc {
+      flex: 0 0 70%;
+      overflow-y: hidden;
+    }
+
+    button {}
+  }
+
+  .validity-select {
+    margin-top: 20px;
+  }
+
+  .destroy-section {
+    margin-top: 30px;
+  }
+
+  button {
+    .MuiButton-label {
+      text-transform: none;
+      width: fit-content;
+    }
+  }
+
+  .button-section {
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  strong {
+    font-size: 14px;
+    line-height: 20px;
+    color: black;
+  }
+
+  .MuiSelect-select {
+    padding: 10px;
+    width: 200px;
+  }
+}
+
+button.copy-buton {
+  background-color: $white !important;
+}
+
+.paste_url_section {
+
+  .pasteContent {
+    padding: 0 !important;
+    font-size: 14px !important;
+    flex: 0 0 90% !important;
+    max-width: 87%;
+  }
+
+  button {
+    .icon-common-file-double-2 {
+      font-size: 22px !important;
+    }
+  }
+}
+
+.paste_url_option {
+  margin-top: 20px;
+
+  .burn_info {
+    flex: 0 0 30%;
+  }
+
+  .expired_at {
+    flex: 0 0 55%;
+  }
+}
+
+.too_late_title {
+  font-size: 16px !important;
+}
+
+.too_late_message {
+  margin-top: 15px;
+  font-size: 16px;
+  color: $gray;
+}
+
+.message_will_burn {
+  margin-top: 10px;
+  color: $gray;
+  font-size: 14px;
+  margin-bottom: 20px;
+
+  .icon-warning {
+    color: $blue !important;
+  }
+}
+
+.expiration_title {
+  font-size: 20px;
+  margin-top: 5px;
+  font-family: "SuisseIntl Medium";
+}
+
+#paste_container {
+  width: auto;
+
+  .paste_container-main {
+    z-index: 3;
+
+    >div {
+      padding: 30px;
+      margin: 30px 0;
+    }
+
+    .button-section {
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .expand-continue-container {
+      display: none;
+    }
+  }
+}
+
+#root.expand {
+  .button-section {
+    width: auto;
+  }
+
+  #paste_container {
+    #new_paste_box {
+      height: 97%;
+      max-width: none !important;
+      margin: 0px;
+      margin-top: 30px;
+    }
+
+    .expand-continue-container {
+      display: block !important;
+    }
+
+    #new_paste_option {
+      display: none;
+    }
+
+    .button-section {
+      display: none;
+    }
+
+    textarea[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 735px) {
+  #welcome-container-newpaste {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #welcome-container-newpaste {
+    padding: 10px 0 0 0;
+  }
+}
