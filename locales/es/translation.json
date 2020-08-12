@@ -14,9 +14,9 @@
     "home": {
         "button": "Transferir tu secreto",
         "link": "Más información",
-        "subtitle": "Infomaniak Paste es una solución 100% segura para transferir tus mensajes cifrados a todos tus contactos. ",
-        "text": "O lo que es lo mismo, nadie más podrá leer tu mensaje porque respetamos tu privacidad.",
-        "title": "Envía tus mensajes con total confianza, ¡como un agente secreto!"
+        "subtitle": "kPaste es un servicio gratuito para enviar fácilmente mensajes cifrados a tus contactos.",
+        "text": "Infomaniak respeta tu privacidad y no puede leer tus mensajes. kPaste está cifrado de extremo a extremo y los datos se almacenan exclusivamente en Suiza.",
+        "title": "Comparte tus mensajes con total seguridad ¡como un agente secreto!"
     },
     "menu": {
         "login": "Iniciar sesión"
@@ -36,13 +36,13 @@
             "tooltip": "Mi mensaje es de suma importancia y necesita más espacio"
         },
         "label": {
-            "destroy": "Eliminar este mensaje cuando se haya recuperado ",
+            "destroy": "Eliminar este mensaje una vez leído",
             "input": "¿Cuál es el mensaje?",
-            "validity": "Asignar una duración de validez al mensaje"
+            "validity": "Duración de validez del mensaje"
         },
         "text": {
-            "destroy": "El mensaje sólo se podrá leer una vez. Cuando se haya leído, se eliminará definitivamente",
-            "validity": "Pasado ese plazo, ¡el mensaje se autodestruirá!"
+            "destroy": "Este mensaje sólo se puede leer una vez. Una vez leído, se eliminará definitivamente.",
+            "validity": "Pasado ese plazo, ¡el mensaje se autodestruirá definitivamente 💥"
         },
         "title": "¡Comparte tu secreto!"
     },
@@ -54,12 +54,12 @@
             "validity": "Válido"
         },
         "link": {
-            "new_paste": "¿Tú también quieres parecer un agente secreto?",
+            "new_paste": "¿Quieres parecer un agente secreto?",
             "other_paste": "Envía un nuevo secreto"
         },
         "new": {
-            "description": "Se ha generado un enlace seguro. Envía este enlace a la persona, digna de tu confianza, que quieres que recupere tu mensaje secreto.",
-            "title": "Procedimiento autoclave por convergencia. ¡Sí, explota!"
+            "description": "Se ha generado un enlace seguro. Comparte este enlace con los contactos que quieras que lean tu mensaje secreto.",
+            "title": "Procedimiento autoclave por convergencia. ¡Sí, estalla!"
         },
         "subtitle": {
             "destroy": "Este mensaje se autodestruirá en",

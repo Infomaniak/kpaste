@@ -14,9 +14,9 @@
     "home": {
         "button": "Invia i tuoi segreti",
         "link": "Per maggiori informazioni",
-        "subtitle": "Infomaniak Paste è una soluzione protetta al 100% che ti consente di inviare messaggi criptati a tutti i tuoi contatti. ",
-        "text": "In altre parole, i tuoi messaggi non possono essere letti perché rispettiamo la tua privacy.",
-        "title": "Invia i tuoi messaggi in piena riservatezza, come un agente segreto!"
+        "subtitle": "kPaste è un servizio gratuito che ti consente un facile invio di messaggi crittografati ai tuoi contatti.",
+        "text": "Infomaniak rispetta la tua privacy e non può leggere i tuoi messaggi. kPaste è crittografato end-to-end e archivia questi dati soltanto in Svizzera.",
+        "title": "Condividi i tuoi messaggi in tutta sicurezza, come un agente segreto!"
     },
     "menu": {
         "login": "Accesso"
@@ -36,13 +36,13 @@
             "tooltip": "Il mio messaggio è di assoluta importanza e necessita di più spazio"
         },
         "label": {
-            "destroy": "Elimina il messaggio dopo il suo recupero ",
+            "destroy": "Elimina il messaggio dopo la sua lettura",
             "input": "Quale è il messaggio?",
-            "validity": "Assegna un periodo di validità a questo messaggio"
+            "validity": "Periodo di validità del messaggio"
         },
         "text": {
-            "destroy": "Il messaggio potrà essere letto una sola volta, dopo di che verrà eliminato definitivamente",
-            "validity": "Una volta scaduta la validità, il messaggio si autodistruggerà!"
+            "destroy": "Questo messaggio potrà essere letto una sola volta, dopodiché verrà eliminato definitivamente.",
+            "validity": "Una volta scaduta la validità, il messaggio si autodistruggerà definitivamente 💥"
         },
         "title": "Condividi i tuoi segreti!"
     },
@@ -54,11 +54,11 @@
             "validity": "Valido"
         },
         "link": {
-            "new_paste": "Vuoi passare anche tu per un agente segreto?",
+            "new_paste": "Vuoi passare per un agente segreto?",
             "other_paste": "Invia un nuovo segreto"
         },
         "new": {
-            "description": "È stato creato un link protetto. Invia questo link alla persona, degna di fiducia, affinché possa recuperare il tuo messaggio segreto.",
+            "description": "È stato creato un link protetto. Condividi questo link con i contatti ai quali vuoi consentire la lettura del tuo messaggio segreto.",
             "title": "Procedura autoclave per convergenza. Sì, è geniale!"
         },
         "subtitle": {

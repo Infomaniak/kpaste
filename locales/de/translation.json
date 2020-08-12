@@ -14,9 +14,9 @@
     "home": {
         "button": "Ihr Geheimnis versenden",
         "link": "Weitere Infos",
-        "subtitle": "Infomaniak Paste ist eine 100 % sichere Lösung für den Versand Ihrer verschlüsselten Nachrichten an alle Ihre Kontakte. ",
-        "text": "Das bedeutet, dass man Ihre Nachricht nicht lesen kann, weil wir Ihre Privatsphäre respektieren.",
-        "title": "Kommunizieren Sie Ihre Nachrichten vertraulich, wie ein Geheimagent!"
+        "subtitle": "kPaste ist ein kostenloser Dienst, mit dem Sie Ihren Kontakten ganz einfach verschlüsselte Nachrichten senden können.",
+        "text": "Infomaniak achtet Ihre Privatsphäre und kann Ihre Nachrichten nicht lesen. kPaste funktioniert mit End-to-End-Verschlüsselung und speichert diese Daten ausschliesslich in der Schweiz.",
+        "title": "Teilen Sie Ihre Nachrichten völlig sicher – so wie ein Geheimagent!"
     },
     "menu": {
         "login": "Anmelden"
@@ -36,13 +36,13 @@
             "tooltip": "Meine Nachricht ist von grösster Bedeutung und braucht mehr Platz."
         },
         "label": {
-            "destroy": "Nachricht nach Wiederherstellung löschen ",
-            "input": "Was ist die Nachricht?",
-            "validity": "Dieser Nachricht eine Gültigkeitsdauer geben"
+            "destroy": "Nachricht nach Kenntnisnahme löschen",
+            "input": "Welches ist Ihre Nachricht?",
+            "validity": "Gültigkeitsdauer der Nachricht"
         },
         "text": {
-            "destroy": "Die Nachricht kann nur einmal gelesen werden. Nachdem sie gelesen wurde, wird sie dauerhaft gelöscht",
-            "validity": "Danach zerstört sich diese Nachricht selbst!"
+            "destroy": "Diese Nachricht kann nur einmal gelesen werden. Danach wird sie endgültig gelöscht.",
+            "validity": "Danach zerstört sich diese Nachricht selbst endgültig 💥"
         },
         "title": "Verraten Sie Ihr Geheimnis!"
     },
@@ -54,12 +54,12 @@
             "validity": "Gültig"
         },
         "link": {
-            "new_paste": "Wollen Sie sich auch als Geheimagent ausgeben?",
+            "new_paste": "Sie wollen sich als Geheimagent ausgeben?",
             "other_paste": "Ein neues Geheimnis senden"
         },
         "new": {
-            "description": "Es wurde ein gesicherter Link erstellt. Leiten Sie diesen Link an eine vertrauenswürdige Person weiter, damit sie Ihre geheime Nachricht abrufen kann.",
-            "title": "Autoklav-Verfahren durch Konvergenz. Toll!"
+            "description": "Es wurde ein gesicherter Link erstellt. Teilen Sie diesen Link mit Kontakten, die Ihre geheime Nachricht lesen können müssen.",
+            "title": "Autoklav-Verfahren durch Konvergenz. Tolle Sache!"
         },
         "subtitle": {
             "destroy": "Diese Nachricht zerstört sich in",

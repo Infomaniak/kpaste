@@ -14,9 +14,9 @@
     "home": {
         "button": "Transférer votre secret",
         "link": "En savoir plus",
-        "subtitle": "Infomaniak Paste est une solution 100% sécurisée pour transférer vos messages chiffrés à tous vos contacts. ",
-        "text": "Ce qui veut dire que l’on ne peut pas lire votre message parce que nous respectons votre vie privée.",
-        "title": "Communiquez en toute confidentialité vos messages, comme un agent secret !"
+        "subtitle": "kPaste est un service gratuit pour envoyer facilement des messages chiffrés à vos contacts.",
+        "text": "Infomaniak respecte votre vie privée et ne peut pas lire vos messages. kPaste est chiffré de bout en bout et stocke exclusivement ces données en Suisse.",
+        "title": "Partagez vos messages en toute sécurité, comme un agent secret !"
     },
     "menu": {
         "login": "Login"
@@ -36,13 +36,13 @@
             "tooltip": "Mon message est d’une importance capitale et nécessite plus de place"
         },
         "label": {
-            "destroy": "Supprimer le message après récupération ",
+            "destroy": "Supprimer le message après sa lecture",
             "input": "Quel est le message ?",
-            "validity": "Donner une durée de validité à ce message"
+            "validity": "Durée de validité du message"
         },
         "text": {
-            "destroy": "Le message ne pourra être lu qu’une seule fois, une fois lu, il sera supprimé définitivement",
-            "validity": "Dépassé ce délais, le message s’autodétruira !"
+            "destroy": "Ce message ne pourra être lu qu'une seule fois. Il sera ensuite définitivement supprimé.",
+            "validity": "Dépassé ce délais, ce message s'autodétruira définitivement 💥"
         },
         "title": "Partagez votre secret !"
     },
@@ -54,12 +54,12 @@
             "validity": "Valable"
         },
         "link": {
-            "new_paste": "Envie de passer pour un agent secret toi aussi ?",
+            "new_paste": "Envie de passer pour un agent secret?",
             "other_paste": "Envoyer un nouveau secret"
         },
         "new": {
-            "description": "Un lien sécurisé a été généré. Donnez ce lien à la personne, digne de confiance, pour qu’elle puisse récupérer votre message secret.",
-            "title": "Procédure autoclave par convergence. Oui ça pète !"
+            "description": "Un lien sécurisé a été généré. Partagez ce lien aux contacts qui doivent pouvoir lire votre message secret.",
+            "title": "Procédure autoclave par convergence. Oui, ça claque !"
         },
         "subtitle": {
             "destroy": "Ce message s'autodétruira dans",

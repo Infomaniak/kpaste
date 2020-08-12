@@ -14,9 +14,9 @@
     "home": {
         "button": "Send your secret",
         "link": "Further information",
-        "subtitle": "Infomaniak Paste is a 100%-secure solution for transferring your encrypted messages to all your contacts.  ",
-        "text": "This means that we can’t read your message because we respect your privacy.",
-        "title": "Pass on your messages with complete confidentiality like a secret agent!"
+        "subtitle": "kPaste is a free service for sending encrypted messages to your contacts.",
+        "text": "Infomaniak respects your privacy and cannot read your messages. kPaste is end-to-end encrypted and stores your data exclusively in Switzerland.",
+        "title": "Share your messages securely like a secret agent!"
     },
     "menu": {
         "login": "Login"
@@ -36,13 +36,13 @@
             "tooltip": "My message is of the utmost importance and needs more space"
         },
         "label": {
-            "destroy": "Delete the message after retrieval ",
+            "destroy": "Delete the message after reading it",
             "input": "What’s your message?",
-            "validity": "Give this message a validity period"
+            "validity": "Message’s validity period"
         },
         "text": {
-            "destroy": "The message will only be able to be read once. Once read, it will be deleted permanently",
-            "validity": "After this period has ended, the message will self-destruct!"
+            "destroy": "This message can be read only once. It will then be permanently deleted.",
+            "validity": "After that, the message will self-destruct permanently 💥"
         },
         "title": "Share your secret!"
     },
@@ -54,12 +54,12 @@
             "validity": "Valid"
         },
         "link": {
-            "new_paste": "Would you like to pretend to be a secret agent too?",
+            "new_paste": "Fancy pretending to be a secret agent?",
             "other_paste": "Send a new secret"
         },
         "new": {
-            "description": "A secure link has been generated. Give this link to the trustworthy person so that they can retrieve your secret message.",
-            "title": "Autoclave procedure by convergence. Yeah, that’s a good one!"
+            "description": "A secure link has been generated. Share this link with the contacts intended to read your secret message.",
+            "title": "Autoclave procedure by convergence. Yes, great!"
         },
         "subtitle": {
             "destroy": "This message will self-destruct in",
