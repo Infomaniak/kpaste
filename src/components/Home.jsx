@@ -29,6 +29,7 @@ class Home extends React.PureComponent {
                 src={logoInfomaniakWhite}
                 width="200"
               />
+              <span>kPaste</span>
             </h1>
             <div id="homepage-container">
               <Paper id="enter_room">
