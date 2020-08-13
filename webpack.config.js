@@ -116,7 +116,9 @@ const config = {
     new HtmlWebPackPlugin({
       template: 'public/index.html',
       filename: 'index.html',
-      wcScript: `<script id="webComponents" src="${process.env.WEB_COMPONENT_ENDPOINT}?with=support|body,products,menu-user&version=latest&project=kpaste"></script>`,
+      inject: 'body',
+      scriptLoading: 'defer',
+      wcScript: `<script id="webComponents" defer src="${process.env.WEB_COMPONENT_ENDPOINT}?with=support|body,products,menu-user&version=latest&project=kpaste"></script>`,
     }),
   ],
   output: {

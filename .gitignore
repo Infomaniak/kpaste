@@ -6,4 +6,4 @@ dist
 cypress/screenshots
 cypress/videos
 translation_old.json
-log/usage.log
+public/.htaccess
