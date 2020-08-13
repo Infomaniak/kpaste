@@ -180,6 +180,10 @@ button.copy-buton {
     font-size: 14px !important;
     flex: 0 0 90% !important;
     max-width: 87%;
+
+    pre {
+      white-space: nowrap;
+    }
   }
 
   button {
