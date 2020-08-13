@@ -16,21 +16,11 @@ import ShowPaste from './ShowPaste';
 class App extends Component<Props> {
   render() {
     const { t } = this.props;
-    const baseUri = window.location;
 
     return (
       <Suspense fallback={<Loader />}>
         <Helmet>
           <title>{t('meta.title')}</title>
-          <meta name="description" content={t('meta.description')} />
-          <meta property="og:title" content={t('meta.title')} />
-          <meta property="og:description" content={t('meta.description')} />
-          <meta property="og:image" content={`${baseUri}paste-banner.jpg`} />
-          <meta property="og:image:secure_url" content={`${baseUri}paste-banner.jpg`} />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="630" />
-          <meta property="og:image:height" content="200" />
-          <meta property="og:image:alt" content={t('meta.description')} />
         </Helmet>
         <IkHeader />
         <Switch>
