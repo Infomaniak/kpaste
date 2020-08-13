@@ -9,7 +9,7 @@
     "base-x": "3.0.8",
     "highlight.js": "10.1.2",
     "i18next": "19.6.3",
-    "i18next-browser-languagedetector": "5.0.1",
+    "i18next-browser-languagedetector": "6.0.0",
     "javascript-time-ago": "2.0.13",
     "node-sass": "4.14.1",
     "pako": "1.0.11",
