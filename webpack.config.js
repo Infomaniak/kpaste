@@ -86,7 +86,7 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]',
+            name: '[name].[contenthash].[ext]',
             outputPath: 'images/',
           },
         }],
@@ -97,7 +97,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
+              name: '[name].[contenthash].[ext]',
               outputPath: 'fonts/',
             },
           },
