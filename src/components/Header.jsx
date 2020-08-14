@@ -168,15 +168,13 @@ class IkHeader extends Component<Props> {
         <module-menu-user>
           <span slot="trigger">
             <div className="user-avatar-wrapper">
-              <img
-                className="avatar"
-                alt="avatar"
-                src={session.user.avatar}
-                style={{
-                  fontSize: '20px',
-                  height: '40px',
-                  width: '40px',
-                }}
+              <module-avatar-component
+                firstname={session.user.firstname}
+                lastname={session.user.lastname}
+                size={40}
+                logo={session.user.avatar}
+                fontsize={20}
+                accountid={session.current_group.id}
               />
             </div>
           </span>
