@@ -42,7 +42,7 @@
         },
         "text": {
             "destroy": "Ce message ne pourra être lu qu'une seule fois. Il sera ensuite définitivement supprimé.",
-            "validity": "Dépassé ce délais, ce message s'autodétruira définitivement 💥"
+            "validity": "Dépassé ce délai, ce message s'autodétruira définitivement 💥"
         },
         "title": "Partagez votre secret !"
     },
