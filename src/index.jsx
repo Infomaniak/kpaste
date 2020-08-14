@@ -12,7 +12,6 @@ import es from 'javascript-time-ago/locale/es';
 import App from './components/App';
 import ScrollToTop from './lib/ScrollToTop';
 
-window.CONST_LANG = 'fr';
 window.HIDE_MODULE_SUPPORT = true;
 window.WEB_COMPONENT_API_ENDPOINT = WEB_COMPONENT_API_ENDPOINT;
 

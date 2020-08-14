@@ -31,12 +31,13 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'fr',
     fallbackLng: 'fr',
     debug: false,
     interpolation: {
       escapeValue: false,
     },
+  }, () => {
+    window.CONST_LANG = i18n.language;
   });
 
 export default i18n;
