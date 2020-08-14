@@ -285,7 +285,7 @@ class ShowPaste extends Component<Props> {
             <ReactTimeAgo
               timeStyle="time"
               date={expiratedAt}
-              locale={i18n.language}
+              locale={i18n.language.substr(0, 2)}
               container={TooltipContainer}
               tooltip={false}
             />

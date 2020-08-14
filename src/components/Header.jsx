@@ -124,7 +124,7 @@ class IkHeader extends Component<Props> {
       <>
         <div className="select-wrapper" id="menu-lang-selector">
           <StyledSelect
-            defaultValue={i18n.language}
+            defaultValue={i18n.language.substr(0, 2)}
             input={<BootstrapInput />}
             onChange={IkHeader.onHandleMenuItemClick}
             variant="outlined"
