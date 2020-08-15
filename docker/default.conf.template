@@ -38,20 +38,6 @@ server {
     }
 
     location / {
-       rewrite ^/(.*) /site-paste/${PROJECT_BRANCH}/index.html break;
-       proxy_intercept_errors on;
-       error_page 404 500 502 503 504 = @errors;
-       proxy_pass https://assets.storage.infomaniak.com;
-       proxy_cache off;
-       add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
-       add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS HEAD';
-       add_header 'Access-Control-Allow-Headers' 'Origin,Content-Type,Accept';
-       add_header 'X-Frame-Options' 'deny';
-       expires off;
-    }
-
-    location @errors {
-        rewrite ^/(.*) /latest/assets/error.html break;
-        proxy_pass https://drive.storage.infomaniak.com;
+       try_files $uri /index.html;
     }
 }

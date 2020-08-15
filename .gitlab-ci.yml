@@ -154,14 +154,26 @@ publish_front_latest:
 build_docker_image_latest:
   stage: build_docker_image
   extends: .base-shell
-  <<: *rules_docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 days
+    when: always
   script:
+    - cp dist/index.html docker/index.html
     - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} docker
 
 publish_docker_image:
   stage: publish_docker_image
   extends: .base-shell
-  <<: *rules_docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
@@ -225,7 +237,10 @@ deploy_docker_image_preprod:
   image:
     name: bitnami/kubectl:1.18
     entrypoint: ['']
-  <<: *rules_docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
   before_script:
     - |
       if [[ "$CI_COMMIT_BRANCH" == "master" ]]; then

@@ -4,3 +4,4 @@ ARG CI_COMMIT_BRANCH
 ENV PROJECT_BRANCH=$CI_COMMIT_BRANCH
 
 COPY default.conf.template /etc/nginx/templates/
+COPY index.html /var/www/
