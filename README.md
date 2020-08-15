@@ -1,5 +1,23 @@
 # Infomaniak paste
 
+[![Github issues][github-issues]](https://github.com/Infomaniak/kpaste/issues)
+[![Github fork][github-fork]](https://github.com/Infomaniak/kpaste)
+[![Github stars][github-stars]](https://github.com/Infomaniak/kpaste)
+[![dependencies][dependencies-image] ][dependencies-url]
+[![devdependencies][devdependencies-image] ][devdependencies-url]
+
+[github-issues]: https://img.shields.io/github/issues/Infomaniak/kpaste
+[github-fork]: https://img.shields.io/github/forks/Infomaniak/kpaste
+[github-stars]: https://img.shields.io/github/stars/Infomaniak/kpaste
+[dependencies-image]: https://david-dm.org/infomaniak/kpaste.png
+[dependencies-url]: https://david-dm.org/infomaniak/kpaste
+[devdependencies-image]: https://david-dm.org/infomaniak/kpaste/dev-status.png
+[devdependencies-url]: https://david-dm.org/infomaniak/kpaste#info=devDependencies
+
+Infomaniak Paste is a 100% secure solution for transferring your encrypted messages to all your contacts.
+
+The data are encrypted and decrypted directly in your Internet browser via the 256-bit AES protocol using the Galois Counter mode.
+
 ## install
 
 ```bash
@@ -8,6 +26,7 @@ export WEB_COMPONENT_API_ENDPOINT="https://welcome.infomaniak.com"
 ```
 
 ```bash
+nvm use 12
 npm i
 ```
 
@@ -50,4 +69,4 @@ see `cypress` folder
 
 ## precommit hook
 
-There is a precommit hook based on eslint check
+there is a precommit hook based on eslint check
