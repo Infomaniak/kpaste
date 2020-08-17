@@ -1,11 +1,13 @@
 # Infomaniak paste
 
+[![License][license]](https://github.com/Infomaniak/kpaste/blob/master/LICENSE)
 [![Github issues][github-issues]](https://github.com/Infomaniak/kpaste/issues)
 [![Github fork][github-fork]](https://github.com/Infomaniak/kpaste)
 [![Github stars][github-stars]](https://github.com/Infomaniak/kpaste)
 [![dependencies][dependencies-image] ][dependencies-url]
 [![devdependencies][devdependencies-image] ][devdependencies-url]
 
+[license]: https://img.shields.io/github/license/infomaniak/kpaste
 [github-issues]: https://img.shields.io/github/issues/Infomaniak/kpaste
 [github-fork]: https://img.shields.io/github/forks/Infomaniak/kpaste
 [github-stars]: https://img.shields.io/github/stars/Infomaniak/kpaste
