@@ -21,6 +21,8 @@ variables:
 
 .base:
   rules:
+    - if: '$CI_MERGE_REQUEST_ID'
+      when: on_success
     - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
       when: never
     - when: on_success
@@ -61,10 +63,6 @@ build_front:
   extends: .base-dind
   image: node:12.18.3
   stage: build_front
-  rules:
-    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
-      when: never
-    - when: on_success
   before_script:
     - npm i --cache .npm --prefer-offline
   script:
@@ -98,6 +96,8 @@ cypress_chrome:
   extends: .base-dind
   image: cypress/browsers:node12.14.1-chrome83-ff77
   rules:
+    - if: '$CI_MERGE_REQUEST_ID'
+      when: on_success
     - if: '$CI_COMMIT_BRANCH != "develop"'
       when: never
     - when: on_success
