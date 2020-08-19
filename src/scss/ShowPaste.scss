@@ -26,6 +26,11 @@ h2 {
       max-width: 550px;
     }
 
+    .MuiTextField-root {
+      margin-top: 10px;
+      width: 100%;
+    }
+
     .new_paste_box_description {
       margin-bottom: 20px;
       font-size: 14px;
@@ -55,6 +60,29 @@ h2 {
 
     .pasteMessage {
       width: 100%;
+    }
+
+    .icon-bubble-alert {
+      color: #FB472E;
+    }
+
+    #standard-password-input {
+      margin-top: 15px;
+      border-radius: 5px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #E0E0E0;
+      resize: none;
+      min-height: 40px !important;
+      padding: 10px;
+    }
+
+    .MuiInput-underline:after, .MuiInput-underline:before {
+      border-bottom: none !important;
+    }
+
+    .MuiInput-underline:hover:not(.Mui-disabled):before {
+      border-bottom: none !important;
     }
   }
 }

@@ -22,13 +22,15 @@
         "login": "Login"
     },
     "meta": {
-        "description": "Infomaniak Paste est une solution 100% sécurisée pour transférer vos messages chiffrés à tous vos contacts.",
         "title": "Infomaniak Paste 🔐 Envoyez des messages tel un agent secret"
     },
     "paste": {
         "button": {
             "continue": "Continuer",
             "go": "C'est parti !"
+        },
+        "info": {
+            "password": "Transmettez ce mot de passe par un autre canal pour encore plus de sécurité."
         },
         "input": {
             "code": "Code",
@@ -38,15 +40,29 @@
         "label": {
             "destroy": "Supprimer le message après sa lecture",
             "input": "Quel est le message ?",
+            "password": "Protéger le message par un mot de passe",
             "validity": "Durée de validité du message"
+        },
+        "password": {
+            "input": "Renseignez le mot de passe pour déverrouiller ce message"
+        },
+        "placeholder": {
+            "password": "Mot de passe de protection du message"
         },
         "text": {
             "destroy": "Ce message ne pourra être lu qu'une seule fois. Il sera ensuite définitivement supprimé.",
+            "password": "Votre destinataire devra saisir ce mot de passe pour voir votre message.",
             "validity": "Dépassé ce délai, ce message s'autodétruira définitivement 💥"
         },
         "title": "Partagez votre secret !"
     },
     "show_paste": {
+        "button": {
+            "password": "Déverrouiller et lire le message"
+        },
+        "info": {
+            "wrong_password": "Hum, ce mot de passe ne semble pas correspondre à ce message"
+        },
         "label": {
             "burn": "Lien à usage unique",
             "destroy": "Ne fermez pas cette fenêtre car le lien sécurisé est à usage unique !",
@@ -61,9 +77,13 @@
             "description": "Un lien sécurisé a été généré. Partagez ce lien aux contacts qui doivent pouvoir lire votre message secret.",
             "title": "Procédure autoclave par convergence. Oui, ça claque !"
         },
+        "password": {
+            "title": "Vous ne passerez pas !"
+        },
         "subtitle": {
             "destroy": "Ce message s'autodétruira dans",
-            "error": "Le message s'est autodétruit ou n'a jamais existé"
+            "error": "Le message s'est autodétruit ou n'a jamais existé",
+            "password": "Ce message est protégé par un mot de passe."
         },
         "text": {
             "error": "Heureusement qu'il ne s'agissait pas de sauver le monde"

@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Redirect } from 'react-router-dom';
 
+import TextField from '@material-ui/core/TextField';
 import Crypto from '../lib/Crypto';
 import expandTextarea from '../lib/ExpandPage';
 import pasteExpiration from '../lib/PasteExpiration';
@@ -21,7 +22,9 @@ import Footer from './Footer';
 class NewPaste extends Component<Props> {
   onChangeDestroy: () => void;
 
-  onChangePassword: () => void;
+  onChangePassword: (Object) => void;
+
+  onTogglePassword: () => void;
 
   onMessageChange: (Object) => void;
 
@@ -35,6 +38,7 @@ class NewPaste extends Component<Props> {
 
     this.onChangeDestroy = this.onChangeDestroy.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
+    this.onTogglePassword = this.onTogglePassword.bind(this);
     this.onChangeValidityPeriod = this.onChangeValidityPeriod.bind(this);
     this.onMessageChange = this.onMessageChange.bind(this);
 
@@ -61,7 +65,7 @@ class NewPaste extends Component<Props> {
     });
   }
 
-  onChangePassword() {
+  onTogglePassword() {
     const { password } = this.state;
 
     this.setState({
@@ -71,7 +75,17 @@ class NewPaste extends Component<Props> {
 
   /**
    *
-   * @param {string} event - Keyboard event.
+   * @param {object} event - Keyboard event.
+   * @private
+   * @returns {void}
+   */
+  onChangePassword(event) {
+    this.setState({ password: event.target.value });
+  }
+
+  /**
+   *
+   * @param {object} event - Keyboard event.
    * @private
    * @returns {void}
    */
@@ -100,10 +114,10 @@ class NewPaste extends Component<Props> {
 
   async sendPaste() {
     const {
-      message, destroy, period,
+      message, destroy, period, password,
     } = this.state;
     const crypto = new Crypto();
-    const datas = await crypto.crypt(message, '');
+    const datas = await crypto.crypt(message, password);
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -119,6 +133,7 @@ class NewPaste extends Component<Props> {
         salt: datas.salt,
         burn: destroy,
         validity: period,
+        password: password.length > 0,
       }),
     }).then((response) => (response.ok
       ? response.json()
@@ -138,7 +153,7 @@ class NewPaste extends Component<Props> {
   render() {
     const { t } = this.props;
     const {
-      message, redirect, key, pasteId, destroy, period,
+      message, redirect, key, pasteId, destroy, period, password,
     } = this.state;
 
     if (redirect) {
@@ -178,7 +193,7 @@ class NewPaste extends Component<Props> {
                       <>
                         {t('paste.input.tooltip')}
                       </>
-                      )}
+                    )}
                   >
                     <Button
                       className="expand_button"
@@ -259,9 +274,42 @@ class NewPaste extends Component<Props> {
                     checked={destroy}
                   />
                 </div>
+                <div className="password-section">
+                  <div className="desc">
+                    <p className="settings-title">
+                      <strong>
+                        {t('paste.label.password')}
+                      </strong>
+                    </p>
+                    <p className="settings-text">
+                      {t('paste.text.password')}
+                    </p>
+                  </div>
+                  <StyledSwitch
+                    onChange={this.onTogglePassword}
+                    checked={password}
+                  />
+                </div>
+                {password
+                && (
+                  <>
+                    <div className="password-section">
+                      <TextField
+                        id="standard-password-input"
+                        label={t('paste.placeholder.password')}
+                        type="password"
+                        placeholder={t('paste.placeholder.password')}
+                        onChange={this.onChangePassword}
+                      />
+                    </div>
+                    <div className="password-info-section font-medium">
+                      <span className="icon icon-bubble-alert" />
+                      <span>{t('paste.info.password')}</span>
+                    </div>
+                  </>
+                )}
               </Paper>
               <div className="button-section">
-
                 <Button
                   id="new_paste_submit_button"
                   color="primary"

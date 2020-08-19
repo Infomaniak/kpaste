@@ -6,6 +6,7 @@ import { withTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ReactTimeAgo from 'react-time-ago';
 
+import TextField from '@material-ui/core/TextField';
 import CodeHighlight from '../lib/CodeHighlight';
 import Crypto from '../lib/Crypto';
 import expandTextarea from '../lib/ExpandPage';
@@ -34,11 +35,30 @@ class ShowPaste extends Component<Props> {
     navigator.clipboard.writeText(document.getElementsByTagName('code')[0].textContent);
   }
 
+  static async decrypt(datas, key, vector, salt, password) {
+    const crypt = new Crypto(
+      key,
+      atob(vector),
+      atob(salt),
+    );
+
+    const decrypted = await crypt.decrypt(datas, password);
+
+    return decrypted;
+  }
+
+  onChangePassword: (Object) => void;
+
+  onKeyDown: (Object) => void;
+
   /**
    * @inheritdoc
    */
   constructor(props) {
     super(props);
+
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
 
     this.state = {
       message: '',
@@ -48,6 +68,9 @@ class ShowPaste extends Component<Props> {
       newPaste: false,
       openTooltip: false,
       highlightCode: false,
+      invalidPassword: false,
+      passwordInput: '',
+      password: false,
     };
   }
 
@@ -71,15 +94,11 @@ class ShowPaste extends Component<Props> {
         const key = Crypto.getPasteKey();
         const password = '';
         ShowPaste.getPaste(pasteId, key, password).then((datas) => {
-          this.setState({
-            message: datas.message,
-            burn: datas.burn,
-            expiratedAt: datas.expiratedAt ? new Date(datas.expiratedAt.replace(/-/g, '/')) : false,
-          });
+          this.setState(datas);
 
           if (datas.expiratedAt) {
             setInterval(() => {
-              if (new Date(datas.expiratedAt.replace(/-/g, '/')) <= new Date()) {
+              if (new Date(datas.expiratedAt) <= new Date()) {
                 window.location.reload();
               }
             }, 1000);
@@ -103,22 +122,47 @@ class ShowPaste extends Component<Props> {
     }).then((response) => (response.ok
       ? response.json()
       : Promise.reject(new Error(response.statusText))));
-    const crypt = new Crypto(
+
+    const state = {
       key,
-      atob(paste.data.vector),
-      atob(paste.data.salt),
-    );
-
-    const decrypted = await crypt.decrypt(
-      paste.data.data,
-      password,
-    );
-
-    return {
-      message: decrypted,
+      vector: paste.data.vector,
+      salt: paste.data.salt,
       burn: paste.data.burn,
-      expiratedAt: paste.data.expirated_at,
+      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at.replace(/-/g, '/')) : false,
+      password: paste.data.password,
     };
+
+    if (!paste.data.password) {
+      state.message = await ShowPaste.decrypt(
+        paste.data.data,
+        key,
+        paste.data.vector,
+        paste.data.salt,
+        password,
+      );
+    } else {
+      state.message = paste.data.data;
+    }
+
+    return state;
+  }
+
+  async onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.submitPassword();
+    }
+  }
+
+  /**
+   *
+   * @param {object} event - Keyboard event.
+   * @private
+   * @returns {void}
+   */
+  onChangePassword(event) {
+    this.setState({ passwordInput: event.target.value });
   }
 
   copyLink() {
@@ -128,6 +172,29 @@ class ShowPaste extends Component<Props> {
 
   handleTooltipClose() {
     this.setState({ openTooltip: false });
+  }
+
+  async submitPassword() {
+    const {
+      key, message, vector, salt, passwordInput,
+    } = this.state;
+
+    try {
+      const decrypted = await ShowPaste.decrypt(
+        message,
+        key,
+        vector,
+        salt,
+        passwordInput,
+      );
+
+      this.setState({
+        message: decrypted,
+        password: false,
+      });
+    } catch (_) {
+      this.setState({ invalidPassword: true, password: true });
+    }
   }
 
   showNew() {
@@ -210,7 +277,7 @@ class ShowPaste extends Component<Props> {
                 />
                 &nbsp;
                 {t('show_paste.label.validity')}
-                {' '}
+                &nbsp;
                 {period}
               </span>
             )}
@@ -262,13 +329,70 @@ class ShowPaste extends Component<Props> {
     this.setState({ highlightCode: !highlightCode });
   }
 
+  showPassword() {
+    const { t } = this.props;
+    const {
+      password, invalidPassword,
+    } = this.state;
+
+    if (!password) {
+      return false;
+    }
+
+    return (
+      <>
+        <h1 id="new_paste_title">{t('show_paste.password.title')}</h1>
+
+        <p className="group-name expiration_title">
+          {t('show_paste.subtitle.password')}
+        </p>
+
+        <Paper id="new_paste_box">
+          <div className="title-section">
+            <div className="desc">
+              <p className="settings-title">
+                <strong>{t('paste.password.input')}</strong>
+              </p>
+            </div>
+          </div>
+          <TextField
+            autoFocus
+            id="standard-password-input"
+            type="password"
+            onChange={this.onChangePassword}
+            onKeyDown={this.onKeyDown}
+          />
+          {invalidPassword && (
+          <div className="password-info-section font-medium">
+            <span className="icon icon-bubble-alert" />
+            <span>{t('show_paste.info.wrong_password')}</span>
+          </div>
+          )}
+        </Paper>
+        <div className="button-section">
+          <Button
+            id="new_paste_submit_button"
+            color="primary"
+            disableElevation
+            variant="contained"
+            onClick={async () => {
+              await this.submitPassword();
+            }}
+          >
+            {t('show_paste.button.password')}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
   showMessage() {
     const { t } = this.props;
     const {
-      error, newPaste, expiratedAt, burn, message, highlightCode,
+      error, newPaste, expiratedAt, burn, message, highlightCode, password,
     } = this.state;
 
-    if (error || newPaste) {
+    if (error || newPaste || password) {
       return false;
     }
 
@@ -327,7 +451,7 @@ class ShowPaste extends Component<Props> {
                   <>
                     {t('paste.input.tooltip')}
                   </>
-              )}
+                )}
               >
                 <Button
                   className="expand_button"
@@ -342,26 +466,26 @@ class ShowPaste extends Component<Props> {
 
               {!highlightCode
               && (
-              <HtmlTooltip
-                placement="top"
-                title={(
-                  <>
-                    {t('paste.input.code')}
-                  </>
-                )}
-              >
-                <Button
-                  className="expand_button"
-                  onClick={async () => {
-                    await this.highlightCode();
-                  }}
+                <HtmlTooltip
+                  placement="top"
+                  title={(
+                    <>
+                      {t('paste.input.code')}
+                    </>
+                  )}
                 >
-                  <span
-                    className="icon icon-type-code"
-                    id="expand_button"
-                  />
-                </Button>
-              </HtmlTooltip>
+                  <Button
+                    className="expand_button"
+                    onClick={async () => {
+                      await this.highlightCode();
+                    }}
+                  >
+                    <span
+                      className="icon icon-type-code"
+                      id="expand_button"
+                    />
+                  </Button>
+                </HtmlTooltip>
               )}
 
             </div>
@@ -406,6 +530,7 @@ class ShowPaste extends Component<Props> {
             {this.showNew()}
             {this.showError()}
             {this.showMessage()}
+            {this.showPassword()}
           </div>
         </div>
         <Footer />

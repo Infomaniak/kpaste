@@ -22,13 +22,15 @@
         "login": "Anmelden"
     },
     "meta": {
-        "description": "Infomaniak Paste ist eine 100 % sichere Lösung für den Versand Ihrer verschlüsselten Nachrichten an alle Ihre Kontakte.",
         "title": "Infomaniak Paste 🔐 Nachrichten senden wie ein Geheimagent"
     },
     "paste": {
         "button": {
             "continue": "Weiter",
             "go": "Los geht‘s!"
+        },
+        "info": {
+            "password": "Übermitteln Sie dieses Passwort mit Blick auf mehr Sicherheit über einen anderen Kanal."
         },
         "input": {
             "code": "Code",
@@ -38,15 +40,29 @@
         "label": {
             "destroy": "Nachricht nach Kenntnisnahme löschen",
             "input": "Welches ist Ihre Nachricht?",
+            "password": "Nachricht durch Passwort schützen",
             "validity": "Gültigkeitsdauer der Nachricht"
+        },
+        "password": {
+            "input": "Geben Sie das Passwort ein, um diese Nachricht zu entsperren"
+        },
+        "placeholder": {
+            "password": "Passwort für den Schutz der Nachricht"
         },
         "text": {
             "destroy": "Diese Nachricht kann nur einmal gelesen werden. Danach wird sie endgültig gelöscht.",
+            "password": "Ihr Empfänger muss dieses Passwort eingeben, um Ihre Nachricht zu lesen.",
             "validity": "Danach zerstört sich diese Nachricht selbst endgültig 💥"
         },
         "title": "Verraten Sie Ihr Geheimnis!"
     },
     "show_paste": {
+        "button": {
+            "password": "Nachricht entsperren und lesen"
+        },
+        "info": {
+            "wrong_password": "Hmm, dieses Passwort passt anscheinend nicht zu dieser Nachricht"
+        },
         "label": {
             "burn": "Link für einmaligen Gebrauch",
             "destroy": "Schliessen Sie dieses Fenster nicht, denn dieser gesicherte Link ist nur für den einmaligen Gebrauch bestimmt!",
@@ -61,9 +77,13 @@
             "description": "Es wurde ein gesicherter Link erstellt. Teilen Sie diesen Link mit Kontakten, die Ihre geheime Nachricht lesen können müssen.",
             "title": "Autoklav-Verfahren durch Konvergenz. Tolle Sache!"
         },
+        "password": {
+            "title": "Du kannst nich vorbei!"
+        },
         "subtitle": {
             "destroy": "Diese Nachricht zerstört sich in",
-            "error": "Die Nachricht hat sich zerstört oder hat nie existiert"
+            "error": "Die Nachricht hat sich zerstört oder hat nie existiert",
+            "password": "Diese Nachricht ist durch ein Passwort geschützt."
         },
         "text": {
             "error": "Zum Glück geht es nicht darum, die Welt zu retten"

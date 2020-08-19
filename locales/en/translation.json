@@ -22,13 +22,15 @@
         "login": "Login"
     },
     "meta": {
-        "description": "Infomaniak Paste is a 100% secure solution for transferring your encrypted messages to all your contacts.",
         "title": "Infomaniak Paste 🔐 Send messages like a secret agent"
     },
     "paste": {
         "button": {
             "continue": "Continue",
             "go": "Let’s get started!"
+        },
+        "info": {
+            "password": "Transmit this password through another channel for added security."
         },
         "input": {
             "code": "Code",
@@ -38,15 +40,29 @@
         "label": {
             "destroy": "Delete the message after reading it",
             "input": "What’s your message?",
+            "password": "Protect the message with a password",
             "validity": "Message’s validity period"
+        },
+        "password": {
+            "input": "Enter the password to unlock this message"
+        },
+        "placeholder": {
+            "password": "Message protection password"
         },
         "text": {
             "destroy": "This message can be read only once. It will then be permanently deleted.",
+            "password": "Your recipient will need to enter this password to view your message.",
             "validity": "After that, the message will self-destruct permanently 💥"
         },
         "title": "Share your secret!"
     },
     "show_paste": {
+        "button": {
+            "password": "Unlock and read the message"
+        },
+        "info": {
+            "wrong_password": "Hmm, that password doesn’t seem to match this message"
+        },
         "label": {
             "burn": "Single-use link",
             "destroy": "Don’t close this window because the secure link can only be used once!",
@@ -61,9 +77,13 @@
             "description": "A secure link has been generated. Share this link with the contacts intended to read your secret message.",
             "title": "Autoclave procedure by convergence. Yes, great!"
         },
+        "password": {
+            "title": "You shall not pass!"
+        },
         "subtitle": {
             "destroy": "This message will self-destruct in",
-            "error": "The message has self-destructed or never existed"
+            "error": "The message has self-destructed or never existed",
+            "password": "This message is protected with a password."
         },
         "text": {
             "error": "Luckily it wasn’t about saving the world"

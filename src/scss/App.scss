@@ -150,6 +150,18 @@ li.Mui-selected:hover {
   border-color: $blue !important;
 }
 
+.MuiFormLabel-root.Mui-focused {
+  color: $blue !important;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid $blue !important;
+}
+
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+}
+
 pre {
   white-space: pre-wrap;
   word-break: normal;

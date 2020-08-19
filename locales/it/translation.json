@@ -22,13 +22,15 @@
         "login": "Accesso"
     },
     "meta": {
-        "description": "Infomaniak Paste è una soluzione protetta al 100% che ti consente di inviare messaggi criptati a tutti i tuoi contatti.",
         "title": "Infomaniak Paste 🔐 Inviare messaggi come un agente segreto"
     },
     "paste": {
         "button": {
             "continue": "Avanti",
             "go": "Ci siamo!"
+        },
+        "info": {
+            "password": "Trasmetti questa password tramite un altro canale a garanzia di una maggiore sicurezza."
         },
         "input": {
             "code": "Codice",
@@ -38,15 +40,29 @@
         "label": {
             "destroy": "Elimina il messaggio dopo la sua lettura",
             "input": "Quale è il messaggio?",
+            "password": "Proteggi il messaggio tramite password",
             "validity": "Periodo di validità del messaggio"
+        },
+        "password": {
+            "input": "Inserisci la password per sbloccare questo messaggio"
+        },
+        "placeholder": {
+            "password": "Password di protezione del messaggio"
         },
         "text": {
             "destroy": "Questo messaggio potrà essere letto una sola volta, dopodiché verrà eliminato definitivamente.",
+            "password": "Per leggere il tuo messaggio, il destinatario dovrà inserire questa password.",
             "validity": "Una volta scaduta la validità, il messaggio si autodistruggerà definitivamente 💥"
         },
         "title": "Condividi i tuoi segreti!"
     },
     "show_paste": {
+        "button": {
+            "password": "Sblocca e leggi il messaggio"
+        },
+        "info": {
+            "wrong_password": "Hmm, la password non sembra corrispondere a questo messaggio"
+        },
         "label": {
             "burn": "Link monouso",
             "destroy": "Non chiudere questa finestra poiché il link protetto è monouso!",
@@ -61,9 +77,13 @@
             "description": "È stato creato un link protetto. Condividi questo link con i contatti ai quali vuoi consentire la lettura del tuo messaggio segreto.",
             "title": "Procedura autoclave per convergenza. Sì, è geniale!"
         },
+        "password": {
+            "title": "Tu non passerai!"
+        },
         "subtitle": {
             "destroy": "Questo messaggio si autodistruggerà tra",
-            "error": "Il messaggio si è autodistrutto o non è mai esistito"
+            "error": "Il messaggio si è autodistrutto o non è mai esistito",
+            "password": "Questo messaggio è protetto da password."
         },
         "text": {
             "error": "Per fortuna non si trattava di salvare il mondo"

@@ -22,13 +22,15 @@
         "login": "Iniciar sesión"
     },
     "meta": {
-        "description": "Infomaniak Paste es una solución 100% segura para transferir tus mensajes cifrados a todos tus contactos.",
         "title": "Infomaniak Paste 🔐 Enviar mensajes como un agente secreto"
     },
     "paste": {
         "button": {
             "continue": "Continuar",
             "go": "¡Aquí vamos!"
+        },
+        "info": {
+            "password": "Transmite esta contraseña por otro canal para más seguridad."
         },
         "input": {
             "code": "Código",
@@ -38,15 +40,29 @@
         "label": {
             "destroy": "Eliminar este mensaje una vez leído",
             "input": "¿Cuál es el mensaje?",
+            "password": "Protege el mensaje con una contraseña",
             "validity": "Duración de validez del mensaje"
+        },
+        "password": {
+            "input": "Introduce la contraseña para desbloquear este mensaje"
+        },
+        "placeholder": {
+            "password": "Contraseña de protección del mensaje"
         },
         "text": {
             "destroy": "Este mensaje sólo se puede leer una vez. Una vez leído, se eliminará definitivamente.",
+            "password": "Tu destinatario deberá introducir esta contraseña para ver tu mensaje.",
             "validity": "Pasado ese plazo, ¡el mensaje se autodestruirá definitivamente 💥"
         },
         "title": "¡Comparte tu secreto!"
     },
     "show_paste": {
+        "button": {
+            "password": "Desbloquear y leer el mensaje"
+        },
+        "info": {
+            "wrong_password": "Um, esa contraseña no parece coincidir con este mensaje"
+        },
         "label": {
             "burn": "Enlace de un solo uso",
             "destroy": "¡No cierres esta ventana porque el enlace seguro es de un solo uso!",
@@ -61,9 +77,13 @@
             "description": "Se ha generado un enlace seguro. Comparte este enlace con los contactos que quieras que lean tu mensaje secreto.",
             "title": "Procedimiento autoclave por convergencia. ¡Sí, estalla!"
         },
+        "password": {
+            "title": "¡No pasarás!"
+        },
         "subtitle": {
             "destroy": "Este mensaje se autodestruirá en",
-            "error": "El mensaje se ha autodestruido o no ha existido nunca"
+            "error": "El mensaje se ha autodestruido o no ha existido nunca",
+            "password": "Este mensaje está protegido mediante una contraseña"
         },
         "text": {
             "error": "Afortunadamente, no se trataba de salvar el mundo"

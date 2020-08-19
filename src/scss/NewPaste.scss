@@ -29,8 +29,6 @@
       margin-top: 30px;
     }
   }
-
-
 }
 
 #paste_container,
@@ -141,6 +139,28 @@
 
   .destroy-section {
     margin-top: 30px;
+  }
+
+  .password-section {
+    margin-top: 20px;
+
+    .MuiTextField-root {
+      width: 100%;
+    }
+  }
+
+  .password-info-section {
+    margin-top: 15px;
+    span {
+      vertical-align: super;
+
+      &.icon {
+        font-size: 20px;
+        color: $blue;
+        margin-right: 10px;
+        vertical-align: bottom;
+      }
+    }
   }
 
   button {
