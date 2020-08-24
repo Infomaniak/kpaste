@@ -133,12 +133,16 @@ cypress_firefox:
 
 # S3
 
-publish_front_latest:
+publish_front:
   stage: publish_front
   extends: .base-dind
   image:
     name: minio/mc:RELEASE.2020-03-06T23-29-45Z
     entrypoint: [""]
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
+      when: never
+    - when: on_success
   before_script:
     - mc config host add $S3_BUCKET $S3_HOST $S3_KEY $S3_PASSWORD --api s3v4
   script:
