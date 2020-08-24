@@ -8,7 +8,9 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { Redirect } from 'react-router-dom';
 
-import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
 import Crypto from '../lib/Crypto';
 import expandTextarea from '../lib/ExpandPage';
 import pasteExpiration from '../lib/PasteExpiration';
@@ -30,6 +32,8 @@ class NewPaste extends Component<Props> {
 
   onChangeValidityPeriod: (Object) => void;
 
+  handleClickShowPassword: () => void;
+
   /**
    * @inheritdoc
    */
@@ -41,13 +45,16 @@ class NewPaste extends Component<Props> {
     this.onTogglePassword = this.onTogglePassword.bind(this);
     this.onChangeValidityPeriod = this.onChangeValidityPeriod.bind(this);
     this.onMessageChange = this.onMessageChange.bind(this);
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
 
     this.state = {
       message: '',
       destroy: false,
       period: '1w',
       key: null,
-      password: false,
+      password: '',
+      enablePassword: false,
+      showPassword: false,
     };
   }
 
@@ -66,10 +73,10 @@ class NewPaste extends Component<Props> {
   }
 
   onTogglePassword() {
-    const { password } = this.state;
+    const { enablePassword } = this.state;
 
     this.setState({
-      password: !password,
+      enablePassword: !enablePassword,
     });
   }
 
@@ -112,12 +119,18 @@ class NewPaste extends Component<Props> {
     return '';
   }
 
+  handleClickShowPassword() {
+    const { showPassword } = this.state;
+
+    this.setState({ showPassword: !showPassword });
+  }
+
   async sendPaste() {
     const {
-      message, destroy, period, password,
+      message, destroy, period, password, enablePassword,
     } = this.state;
     const crypto = new Crypto();
-    const datas = await crypto.crypt(message, password);
+    const datas = await crypto.crypt(message, enablePassword ? password : '');
     const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -133,7 +146,7 @@ class NewPaste extends Component<Props> {
         salt: datas.salt,
         burn: destroy,
         validity: period,
-        password: password.length > 0,
+        password: !!(enablePassword && password.length),
       }),
     }).then((response) => (response.ok
       ? response.json()
@@ -153,7 +166,7 @@ class NewPaste extends Component<Props> {
   render() {
     const { t } = this.props;
     const {
-      message, redirect, key, pasteId, destroy, period, password,
+      message, redirect, key, pasteId, destroy, period, showPassword, enablePassword,
     } = this.state;
 
     if (redirect) {
@@ -287,19 +300,30 @@ class NewPaste extends Component<Props> {
                   </div>
                   <StyledSwitch
                     onChange={this.onTogglePassword}
-                    checked={password}
+                    checked={enablePassword}
                   />
                 </div>
-                {password
+                {enablePassword
                 && (
                   <>
                     <div className="password-section">
-                      <TextField
+                      <Input
+                        autoFocus
                         id="standard-password-input"
                         label={t('paste.placeholder.password')}
-                        type="password"
                         placeholder={t('paste.placeholder.password')}
+                        type={showPassword ? 'text' : 'password'}
                         onChange={this.onChangePassword}
+                        endAdornment={(
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={this.handleClickShowPassword}
+                            >
+                              {showPassword ? <span className="icon icon-view" /> : <span className="icon icon-view-off" /> }
+                            </IconButton>
+                          </InputAdornment>
+                        )}
                       />
                     </div>
                     <div className="password-info-section font-medium">
