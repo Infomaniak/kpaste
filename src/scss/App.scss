@@ -154,12 +154,23 @@ li.Mui-selected:hover {
   color: $blue !important;
 }
 
-.MuiInput-underline:after {
-  border-bottom: 2px solid $blue !important;
+.MuiInput-underline:after, .MuiInput-underline:before {
+  border-bottom: none !important;
 }
 
 .MuiInput-underline:hover:not(.Mui-disabled):before {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+  border-bottom: none !important;
+}
+
+#standard-password-input {
+  margin-top: 15px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #E0E0E0;
+  resize: none;
+  min-height: 40px !important;
+  padding: 10px;
 }
 
 pre {
