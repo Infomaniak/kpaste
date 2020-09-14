@@ -239,7 +239,7 @@ deploy_docker_image_preprod:
   stage: deploy_docker_image
   extends: .base-dind
   image:
-    name: bitnami/kubectl:1.18
+    name: bitnami/kubectl:1.19
     entrypoint: ['']
   rules:
     - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
