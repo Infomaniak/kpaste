@@ -10,7 +10,7 @@
     "highlight.js": "10.3.1",
     "i18next": "19.8.2",
     "i18next-browser-languagedetector": "6.0.1",
-    "javascript-time-ago": "2.0.13",
+    "javascript-time-ago": "2.3.2",
     "node-sass": "4.14.1",
     "pako": "1.0.11",
     "prop-types": "15.7.2",
