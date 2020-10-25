@@ -8,7 +8,7 @@
     "@material-ui/icons": "4.9.1",
     "base-x": "3.0.8",
     "highlight.js": "10.3.1",
-    "i18next": "19.8.2",
+    "i18next": "19.8.3",
     "i18next-browser-languagedetector": "6.0.1",
     "javascript-time-ago": "2.3.2",
     "node-sass": "4.14.1",
