@@ -1,5 +1,13 @@
 image: docker:latest
 
+services:
+  - name: docker:19.03.5-dind
+    command: ["--mtu=1500"]
+
+workflow:
+  rules:
+    - when: always
+
 stages:
   - audit
   - build_front
@@ -7,17 +15,18 @@ stages:
   - publish_front
   - build_docker_image
   - docker_test
-  - publish_docker_image
   - deploy_docker_image
 
 variables:
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
   SECURE_ANALYZERS_PREFIX: "registry.gitlab.com/gitlab-org/security-products/analyzers"
   CS_MAJOR_VERSION: 2
   CI_APPLICATION_REPOSITORY: ${CI_REGISTRY_IMAGE}
   CI_APPLICATION_TAG: latest
-
 
 .base:
   rules:
@@ -30,14 +39,12 @@ variables:
 .base-dind:
   extends: .base
   tags:
-    - docker
-    - dind
+    - kpaste
 
 .base-shell:
   extends: .base
   tags:
-    - docker
-    - shell
+    - kpaste
 
 .rules_kubernetes: &rules_kubernetes
   rules:
@@ -61,7 +68,7 @@ variables:
 
 build_front:
   extends: .base-dind
-  image: node:12.18.3
+  image: node:12.19.0
   stage: build_front
   before_script:
     - npm i --cache .npm --prefer-offline
@@ -155,7 +162,7 @@ publish_front:
 
 # DOCKER
 
-build_docker_image_latest:
+build_docker_image:
   stage: build_docker_image
   extends: .base-shell
   rules:
@@ -167,20 +174,11 @@ build_docker_image_latest:
       - dist/
     expire_in: 1 days
     when: always
-  script:
-    - cp dist/index.html docker/index.html
-    - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} docker
-
-publish_docker_image:
-  stage: publish_docker_image
-  extends: .base-shell
-  rules:
-    - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
-      when: never
-    - when: on_success
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
+    - cp dist/index.html docker/index.html
+    - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} docker
     - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
     - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} ${CI_REGISTRY_IMAGE}:latest
     - docker push ${CI_REGISTRY_IMAGE}:latest
@@ -239,7 +237,7 @@ deploy_docker_image_preprod:
   stage: deploy_docker_image
   extends: .base-dind
   image:
-    name: bitnami/kubectl:1.18
+    name: bitnami/kubectl:1.19
     entrypoint: ['']
   rules:
     - if: '$CI_COMMIT_BRANCH != "master" && $CI_COMMIT_BRANCH != "develop"'
