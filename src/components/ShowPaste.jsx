@@ -1,12 +1,13 @@
 import { Paper } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import React, { Component } from 'react';
+import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ReactTimeAgo from 'react-time-ago';
 
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
 import CodeHighlight from '../lib/CodeHighlight';
 import Crypto from '../lib/Crypto';
 import expandTextarea from '../lib/ExpandPage';
@@ -26,7 +27,7 @@ const TooltipContainer = ({ verboseDate, children }) => (
 /**
  * @extends Component
  */
-class ShowPaste extends Component<Props> {
+class ShowPaste extends React.PureComponent {
   static displayRaw() {
     document.getElementsByTagName('html')[0].innerHTML = document.getElementsByClassName('pasteMessage')[0].textContent;
   }
@@ -128,7 +129,8 @@ class ShowPaste extends Component<Props> {
       vector: paste.data.vector,
       salt: paste.data.salt,
       burn: paste.data.burn,
-      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at.replace(/-/g, '/')) : false,
+      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at.replace(/-/g, '/'))
+        : false,
       password: paste.data.password,
     };
 
@@ -145,6 +147,10 @@ class ShowPaste extends Component<Props> {
     }
 
     return state;
+  }
+
+  handleTooltipClose() {
+    this.setState({ openTooltip: false });
   }
 
   async onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
@@ -170,10 +176,6 @@ class ShowPaste extends Component<Props> {
     navigator.clipboard.writeText(window.location.href);
   }
 
-  handleTooltipClose() {
-    this.setState({ openTooltip: false });
-  }
-
   async submitPassword() {
     const {
       key, message, vector, salt, passwordInput,
@@ -193,7 +195,10 @@ class ShowPaste extends Component<Props> {
         password: false,
       });
     } catch (_) {
-      this.setState({ invalidPassword: true, password: true });
+      this.setState({
+        invalidPassword: true,
+        password: true,
+      });
     }
   }
 
@@ -363,10 +368,10 @@ class ShowPaste extends Component<Props> {
             onKeyDown={this.onKeyDown}
           />
           {invalidPassword && (
-          <div className="password-info-section font-medium">
-            <span className="icon icon-bubble-alert" />
-            <span>{t('show_paste.info.wrong_password')}</span>
-          </div>
+            <div className="password-info-section font-medium">
+              <span className="icon icon-bubble-alert" />
+              <span>{t('show_paste.info.wrong_password')}</span>
+            </div>
           )}
         </Paper>
         <div className="button-section">
@@ -538,5 +543,15 @@ class ShowPaste extends Component<Props> {
     );
   }
 }
+
+ShowPaste.propTypes = {
+  t: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  match: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  location: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  history: PropTypes.object.isRequired,
+};
 
 export default withTranslation()(ShowPaste);

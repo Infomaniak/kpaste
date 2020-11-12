@@ -1,10 +1,11 @@
 import '../scss/App.scss';
 
-import React, { Component, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import bodyGuard from '../images/bodyguard.svg';
 import IkHeader from './Header';
 import Home from './Home';
@@ -12,8 +13,7 @@ import Loader from './Loader';
 import NewPaste from './NewPaste';
 import ShowPaste from './ShowPaste';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends Component<Props> {
+class App extends React.PureComponent {
   render() {
     const { t } = this.props;
 
@@ -39,5 +39,9 @@ class App extends Component<Props> {
     );
   }
 }
+
+App.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default withTranslation()(App);

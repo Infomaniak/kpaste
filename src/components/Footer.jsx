@@ -1,11 +1,12 @@
 import { Container } from '@material-ui/core';
-import React, { Component } from 'react';
+import React from 'react';
 import { withTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 /**
  * @extends Component
  */
-class Footer extends Component<Props> {
+class Footer extends React.PureComponent {
   /**
    * @inheritdoc
    * @returns {ReactElement}
@@ -44,5 +45,9 @@ class Footer extends Component<Props> {
     );
   }
 }
+
+Footer.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default withTranslation()(Footer);
