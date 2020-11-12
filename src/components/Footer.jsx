@@ -1,24 +1,12 @@
 import { Container } from '@material-ui/core';
-import React, { Component } from 'react';
+import React from 'react';
 import { withTranslation } from 'react-i18next';
-
-import question from '../images/button-share.svg';
+import PropTypes from 'prop-types';
 
 /**
  * @extends Component
  */
-class Footer extends Component<Props> {
-  /**
-   * @param event
-   * @private
-   */
-  static onTriggerSupportModuleEvent(event) {
-    event.preventDefault();
-    const supportTriggerEvent = new CustomEvent('openSupportModule', { detail: { opening: 'contact' } });
-
-    document.dispatchEvent(supportTriggerEvent);
-  }
-
+class Footer extends React.PureComponent {
   /**
    * @inheritdoc
    * @returns {ReactElement}
@@ -53,17 +41,13 @@ class Footer extends Component<Props> {
             </div>
           </div>
         </Container>
-        {/* eslint-disable-next-line max-len */}
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-        <img
-          src={question}
-          className="help"
-          alt="help"
-          onClick={Footer.onTriggerSupportModuleEvent}
-        />
       </div>
     );
   }
 }
+
+Footer.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default withTranslation()(Footer);

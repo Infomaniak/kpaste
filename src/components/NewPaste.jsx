@@ -4,13 +4,14 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import React, { Component } from 'react';
+import React from 'react';
 import { withTranslation } from 'react-i18next';
 import { Redirect } from 'react-router-dom';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
+import PropTypes from 'prop-types';
 import Crypto from '../lib/Crypto';
 import expandTextarea from '../lib/ExpandPage';
 import pasteExpiration from '../lib/PasteExpiration';
@@ -21,7 +22,7 @@ import Footer from './Footer';
 /**
  * @extends Component
  */
-class NewPaste extends Component<Props> {
+class NewPaste extends React.PureComponent {
   onChangeDestroy: () => void;
 
   onChangePassword: (Object) => void;
@@ -56,6 +57,21 @@ class NewPaste extends Component<Props> {
       enablePassword: false,
       showPassword: false,
     };
+  }
+
+  static getCookie(name) {
+    const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
+    if (match) {
+      return match[2];
+    }
+
+    return '';
+  }
+
+  handleClickShowPassword() {
+    const { showPassword } = this.state;
+
+    this.setState({ showPassword: !showPassword });
   }
 
   /**
@@ -108,21 +124,6 @@ class NewPaste extends Component<Props> {
    */
   onChangeValidityPeriod(event) {
     this.setState({ period: event.target.value });
-  }
-
-  static getCookie(name) {
-    const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
-    if (match) {
-      return match[2];
-    }
-
-    return '';
-  }
-
-  handleClickShowPassword() {
-    const { showPassword } = this.state;
-
-    this.setState({ showPassword: !showPassword });
   }
 
   async sendPaste() {
@@ -355,5 +356,9 @@ class NewPaste extends Component<Props> {
     );
   }
 }
+
+NewPaste.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default withTranslation()(NewPaste);

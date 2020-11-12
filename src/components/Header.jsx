@@ -2,10 +2,11 @@
 
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
-import React, { Component } from 'react';
+import React from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { withTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import logo from '../images/logo.svg';
 import logoInfomaniak from '../images/logo-infomaniak.svg';
 import iconMenu from '../images/menu.svg';
@@ -16,7 +17,7 @@ import BootstrapInput from '../lib/Input';
 /**
  * @extends Component
  */
-class IkHeader extends Component<Props> {
+class IkHeader extends React.PureComponent {
   /**
    * @inheritdoc
    */
@@ -69,7 +70,7 @@ class IkHeader extends Component<Props> {
    * @inheritdoc
    */
   static onLogin() {
-    window.location = `${WEB_COMPONENT_API_ENDPOINT}/auth/login/paste`;
+    window.location = `${WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
   }
 
   showHeaderTitle() {
@@ -268,5 +269,9 @@ class IkHeader extends Component<Props> {
     );
   }
 }
+
+IkHeader.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default withTranslation()(IkHeader);

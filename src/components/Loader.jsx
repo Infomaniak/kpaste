@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from '../images/logo.svg';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class Loader extends Component<Props> {
+class Loader extends React.PureComponent {
   render() {
     return (
       <div className="App">

@@ -118,7 +118,7 @@ const config = {
       filename: 'index.html',
       inject: 'body',
       scriptLoading: 'defer',
-      wcScript: `<script id="webComponents" defer src="${process.env.WEB_COMPONENT_ENDPOINT}?with=support|body,products,menu-user&version=latest&project=kpaste"></script>`,
+      wcScript: `<script id="webComponents" defer src="${process.env.WEB_COMPONENT_ENDPOINT}?with=products,menu-user&version=latest&project=kpaste"></script>`,
     }),
   ],
   output: {
