@@ -70,7 +70,7 @@ class IkHeader extends React.PureComponent {
    * @inheritdoc
    */
   static onLogin() {
-    window.location = `${WEB_COMPONENT_API_ENDPOINT}/auth/login/paste`;
+    window.location = `${WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
   }
 
   showHeaderTitle() {
