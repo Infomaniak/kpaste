@@ -7,6 +7,6 @@ transformers:
 - labels.yaml
 images:
 - name: registry.infomaniak.com:443/infomaniak/paste
-  newTag: 1.0.0-rc.4 # {"$imagepolicy": "paste:paste-preprod:tag"}
+  newTag: 1.0.0-rc.5 # {"$imagepolicy": "paste:paste-preprod:tag"}
 - name: nginx/nginx-prometheus-exporter
   newTag: 0.6.0
