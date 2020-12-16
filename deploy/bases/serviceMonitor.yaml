@@ -4,7 +4,6 @@ metadata:
   name: paste
   labels:
     app: paste
-  namespace: paste
 spec:
   endpoints:
     - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token

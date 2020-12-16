@@ -4,7 +4,6 @@ metadata:
   name: paste
   labels:
     app: paste
-  namespace: paste
 spec:
   replicas: 2
   selector:
@@ -19,7 +18,7 @@ spec:
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
-        - image: registry.infomaniak.com:443/infomaniak/paste:latest
+        - image: registry.infomaniak.com:443/infomaniak/paste
           imagePullPolicy: IfNotPresent
           name: paste
           resources:
@@ -43,7 +42,7 @@ spec:
             - containerPort: 80
               name: http
         - name: exporter
-          image: nginx/nginx-prometheus-exporter:0.6.0
+          image: nginx/nginx-prometheus-exporter
           imagePullPolicy: IfNotPresent
           args:
             - -nginx.scrape-uri

@@ -4,7 +4,6 @@ metadata:
   name: paste
   labels:
     app: paste
-  namespace: paste
 spec:
   ports:
     - targetPort: http
