@@ -124,10 +124,10 @@ publish_front:
   - |
     case "$CI_COMMIT_TAG" in
       *rc*)
-        export CI_COMMIT_BRANCH="master"
+        export CI_COMMIT_BRANCH="develop"
         ;;
       *)
-        export CI_COMMIT_BRANCH="develop"
+        export CI_COMMIT_BRANCH="master"
         ;;
     esac
   - mc cp --recursive dist/ $S3_BUCKET/$S3_BUCKET/site-paste/$CI_COMMIT_BRANCH
@@ -156,10 +156,10 @@ build_docker_image:
   - |
     case "$CI_COMMIT_TAG" in
       *rc*)
-        export CI_COMMIT_BRANCH="master"
+        export CI_COMMIT_BRANCH="develop"
         ;;
       *)
-        export CI_COMMIT_BRANCH="develop"
+        export CI_COMMIT_BRANCH="master"
         ;;
     esac
   - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
