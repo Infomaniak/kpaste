@@ -6,13 +6,13 @@ metadata:
     kubernetes.io/ingress.class: nginx-paste
 spec:
   tls:
-    - hosts:
-        - kpaste.preprod.dev.infomaniak.ch
+  - hosts:
+    - kpaste.preprod.dev.infomaniak.ch
   rules:
-    - host: kpaste.preprod.dev.infomaniak.ch
-      http:
-        paths:
-            - path: "/"
-              backend:
-                serviceName: paste
-                servicePort: http
+  - host: kpaste.preprod.dev.infomaniak.ch
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: paste
+          servicePort: http
