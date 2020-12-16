@@ -120,25 +120,6 @@ cypress_chrome:
       - cypress/screenshots/*/*.png
     expire_in: 10 days
 
-cypress_firefox:
-  stage: cypress
-  extends: .base-dind
-  image: cypress/browsers:node12.14.1-chrome83-ff77
-  rules:
-    - if: '$CI_COMMIT_TAG =~ /-rc/'
-      when: on_success
-    - when: never
-  before_script:
-    - npm i --cache .npm --prefer-offline
-  script:
-    - npm run test-firefox
-  artifacts:
-    when: always
-    paths:
-      - cypress/videos/*.mp4
-      - cypress/screenshots/*/*.png
-    expire_in: 10 days
-
 # S3
 
 publish_front:
