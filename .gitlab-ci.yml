@@ -9,7 +9,6 @@ workflow:
     - when: always
 
 stages:
-  - audit
   - build_front
   - cypress
   - publish_front
@@ -65,7 +64,7 @@ build_front:
   before_script:
     - npm i --cache .npm --prefer-offline
   script:
-    - npm audit
+    #- npm audit
     - npm run lint
     - |
       if [ -z "$CI_MERGE_REQUEST_ID" ]
