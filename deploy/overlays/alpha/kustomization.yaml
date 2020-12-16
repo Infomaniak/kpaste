@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: paste
+resources:
+- ../../bases
+transformers:
+- labels.yaml
+patchesStrategicMerge:
+- ingress.yaml
+images:
+- name: registry.infomaniak.com:443/infomaniak/paste
+  newTag: 1.0.0-rc.9 # {"$imagepolicy": "paste:paste-preprod:tag"}
+- name: nginx/nginx-prometheus-exporter
+  newTag: 0.6.0

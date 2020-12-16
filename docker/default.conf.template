@@ -37,7 +37,7 @@ server {
     location ~* \.(?:css(\.map)?|js(\.map)?|jpe?g|png|gif|ico|cur|heic|webp|tiff?|mp3|m4a|aac|ogg|midi?|wav|mp4|mov|webm|mpe?g|avi|ogv|flv|wmv|txt|json)$ {
         expires    7d;
         access_log off;
-        rewrite ^/(.*) /site-paste/${PROJECT_BRANCH}/$1 break;
+        rewrite ^/(.*) /site-paste/${CI_COMMIT_BRANCH}/$1 break;
         proxy_pass https://assets.storage.infomaniak.com;
         proxy_cache cache_assets;
         proxy_cache_valid 200 1d;
@@ -48,7 +48,7 @@ server {
         add_header Access-Control-Allow-Origin "*";
         expires    7d;
         access_log off;
-        rewrite ^/(.*) /site-paste/${PROJECT_BRANCH}/$1 break;
+        rewrite ^/(.*) /site-paste/${CI_COMMIT_BRANCH}/$1 break;
         proxy_pass https://assets.storage.infomaniak.com;
         proxy_cache cache_assets;
         proxy_cache_valid 200 1d;
