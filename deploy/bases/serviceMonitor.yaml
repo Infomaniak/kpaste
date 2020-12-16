@@ -4,19 +4,18 @@ metadata:
   name: paste
   labels:
     app: paste
-  namespace: paste
 spec:
   endpoints:
-    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-      interval: 30s
-      port: http-exporter
-      scheme: http
-      tlsConfig:
-        insecureSkipVerify: true
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    port: http-exporter
+    scheme: http
+    tlsConfig:
+      insecureSkipVerify: true
   jobLabel: k8s-app
   namespaceSelector:
     matchNames:
-      - paste
+    - paste
   selector:
     matchLabels:
       app: paste
