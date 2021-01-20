@@ -54,8 +54,6 @@ build_front:
   before_script:
   - npm i --cache .npm --prefer-offline --no-audit
   script:
-  - npm audit
-  - npm run lint
   - |
     if [ -z "$CI_MERGE_REQUEST_ID" ]
     then
@@ -69,6 +67,8 @@ build_front:
           export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
           export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
           echo "BUILDING PROD!"
+          npm audit
+          npm run lint
           ;;
       esac
     else
@@ -163,7 +163,6 @@ build_docker_image:
         ;;
     esac
   - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
-    docker
   - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
   - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} ${CI_REGISTRY_IMAGE}:latest
   - docker push ${CI_REGISTRY_IMAGE}:latest
