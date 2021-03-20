@@ -9,4 +9,4 @@ images:
 - name: registry.infomaniak.com:443/infomaniak/paste
   newTag: 1.0.0 # {"$imagepolicy": "paste:paste-prod:tag"}
 - name: nginx/nginx-prometheus-exporter
-  newTag: 0.6.0
+  newTag: 0.8.0
