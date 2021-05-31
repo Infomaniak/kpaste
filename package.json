@@ -7,7 +7,7 @@
     "@material-ui/core": "4.11.3",
     "@material-ui/icons": "4.11.2",
     "base-x": "3.0.8",
-    "highlight.js": "10.7.1",
+    "highlight.js": "10.7.2",
     "i18next": "19.9.2",
     "i18next-browser-languagedetector": "6.1.0",
     "javascript-time-ago": "2.3.4",
