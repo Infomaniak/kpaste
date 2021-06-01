@@ -129,8 +129,7 @@ class ShowPaste extends React.PureComponent {
       vector: paste.data.vector,
       salt: paste.data.salt,
       burn: paste.data.burn,
-      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at.replace(/-/g, '/'))
-        : false,
+      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at * 1000) : false,
       password: paste.data.password,
     };
 
