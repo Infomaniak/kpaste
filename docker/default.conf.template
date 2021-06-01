@@ -6,9 +6,6 @@ server {
     }
 }
 
-proxy_cache_path /var/tmp/cache levels=1:2 keys_zone=cache_assets:60m max_size=10g
-                 inactive=1200m use_temp_path=off;
-
 server {
     listen 80 default_server;
     server_name localhost;
@@ -24,6 +21,7 @@ server {
 
     root /var/www;
     index index.html;
+    try_files $uri /index.html;
 
     location / {
        add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0' always;
@@ -37,10 +35,6 @@ server {
     location ~* \.(?:css(\.map)?|js(\.map)?|jpe?g|png|gif|ico|cur|heic|webp|tiff?|mp3|m4a|aac|ogg|midi?|wav|mp4|mov|webm|mpe?g|avi|ogv|flv|wmv|txt|json)$ {
         expires    7d;
         access_log off;
-        rewrite ^/(.*) /site-paste/${CI_COMMIT_BRANCH}/$1 break;
-        proxy_pass https://assets.storage.infomaniak.com;
-        proxy_cache cache_assets;
-        proxy_cache_valid 200 1d;
     }
 
     # svg, fonts
@@ -48,9 +42,5 @@ server {
         add_header Access-Control-Allow-Origin "*";
         expires    7d;
         access_log off;
-        rewrite ^/(.*) /site-paste/${CI_COMMIT_BRANCH}/$1 break;
-        proxy_pass https://assets.storage.infomaniak.com;
-        proxy_cache cache_assets;
-        proxy_cache_valid 200 1d;
     }
 }

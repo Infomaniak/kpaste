@@ -5,7 +5,6 @@ metadata:
   labels:
     app: paste
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: paste
