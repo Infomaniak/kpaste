@@ -5,6 +5,9 @@ resources:
 - ../../bases
 transformers:
 - labels.yaml
+replicas:
+- name: paste
+  count: 2
 images:
 - name: registry.infomaniak.com:443/infomaniak/paste
   newTag: 1.1.1 # {"$imagepolicy": "paste:paste-prod:tag"}

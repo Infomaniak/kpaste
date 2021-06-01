@@ -8,7 +8,6 @@ workflow:
 stages:
 - build_front
 - cypress
-- publish_front
 - build_docker_image
 - docker_test
 - deploy_docker_image
@@ -55,12 +54,13 @@ build_front:
   - npm i --cache .npm --prefer-offline --no-audit
   script:
   - |
+    export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
+    export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
+
     if [ -z "$CI_MERGE_REQUEST_ID" ]
     then
       case "$CI_COMMIT_TAG" in
         *rc*)
-          export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
-          export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
           echo "BUILDING PREPROD!"
           ;;
         *)
@@ -72,8 +72,6 @@ build_front:
           ;;
       esac
     else
-      export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
-      export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
       echo "BUILDING MERGE REQUEST!"
     fi
   - npm run build
@@ -107,35 +105,6 @@ cypress_chrome:
     - cypress/videos/*.mp4
     - cypress/screenshots/*/*.png
     expire_in: 10 days
-# S3
-publish_front:
-  stage: publish_front
-  extends: .base-dind
-  image:
-    name: minio/mc:RELEASE.2020-03-06T23-29-45Z
-    entrypoint: [""]
-  rules:
-  - if: '$CI_COMMIT_TAG'
-    when: on_success
-  - when: never
-  before_script:
-  - mc config host add $S3_BUCKET $S3_HOST $S3_KEY $S3_PASSWORD --api s3v4
-  script:
-  - |
-    case "$CI_COMMIT_TAG" in
-      *rc*)
-        export CI_COMMIT_BRANCH="develop"
-        ;;
-      *)
-        export CI_COMMIT_BRANCH="master"
-        ;;
-    esac
-  - mc cp --recursive dist/ $S3_BUCKET/$S3_BUCKET/site-paste/$CI_COMMIT_BRANCH
-  artifacts:
-    paths:
-    - dist/
-    expire_in: 1 days
-    when: always
 # DOCKER
 build_docker_image:
   stage: build_docker_image
@@ -152,17 +121,7 @@ build_docker_image:
   before_script:
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-  - cp dist/index.html docker/index.html
-  - |
-    case "$CI_COMMIT_TAG" in
-      *rc*)
-        export CI_COMMIT_BRANCH="develop"
-        ;;
-      *)
-        export CI_COMMIT_BRANCH="master"
-        ;;
-    esac
-  - docker build --pull --build-arg CI_COMMIT_BRANCH -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} docker
+  - docker build --pull -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} -f docker/Dockerfile .
   - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
   - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} ${CI_REGISTRY_IMAGE}:latest
   - docker push ${CI_REGISTRY_IMAGE}:latest

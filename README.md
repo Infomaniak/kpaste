@@ -52,10 +52,6 @@ folder `kubernetes`
 
 folder `docker`
 
-## prod infrastructure
-
-we are using S3 storage and nginx to reverse proxy it
-
 ## cypress test
 
 see `cypress` folder
@@ -65,7 +61,6 @@ see `cypress` folder
 - linter
 - dependency check
 - cypress
-- s3 push
 - docker image (nginx)
 - docker image check
 
