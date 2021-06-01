@@ -9,6 +9,6 @@ patchesStrategicMerge:
 - ingress.yaml
 images:
 - name: registry.infomaniak.com:443/infomaniak/paste
-  newTag: 1.1.0-rc.1 # {"$imagepolicy": "paste:paste-preprod:tag"}
+  newTag: 1.1.1-rc.1 # {"$imagepolicy": "paste:paste-preprod:tag"}
 - name: nginx/nginx-prometheus-exporter
   newTag: 0.9.0
