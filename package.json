@@ -91,7 +91,7 @@
     "husky": "6.0.0",
     "i18next-parser": "3.7.0",
     "mini-css-extract-plugin": "1.6.0",
-    "sass-loader": "10.1.1",
+    "sass-loader": "10.2.0",
     "start-server-and-test": "1.12.1",
     "style-loader": "2.0.0",
     "url-loader": "4.1.1",
