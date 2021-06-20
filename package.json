@@ -19,7 +19,7 @@
     "react-helmet": "6.1.0",
     "react-i18next": "11.10.0",
     "react-router-dom": "5.2.0",
-    "react-time-ago": "6.2.2"
+    "react-time-ago": "6.2.4"
   },
   "scripts": {
     "start": "webpack serve",
