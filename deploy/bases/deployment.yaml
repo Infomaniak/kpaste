@@ -12,6 +12,9 @@ spec:
     metadata:
       labels:
         app: paste
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9113'
     spec:
       terminationGracePeriodSeconds: 60
       imagePullSecrets:

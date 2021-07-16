@@ -9,10 +9,6 @@ spec:
   - targetPort: http
     port: 80
     name: http
-  - name: http-exporter
-    port: 9113
-    protocol: TCP
-    targetPort: http-exporter
   type: ClusterIP
   selector:
     app: paste
