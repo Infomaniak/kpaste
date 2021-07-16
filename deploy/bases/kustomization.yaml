@@ -5,4 +5,3 @@ resources:
 - docker-registry-secret.yaml
 - ingress.yaml
 - service.yaml
-- serviceMonitor.yaml
