@@ -11,7 +11,7 @@
     "i18next": "20.3.1",
     "i18next-browser-languagedetector": "6.1.2",
     "javascript-time-ago": "2.3.6",
-    "node-sass": "6.0.0",
+    "node-sass": "6.0.1",
     "pako": "1.0.11",
     "prop-types": "15.7.2",
     "react": "17.0.2",
