@@ -1,16 +1,26 @@
 image: docker:latest
+
 services:
-- name: docker:19.03.5-dind
-  command: ["--mtu=1500"]
+  - name: docker:19.03.5-dind
+    command: [ "--mtu=1500" ]
+
 workflow:
   rules:
-  - when: always
+    - when: always
+
+include:
+  - project: 'docker/renovate'
+    ref: master
+    file: '/renovate.yaml'
+
 stages:
-- build_front
-- cypress
-- build_docker_image
-- docker_test
-- deploy_docker_image
+  - test
+  - build_front
+  - cypress
+  - build_docker_image
+  - docker_test
+  - deploy_docker_image
+
 variables:
   DOCKER_HOST: tcp://localhost:2375
   DOCKER_DRIVER: overlay2
@@ -21,110 +31,118 @@ variables:
   CS_MAJOR_VERSION: 2
   CI_APPLICATION_REPOSITORY: ${CI_REGISTRY_IMAGE}
   CI_APPLICATION_TAG: latest
+
 .base:
   rules:
-  - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG'
-    when: on_success
-  - when: never
+    - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG'
+      when: on_success
+    - when: never
+
 .base-dind:
   extends: .base
   tags:
-  - docker-executor
-  - kubernetes
-  - shared
+    - docker-executor
+    - kubernetes
+    - shared
+
 .base-shell:
   extends: .base
   tags:
-  - docker-executor
-  - kubernetes
-  - shared
+    - docker-executor
+    - kubernetes
+    - shared
+
 .rules_docker: &rules_docker
   rules:
-  - if: '$CI_COMMIT_TAG'
-    changes:
-    - docker/*
-    when: on_success
-  - when: never
+    - if: '$CI_COMMIT_TAG'
+      changes:
+        - docker/*
+      when: on_success
+    - when: never
+
 # build
 build_front:
   extends: .base-dind
   image: node:12.22.1
   stage: build_front
   before_script:
-  - npm i --cache .npm --prefer-offline --no-audit
+    - npm i --cache .npm --prefer-offline --no-audit
   script:
-  - |
-    export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
-    export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
+    - |
+      export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
+      export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
 
-    if [ -z "$CI_MERGE_REQUEST_ID" ]
-    then
-      case "$CI_COMMIT_TAG" in
-        *rc*)
-          echo "BUILDING PREPROD!"
-          ;;
-        *)
-          export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
-          export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
-          echo "BUILDING PROD!"
-          npm audit
-          npm run lint
-          ;;
-      esac
-    else
-      echo "BUILDING MERGE REQUEST!"
-    fi
-  - npm run build
+      if [ -z "$CI_MERGE_REQUEST_ID" ]
+      then
+        case "$CI_COMMIT_TAG" in
+          *rc*)
+            echo "BUILDING PREPROD!"
+            ;;
+          *)
+            export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
+            export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
+            echo "BUILDING PROD!"
+            npm audit
+            npm run lint
+            ;;
+        esac
+      else
+        echo "BUILDING MERGE REQUEST!"
+      fi
+    - npm run build
   artifacts:
     paths:
-    - dist/
+      - dist/
     expire_in: 1 days
     when: always
   cache:
     key: "${CI_COMMIT_REF_SLUG}"
     paths:
-    - .npm
-    - cache/Cypress
-    - node_modules/
+      - .npm
+      - cache/Cypress
+      - node_modules/
+
 # Cypress
 cypress_chrome:
   stage: cypress
   extends: .base-dind
   image: cypress/browsers:node12.14.1-chrome83-ff77
   rules:
-  - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /-rc/'
-    when: on_success
-  - when: never
+    - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /-rc/'
+      when: on_success
+    - when: never
   before_script:
-  - npm i --cache .npm --prefer-offline
+    - npm i --cache .npm --prefer-offline
   script:
-  - npm run test-chrome
+    - npm run test-chrome
   artifacts:
     when: always
     paths:
-    - cypress/videos/*.mp4
-    - cypress/screenshots/*/*.png
+      - cypress/videos/*.mp4
+      - cypress/screenshots/*/*.png
     expire_in: 10 days
+
 # DOCKER
 build_docker_image:
   stage: build_docker_image
   extends: .base-shell
   rules:
-  - if: '$CI_COMMIT_TAG'
-    when: on_success
-  - when: never
+    - if: '$CI_COMMIT_TAG'
+      when: on_success
+    - when: never
   artifacts:
     paths:
-    - dist/
+      - dist/
     expire_in: 1 days
     when: always
   before_script:
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-  - docker build --pull -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} -f docker/Dockerfile .
-  - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
-  - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} ${CI_REGISTRY_IMAGE}:latest
-  - docker push ${CI_REGISTRY_IMAGE}:latest
+    - docker build --pull -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} -f docker/Dockerfile .
+    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+    - docker tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} ${CI_REGISTRY_IMAGE}:latest
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+
 container_scanning:
   stage: docker_test
   extends: .base-dind
@@ -136,21 +154,22 @@ container_scanning:
     GIT_STRATEGY: none
   allow_failure: true
   services:
-  - name: $CLAIR_DB_IMAGE
-    alias: clair-vulnerabilities-db
+    - name: $CLAIR_DB_IMAGE
+      alias: clair-vulnerabilities-db
   script:
-  - /analyzer run
+    - /analyzer run
   artifacts:
     reports:
       container_scanning: gl-container-scanning-report.json
-  dependencies: []
+  dependencies: [ ]
+
 container_analysing:
   stage: docker_test
   extends: .base-shell
   allow_failure: true
   !!merge <<: *rules_docker
   before_script:
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-  - docker run --rm -i -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest
-    ${CI_REGISTRY_IMAGE}:latest
+    - docker run --rm -i -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest
+      ${CI_REGISTRY_IMAGE}:latest
