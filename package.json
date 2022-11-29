@@ -12,7 +12,7 @@
     "i18next-browser-languagedetector": "7.0.1",
     "javascript-time-ago": "2.5.9",
     "node-sass": "8.0.0",
-    "pako": "1.0.11",
+    "pako": "2.1.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
