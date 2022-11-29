@@ -224,8 +224,8 @@ class NewPaste extends React.PureComponent {
                 <TextareaAutosize
                   id="new_paste_textarea"
                   placeholder=""
-                  rowsMin={6}
-                  rowsMax={10}
+                  minRows={6}
+                  maxRows={10}
                   value={message}
                   onChange={this.onMessageChange}
                   autoFocus
