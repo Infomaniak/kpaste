@@ -9,6 +9,7 @@ spec:
   - targetPort: http
     port: 80
     name: http
+    protocol: TCP
   type: ClusterIP
   selector:
     app: paste

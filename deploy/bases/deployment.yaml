@@ -43,6 +43,7 @@ spec:
         ports:
         - containerPort: 80
           name: http
+          protocol: TCP
       - name: exporter
         image: nginx/nginx-prometheus-exporter
         imagePullPolicy: IfNotPresent
@@ -52,3 +53,4 @@ spec:
         ports:
         - name: http-exporter
           containerPort: 9113
+          protocol: TCP
