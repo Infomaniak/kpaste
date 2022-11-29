@@ -71,7 +71,7 @@
     "browserstack-cypress-cli": "1.19.1",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
-    "css-loader": "6.0.0",
+    "css-loader": "6.7.2",
     "cypress": "11.2.0",
     "eslint": "8.28.0",
     "eslint-config-airbnb": "19.0.4",
