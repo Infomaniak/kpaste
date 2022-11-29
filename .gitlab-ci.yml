@@ -1,7 +1,7 @@
 image: docker:latest
 
 services:
-  - name: docker:19.03.15-dind
+  - name: docker:20.10.21-dind
     command: [ "--mtu=1500" ]
 
 workflow:
