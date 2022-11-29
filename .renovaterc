@@ -3,11 +3,8 @@
     "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit20"],
     "baseBranches": ["develop"],
     "labels": ["dependencies"],
+    "separateMinorPatch": true,
     "packageRules": [
-        {
-          "matchPackagePatterns": ["*"],
-          "automerge": false
-        },
         {
             "matchUpdateTypes": ["patch", "minor"],
             "matchManagers": ["npm"],
