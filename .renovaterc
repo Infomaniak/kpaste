@@ -1,0 +1,19 @@
+{
+    "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+    "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit20"],
+    "baseBranches": ["develop"],
+    "labels": ["dependencies"],
+    "packageRules": [
+        {
+          "matchPackagePatterns": ["*"],
+          "automerge": false
+        },
+        {
+            "matchUpdateTypes": ["patch", "minor"],
+            "matchManagers": ["npm"],
+            "groupName": "node dependencies (non-major)"
+        }
+    ],
+    "platformAutomerge": false,
+    "automergeStrategy": "fast-forward"
+}
