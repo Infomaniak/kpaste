@@ -3,10 +3,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
 
 const config = {
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  mode: 'production',
   entry: './src/index.jsx',
   devtool: 'inline-source-map',
   devServer: {
@@ -109,7 +110,7 @@ const config = {
       chunkFilename: '[id].[contenthash].css',
     }),
     new HtmlWebPackPlugin({
-      template: 'public/index.html',
+      template: 'index.html',
       filename: 'index.html',
       inject: 'body',
       scriptLoading: 'defer',
@@ -118,6 +119,7 @@ const config = {
   ],
   output: {
     filename: '[name].[contenthash].js',
+    path: path.resolve(process.cwd(), 'dist'),
   },
   optimization: {
     splitChunks: {

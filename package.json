@@ -22,7 +22,7 @@
     "react-time-ago": "6.2.4"
   },
   "scripts": {
-    "start": "webpack serve",
+    "start": "webpack serve --mode development",
     "server-edge": "http-server ./dist -p 3000 -c-1 --silent --proxy http://localhost:3000?",
     "server-firefox": "http-server ./dist -p 3001 -c-1 --silent --proxy http://localhost:3001?",
     "server-chrome": "http-server ./dist -p 3002 -c-1 --silent --proxy http://localhost:3002?",
