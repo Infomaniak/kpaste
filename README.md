@@ -28,7 +28,7 @@ export WEB_COMPONENT_API_ENDPOINT="https://welcome.infomaniak.com"
 ```
 
 ```bash
-nvm use 12
+nvm use 19
 npm i
 ```
 

@@ -1,27 +1,21 @@
-/* global process */
-
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MinifyPlugin = require('babel-minify-webpack-plugin');
-const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: './src/index.jsx',
   devtool: 'inline-source-map',
   devServer: {
-    historyApiFallback: true,
-    disableHostCheck: true,
-    contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 3000,
     open: true,
   },
   resolve: {
-    extensions: ['.js',
-      '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -129,7 +123,7 @@ const config = {
     splitChunks: {
       cacheGroups: {
         default: false,
-        vendors: false,
+        defaultVendors: false,
         // vendor chunk
         vendor: {
           // name of the chunk
@@ -167,8 +161,9 @@ module.exports = (env, argv) => {
           },
         ],
       })].concat(config.plugins);
+    config.optimization.minimize = true;
 
-    config.plugins.push(new MinifyPlugin());
+    config.plugins.push(new TerserPlugin());
   }
 
   return config;
