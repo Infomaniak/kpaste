@@ -9,7 +9,7 @@ workflow:
     - when: always
 
 include:
-  - project: 'docker/renovate'
+  - project: 'docker-public/renovate'
     ref: master
     file: '/renovate.yaml'
 
