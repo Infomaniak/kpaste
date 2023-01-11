@@ -63,7 +63,7 @@ variables:
 # build
 build_front:
   extends: .base-dind
-  image: node:19.1.0
+  image: node:19.3.0
   stage: build_front
   before_script:
     - npm i --cache .npm --prefer-offline --no-audit
