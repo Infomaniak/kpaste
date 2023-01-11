@@ -67,7 +67,7 @@
     "@babel/preset-react": "7.18.6",
     "@babel/runtime": "7.20.7",
     "@svgr/webpack": "6.5.1",
-    "babel-loader": "9.1.0",
+    "babel-loader": "9.1.2",
     "browserstack-cypress-cli": "1.19.1",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
