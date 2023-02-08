@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@infomaniak/font-assets": "1.0.304",
     "@material-ui/core": "4.12.4",
     "@material-ui/icons": "4.11.3",
     "base-x": "4.0.0",
