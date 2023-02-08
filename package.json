@@ -85,7 +85,7 @@
     "html-loader": "4.2.0",
     "html-webpack-plugin": "5.5.0",
     "http-server": "0.13.0",
-    "husky": "8.0.2",
+    "husky": "8.0.3",
     "i18next-parser": "7.1.0",
     "mini-css-extract-plugin": "2.7.2",
     "sass-loader": "13.2.0",
