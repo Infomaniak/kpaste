@@ -16,10 +16,7 @@
   src: url("../fonts/SuisseIntl-Medium.eot#iefix") format("embedded-opentype"), url("../fonts/SuisseIntl-Medium.woff") format("woff"), url("../fonts/SuisseIntl-Medium.ttf") format("truetype");
 }
 
-$font-url-products: '../fonts/';
-
 @import url('https://fonts.storage.infomaniak.com/current/icons/style.css');
-@import "../../node_modules/@infomaniak/font-assets/products/_infomaniak-products";
 
 @import "Variable";
 @import "Reset";
