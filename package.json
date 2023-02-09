@@ -89,7 +89,7 @@
     "i18next-parser": "7.1.0",
     "mini-css-extract-plugin": "2.7.2",
     "sass-loader": "13.2.0",
-    "start-server-and-test": "1.15.2",
+    "start-server-and-test": "1.15.3",
     "style-loader": "3.3.1",
     "terser-webpack-plugin": "5.3.6",
     "url-loader": "4.1.1",
