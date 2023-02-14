@@ -213,23 +213,21 @@ class IkHeader extends React.PureComponent {
     const { session } = this.state;
 
     return (
-      <>
-        <module-products-component position="right">
-          {(session && session.user && session.user.id) && (
-            <span
-              className="header-icon"
-              slot="trigger"
-            >
-              <span>
-                <KeyboardArrowDownIcon
-                  label="expand"
-                  size="large"
-                />
-              </span>
+      <module-change-group-component>
+        {(session && session.groups && session.groups.length > 1) && (
+          <span
+            className="header-icon"
+            slot="trigger"
+          >
+            <span>
+              <KeyboardArrowDownIcon
+                label="expand"
+                size="large"
+              />
             </span>
-          )}
-        </module-products-component>
-      </>
+          </span>
+        )}
+      </module-change-group-component>
     );
   }
 
@@ -255,7 +253,7 @@ class IkHeader extends React.PureComponent {
               {this.showHeaderTitle()}
               <p className="product-name">kPaste</p>
             </div>
-            <div className="relative">
+            <div>
               {this.showProductMenuLeft()}
             </div>
           </div>
