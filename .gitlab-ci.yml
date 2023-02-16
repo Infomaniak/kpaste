@@ -157,19 +157,9 @@ container_scanning:
     - name: $CLAIR_DB_IMAGE
       alias: clair-vulnerabilities-db
   script:
+    - docker pull ${CI_REGISTRY_IMAGE}:latest
     - /analyzer run
   artifacts:
     reports:
       container_scanning: gl-container-scanning-report.json
   dependencies: [ ]
-
-container_analysing:
-  stage: docker_test
-  extends: .base-shell
-  allow_failure: true
-  !!merge <<: *rules_docker
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  script:
-    - docker run --rm -i -e CI=true -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest
-      ${CI_REGISTRY_IMAGE}:latest
