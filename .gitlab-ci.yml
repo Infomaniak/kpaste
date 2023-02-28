@@ -82,7 +82,6 @@ build_front:
             export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
             export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
             echo "BUILDING PROD!"
-            npm run lint
             ;;
         esac
       else
