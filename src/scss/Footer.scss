@@ -1,6 +1,5 @@
 .footer {
   color: white;
-  background-color: $yellow;
   display: flex;
   z-index: 2;
   align-items: center;
@@ -15,17 +14,14 @@
   }
 
   a {
+    color: white;
     font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
   }
 
   div {
     align-self: center;
     justify-content: left;
-  }
-}
-
-@media only screen and (min-width: 1100px) {
-  .footer {
-    padding: 5% 3% 3% 3%;
   }
 }

@@ -12,13 +12,28 @@ class Footer extends React.PureComponent {
    * @returns {ReactElement}
    */
   render() {
-    const { t } = this.props;
+    const {
+      t,
+      background,
+    } = this.props;
 
     return (
       <div className="footer">
         <Container className="footer-container" maxWidth="lg">
           <div className="footer-content">
             <div className="footer-about">
+              <a
+                href={background.link}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Photo by
+                {' '}
+                {background.author}
+              </a>
+              &nbsp;
+              -
+              &nbsp;
               <a
                 href="https://www.infomaniak.com/gtl/rgpd.documents"
                 rel="noopener noreferrer"
@@ -48,6 +63,8 @@ class Footer extends React.PureComponent {
 
 Footer.propTypes = {
   t: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  background: PropTypes.object.isRequired,
 };
 
 export default withTranslation()(Footer);

@@ -18,11 +18,13 @@ import Footer from './Footer';
 
 /* global WEB_COMPONENT_API_ENDPOINT */
 // eslint-disable-next-line react/prop-types
-const TooltipContainer = ({ verboseDate, children }) => (
-  <HtmlTooltip placement="top" title={verboseDate}>
-    {children}
-  </HtmlTooltip>
-);
+function TooltipContainer({ verboseDate, children }) {
+  return (
+    <HtmlTooltip placement="top" title={verboseDate}>
+      {children}
+    </HtmlTooltip>
+  );
+}
 
 /**
  * @extends Component
@@ -527,9 +529,20 @@ class ShowPaste extends React.PureComponent {
    * @returns {ReactElement}
    */
   render() {
+    const { background } = this.props;
+
     return (
-      <div id="welcome-showpaste" className="welcome">
-        <div id="welcome-container-showpaste" className="welcome-container">
+      <div
+        id="welcome-showpaste"
+        className="welcome"
+        style={{
+          backgroundImage: `url(${background.image})`,
+        }}
+      >
+        <div
+          id="welcome-container-showpaste"
+          className="welcome-container"
+        >
           <div id="paste_container">
             {this.showNew()}
             {this.showError()}
@@ -537,7 +550,7 @@ class ShowPaste extends React.PureComponent {
             {this.showPassword()}
           </div>
         </div>
-        <Footer />
+        <Footer background={background} />
       </div>
     );
   }
@@ -551,6 +564,8 @@ ShowPaste.propTypes = {
   location: PropTypes.object.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   history: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  background: PropTypes.object.isRequired,
 };
 
 export default withTranslation()(ShowPaste);
