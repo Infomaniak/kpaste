@@ -133,19 +133,6 @@
   }
 }
 
-.welcome .header .illus-container {
-  max-height: 90%;
-  min-width: 330px;
-  align-self: flex-end;
-}
-
-@media only screen and (max-width: 1100px) {
-  .illus-container {
-    position: absolute;
-    right: 0;
-  }
-}
-
 @media only screen and (max-width: 450px) {
   .ik-header .header-title-wrapper {
     width: 150px;

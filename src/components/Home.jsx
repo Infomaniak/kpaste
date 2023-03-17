@@ -17,10 +17,19 @@ class Home extends React.PureComponent {
    * @returns {ReactElement}
    */
   render() {
-    const { t } = this.props;
+    const {
+      t,
+      background,
+    } = this.props;
 
     return (
-      <div id="welcome-homepage" className="welcome">
+      <div
+        id="welcome-homepage"
+        className="welcome"
+        style={{
+          backgroundImage: `url(${background.image})`,
+        }}
+      >
         <div id="welcome-container-homepage" className="welcome-container">
           <div id="header_homepage" className="header">
             <h1>
@@ -43,7 +52,7 @@ class Home extends React.PureComponent {
                   <p className="header-text-sub">
                     <span className="icon icon-lock-2" />
                     {t('home.text')}
-                  &nbsp;
+                    &nbsp;
                     <a
                       href="https://faq.infomaniak.com/2459"
                       rel="noopener noreferrer"
@@ -67,7 +76,7 @@ class Home extends React.PureComponent {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer background={background} />
       </div>
     );
   }
@@ -75,6 +84,8 @@ class Home extends React.PureComponent {
 
 Home.propTypes = {
   t: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  background: PropTypes.object.isRequired,
 };
 
 export default withTranslation()(Home);

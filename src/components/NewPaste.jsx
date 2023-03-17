@@ -127,8 +127,13 @@ class NewPaste extends React.PureComponent {
   }
 
   async sendPaste() {
+    const { background } = this.props;
     const {
-      message, destroy, period, password, enablePassword,
+      message,
+      destroy,
+      period,
+      password,
+      enablePassword,
     } = this.state;
     const crypto = new Crypto();
     const datas = await crypto.crypt(message, enablePassword ? password : '');
@@ -165,9 +170,19 @@ class NewPaste extends React.PureComponent {
    * @returns {ReactElement}
    */
   render() {
-    const { t } = this.props;
     const {
-      message, redirect, key, pasteId, destroy, period, showPassword, enablePassword,
+      t,
+      background,
+    } = this.props;
+    const {
+      message,
+      redirect,
+      key,
+      pasteId,
+      destroy,
+      period,
+      showPassword,
+      enablePassword,
     } = this.state;
 
     if (redirect) {
@@ -180,6 +195,7 @@ class NewPaste extends React.PureComponent {
               newPaste: true,
               destroy,
               period,
+              background,
             },
           }}
         />
@@ -187,7 +203,13 @@ class NewPaste extends React.PureComponent {
     }
 
     return (
-      <div id="welcome-newpaste" className="welcome">
+      <div
+        id="welcome-newpaste"
+        className="welcome"
+        style={{
+          backgroundImage: `url(${background.image})`,
+        }}
+      >
         <div id="welcome-container-newpaste" className="welcome-container">
           <div id="paste_container">
             <h1>
@@ -305,34 +327,35 @@ class NewPaste extends React.PureComponent {
                   />
                 </div>
                 {enablePassword
-                && (
-                  <>
-                    <div className="password-section">
-                      <Input
-                        autoFocus
-                        id="standard-password-input"
-                        label={t('paste.placeholder.password')}
-                        placeholder={t('paste.placeholder.password')}
-                        type={showPassword ? 'text' : 'password'}
-                        onChange={this.onChangePassword}
-                        endAdornment={(
-                          <InputAdornment position="end">
-                            <IconButton
-                              aria-label="toggle password visibility"
-                              onClick={this.handleClickShowPassword}
-                            >
-                              {showPassword ? <span className="icon icon-view" /> : <span className="icon icon-view-off" /> }
-                            </IconButton>
-                          </InputAdornment>
-                        )}
-                      />
-                    </div>
-                    <div className="password-info-section font-medium">
-                      <span className="icon icon-bubble-alert" />
-                      <span>{t('paste.info.password')}</span>
-                    </div>
-                  </>
-                )}
+                  && (
+                    <>
+                      <div className="password-section">
+                        <Input
+                          autoFocus
+                          id="standard-password-input"
+                          label={t('paste.placeholder.password')}
+                          placeholder={t('paste.placeholder.password')}
+                          type={showPassword ? 'text' : 'password'}
+                          onChange={this.onChangePassword}
+                          endAdornment={(
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={this.handleClickShowPassword}
+                              >
+                                {showPassword ? <span className="icon icon-view" />
+                                  : <span className="icon icon-view-off" />}
+                              </IconButton>
+                            </InputAdornment>
+                          )}
+                        />
+                      </div>
+                      <div className="password-info-section font-medium">
+                        <span className="icon icon-bubble-alert" />
+                        <span>{t('paste.info.password')}</span>
+                      </div>
+                    </>
+                  )}
               </Paper>
               <div className="button-section">
                 <Button
@@ -351,7 +374,7 @@ class NewPaste extends React.PureComponent {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer background={background} />
       </div>
     );
   }
@@ -359,6 +382,8 @@ class NewPaste extends React.PureComponent {
 
 NewPaste.propTypes = {
   t: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  background: PropTypes.object.isRequired,
 };
 
 export default withTranslation()(NewPaste);

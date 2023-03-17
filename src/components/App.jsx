@@ -6,7 +6,6 @@ import { withTranslation } from 'react-i18next';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import bodyGuard from '../images/bodyguard.svg';
 import IkHeader from './Header';
 import Home from './Home';
 import Loader from './Loader';
@@ -14,8 +13,25 @@ import NewPaste from './NewPaste';
 import ShowPaste from './ShowPaste';
 
 class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      background: {
+        image: '',
+      },
+    };
+  }
+
+  componentDidMount() {
+    App.getBackground().then((background) => {
+      this.setState({ background });
+    });
+  }
+
   render() {
     const { t } = this.props;
+    const { background } = this.state;
 
     return (
       <Suspense fallback={<Loader />}>
@@ -24,19 +40,42 @@ class App extends React.PureComponent {
         </Helmet>
         <IkHeader />
         <Switch>
-          <Route path="/new" component={NewPaste} />
-          <Route exact path="/:id" component={ShowPaste} />
-          <Route exact path="/" component={Home} />
+          <Route
+            path="/new"
+            render={() => (
+              <NewPaste background={background} />
+            )}
+          />
+          <Route
+            exact
+            path="/:id"
+            render={(props) => (
+              <ShowPaste background={background} id={props.match.params.id} match={props.match} location={props.location} history={props.history} />
+            )}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home background={background} />
+            )}
+          />
           <Route path="/">
             <Redirect to="/" />
           </Route>
         </Switch>
-
-        <div className="illus-container">
-          <img src={bodyGuard} alt="bodyguard" />
-        </div>
       </Suspense>
     );
+  }
+
+  static async getBackground() {
+    const background = await fetch(`${WEB_COMPONENT_API_ENDPOINT}/api/components/paste/promotion`, {
+      method: 'GET',
+    }).then((response) => (response.ok
+      ? response.json()
+      : Promise.reject(new Error(response.statusText))));
+
+    return background.data;
   }
 }
 
