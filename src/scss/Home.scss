@@ -5,6 +5,8 @@
   font-family: inherit;
   position: relative;
   min-height: calc(100% - 66px);
+  background: no-repeat 50% 50%;
+  background-size: cover;
 
   #header_homepage {
     flex-direction: column;
