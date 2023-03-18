@@ -10,6 +10,6 @@ replicas:
     count: 2
 images:
   - name: registry.infomaniak.com:443/infomaniak/paste
-    newTag: 1.3.1 # {"$imagepolicy": "kpaste:paste-prod:tag"}
+    newTag: 1.3.2 # {"$imagepolicy": "kpaste:paste-prod:tag"}
   - name: nginx/nginx-prometheus-exporter
     newTag: 0.11.0
