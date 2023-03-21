@@ -35,7 +35,7 @@
     "input": {
       "code": "Code",
       "copy": "Copier",
-      "tooltip": "Mon message est d’une importance capitale et nécessite plus de place"
+      "tooltip": "Agrandir la fenêtre de rédaction"
     },
     "label": {
       "destroy": "Supprimer après la première lecture",
@@ -44,7 +44,7 @@
       "validity": "Durée de validité"
     },
     "password": {
-      "input": "Renseignez le mot de passe pour déverrouiller ce message"
+      "input": "Veuillez saisir le mot de passe :"
     },
     "placeholder": {
       "password": "Mot de passe de protection du message"
@@ -56,10 +56,10 @@
   },
   "show_paste": {
     "button": {
-      "password": "Déverrouiller et lire le message"
+      "password": "Accéder au message sécurisé"
     },
     "info": {
-      "wrong_password": "Hum, ce mot de passe ne semble pas correspondre à ce message"
+      "wrong_password": "Ce mot de passe ne semble pas correspondre à ce message"
     },
     "label": {
       "burn": "Lien à usage unique",
@@ -79,19 +79,16 @@
       "title": "Votre lien de partage sécurisé"
     },
     "password": {
-      "title": "Vous ne passerez pas !"
+      "title": "L’accès à ce contenu est soumis à une autorisation"
     },
     "subtitle": {
       "destroy": "Ce message sera définitivement supprimé dans",
-      "error": "Le message s'est autodétruit ou n'a jamais existé",
-      "password": "Ce message est protégé par un mot de passe."
-    },
-    "text": {
-      "error": "Heureusement qu'il ne s'agissait pas de sauver le monde"
+      "error": "Le lien de partage a expiré ou est invalide.",
+      "password": "Ce message est chiffré et protégé par un mot de passe."
     },
     "title": {
       "copy_link": "Copié !",
-      "error": "Vous arrivez trop tard !",
+      "error": "Ce contenu n’est plus accessible",
       "normal": "Votre accès a été autorisé"
     }
   }

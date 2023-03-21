@@ -333,16 +333,16 @@ class ShowPaste extends React.PureComponent {
           <strong className="too_late_title">
             {t('show_paste.subtitle.error')}
           </strong>
-          <p className="too_late_message">
-            {t('show_paste.text.error')}
-            &nbsp;
-            <span role="img" aria-label="sunglass" className="emoji">😎</span>
-          </p>
         </Paper>
         <div className="button-section font-medium">
           <Link to="/new">
             {t('show_paste.link.new_paste')}
           </Link>
+        </div>
+        <div className="button-section after-button-section font-medium">
+          <span>
+            {t('show_paste.link.text')}
+          </span>
         </div>
       </>
     );
