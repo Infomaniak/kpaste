@@ -301,9 +301,6 @@ class NewPaste extends React.PureComponent {
                         {t('paste.label.destroy')}
                       </strong>
                     </p>
-                    <p className="settings-text">
-                      {t('paste.text.destroy')}
-                    </p>
                   </div>
                   <StyledSwitch
                     onChange={this.onChangeDestroy}
@@ -316,9 +313,6 @@ class NewPaste extends React.PureComponent {
                       <strong>
                         {t('paste.label.password')}
                       </strong>
-                    </p>
-                    <p className="settings-text">
-                      {t('paste.text.password')}
                     </p>
                   </div>
                   <StyledSwitch

@@ -22,7 +22,7 @@ h2 {
 
     width: 60%;
 
-    h1#new_paste_title {
+    .show_paste_label {
       max-width: 550px;
     }
 
@@ -60,6 +60,17 @@ h2 {
 
     .pasteMessage {
       width: 100%;
+    }
+
+    .show_paste_post_message {
+      margin-top: 20px;
+
+      a {
+        color: #3f51b5;
+        text-decoration: underline;
+        font-size: inherit;
+        font-weight: inherit;
+      }
     }
 
     .icon-bubble-alert {

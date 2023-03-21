@@ -1,97 +1,98 @@
 {
-    "expiration": {
-        "10m": "10 minutes",
-        "1d": "1 jour",
-        "1h": "1 heure",
-        "1m": "1 mois",
-        "1w": "1 semaine",
-        "5m": "5 minutes"
+  "expiration": {
+    "10m": "10 minutes",
+    "1d": "1 jour",
+    "1h": "1 heure",
+    "1m": "1 mois",
+    "1w": "1 semaine",
+    "5m": "5 minutes"
+  },
+  "footer": {
+    "cgu": "CGU",
+    "know_more": "En savoir plus sur"
+  },
+  "home": {
+    "button": "Envoyer un message sécurisé",
+    "link": "En savoir plus",
+    "subtitle": "kPaste est recommandé pour envoyer de manière sécurisée des mots de passe, des identifiants, des numéros de série ou toute information sensible.",
+    "text": "Le contenu est chiffré de bout en bout, éphémère et stocké en Suisse. Infomaniak respecte la vie privée et ne peut pas lire votre contenu.",
+    "title": "Partagez des informations sensibles en toute sécurité"
+  },
+  "menu": {
+    "login": "Login"
+  },
+  "meta": {
+    "title": "Infomaniak Paste 🔐 Envoyez des messages tel un agent secret"
+  },
+  "paste": {
+    "button": {
+      "continue": "Continuer",
+      "go": "Générer le lien de partage"
     },
-    "footer": {
-        "cgu": "CGU",
-        "know_more": "En savoir plus sur"
+    "info": {
+      "password": "Transmettez ce mot de passe par un autre canal pour encore plus de sécurité."
     },
-    "home": {
-        "button": "Transférer votre secret",
-        "link": "En savoir plus",
-        "subtitle": "kPaste est un service gratuit pour envoyer facilement des messages chiffrés à vos contacts.",
-        "text": "Infomaniak respecte votre vie privée et ne peut pas lire vos messages. kPaste est chiffré de bout en bout et stocke exclusivement ses données en Suisse.",
-        "title": "Partagez vos messages en toute sécurité, comme un agent secret !"
+    "input": {
+      "code": "Code",
+      "copy": "Copier",
+      "tooltip": "Mon message est d’une importance capitale et nécessite plus de place"
     },
-    "menu": {
-        "login": "Login"
+    "label": {
+      "destroy": "Supprimer après la première lecture",
+      "input": "Quel est votre contenu ?",
+      "password": "Protéger l’accès par un mot de passe",
+      "validity": "Durée de validité"
     },
-    "meta": {
-        "title": "Infomaniak Paste 🔐 Envoyez des messages tel un agent secret"
+    "password": {
+      "input": "Renseignez le mot de passe pour déverrouiller ce message"
     },
-    "paste": {
-        "button": {
-            "continue": "Continuer",
-            "go": "C'est parti !"
-        },
-        "info": {
-            "password": "Transmettez ce mot de passe par un autre canal pour encore plus de sécurité."
-        },
-        "input": {
-            "code": "Code",
-            "copy": "Copier",
-            "tooltip": "Mon message est d’une importance capitale et nécessite plus de place"
-        },
-        "label": {
-            "destroy": "Supprimer le message après sa lecture",
-            "input": "Quel est le message ?",
-            "password": "Protéger le message par un mot de passe",
-            "validity": "Durée de validité du message"
-        },
-        "password": {
-            "input": "Renseignez le mot de passe pour déverrouiller ce message"
-        },
-        "placeholder": {
-            "password": "Mot de passe de protection du message"
-        },
-        "text": {
-            "destroy": "Ce message ne pourra être lu qu'une seule fois. Il sera ensuite définitivement supprimé.",
-            "password": "Votre destinataire devra saisir ce mot de passe pour voir votre message.",
-            "validity": "Dépassé ce délai, ce message s'autodétruira définitivement 💥"
-        },
-        "title": "Partagez votre secret !"
+    "placeholder": {
+      "password": "Mot de passe de protection du message"
     },
-    "show_paste": {
-        "button": {
-            "password": "Déverrouiller et lire le message"
-        },
-        "info": {
-            "wrong_password": "Hum, ce mot de passe ne semble pas correspondre à ce message"
-        },
-        "label": {
-            "burn": "Lien à usage unique",
-            "destroy": "Ne fermez pas cette fenêtre car le lien sécurisé est à usage unique !",
-            "message": "Voici le message que l'on vient de vous transmettre",
-            "validity": "Valable"
-        },
-        "link": {
-            "new_paste": "Envie de passer pour un agent secret?",
-            "other_paste": "Envoyer un nouveau secret"
-        },
-        "new": {
-            "description": "Un lien sécurisé a été généré. Partagez ce lien aux contacts qui doivent pouvoir lire votre message secret.",
-            "title": "Procédure autoclave par convergence. Oui, ça claque !"
-        },
-        "password": {
-            "title": "Vous ne passerez pas !"
-        },
-        "subtitle": {
-            "destroy": "Ce message s'autodétruira dans",
-            "error": "Le message s'est autodétruit ou n'a jamais existé",
-            "password": "Ce message est protégé par un mot de passe."
-        },
-        "text": {
-            "error": "Heureusement qu'il ne s'agissait pas de sauver le monde"
-        },
-        "title": {
-            "copy_link": "Copié !",
-            "error": "Vous arrivez trop tard !",
-            "normal": "Chut c’est un secret ! "
-        }
+    "text": {
+      "validity": "Après ce délai, le contenu sera définitivement supprimé."
+    },
+    "title": "Partagez des informations sensibles en toute sécurité"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Déverrouiller et lire le message"
+    },
+    "info": {
+      "wrong_password": "Hum, ce mot de passe ne semble pas correspondre à ce message"
+    },
+    "label": {
+      "burn": "Lien à usage unique",
+      "destroy": "Ne fermez pas cette fenêtre car le lien sécurisé est à usage unique !",
+      "message": "Seules les personnes ayant ce lien sécurisé et les autorisations requises peuvent afficher ce contenu.",
+      "post_message": "Ce contenu est chiffré de bout en bout et stocké en Suisse par",
+      "post_message_after": "un prestataire cloud indépendant et engagé pour l'écologie.",
+      "validity": "Valable"
+    },
+    "link": {
+      "new_paste": "Envoyer un message sécurisé",
+      "other_paste": "Envoyer un nouveau message",
+      "text": "kPaste est une solution gratuite pour partager des informations sensibles en toute sécurité."
+    },
+    "new": {
+      "description": "Partagez ce lien aux contacts qui doivent pouvoir accéder à ce contenu.",
+      "title": "Votre lien de partage sécurisé"
+    },
+    "password": {
+      "title": "Vous ne passerez pas !"
+    },
+    "subtitle": {
+      "destroy": "Ce message sera définitivement supprimé dans",
+      "error": "Le message s'est autodétruit ou n'a jamais existé",
+      "password": "Ce message est protégé par un mot de passe."
+    },
+    "text": {
+      "error": "Heureusement qu'il ne s'agissait pas de sauver le monde"
+    },
+    "title": {
+      "copy_link": "Copié !",
+      "error": "Vous arrivez trop tard !",
+      "normal": "Votre accès a été autorisé"
     }
+  }
 }

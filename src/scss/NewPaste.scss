@@ -116,6 +116,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 760px;
 
     .settings-title {
       font-size: 14px;
@@ -180,6 +181,10 @@
     justify-content: flex-end;
     padding-top: 50px;
     margin-bottom: 20px;
+  }
+
+  .after-button-section {
+    padding-top: 10px;
   }
 
   strong {
