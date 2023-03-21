@@ -550,7 +550,7 @@ class ShowPaste extends React.PureComponent {
             >
               Infomaniak
             </a>
-            { ' ' }
+            { ', ' }
             {t('show_paste.label.post_message_after')}
           </span>
         </Paper>
