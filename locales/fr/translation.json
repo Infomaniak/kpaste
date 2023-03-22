@@ -22,7 +22,8 @@
     "login": "Login"
   },
   "meta": {
-    "title": "Infomaniak Paste 🔐 Envoyez des messages tel un agent secret"
+    "title": "kPaste - La solution pour envoyer des messages éphémères en toute sécurité",
+    "description": "Partagez sans crainte vos mots de passe, vos identifiants ou toute information sensible simplement avec kPaste. Ce service est gratuit et chiffré."
   },
   "paste": {
     "button": {
@@ -75,7 +76,7 @@
       "text": "kPaste est une solution gratuite pour partager des informations sensibles en toute sécurité."
     },
     "new": {
-      "description": "Partagez ce lien aux contacts qui doivent pouvoir accéder à ce contenu.",
+      "description": "Partagez ce lien uniquement aux personnes qui doivent pouvoir accéder à ce contenu.",
       "title": "Votre lien de partage sécurisé"
     },
     "password": {

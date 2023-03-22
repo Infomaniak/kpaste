@@ -1,97 +1,96 @@
 {
-    "expiration": {
-        "10m": "10 minutes",
-        "1d": "1 day",
-        "1h": "1 hour",
-        "1m": "1 month",
-        "1w": "1 week",
-        "5m": "5 minutes"
+  "expiration": {
+    "10m": "10 minutes",
+    "1d": "1 day",
+    "1h": "1 hour",
+    "1m": "1 month",
+    "1w": "1 week",
+    "5m": "5 minutes"
+  },
+  "footer": {
+    "cgu": "GTCUs",
+    "know_more": "Further information about"
+  },
+  "home": {
+    "button": "Send a secure message",
+    "link": "Further information",
+    "subtitle": "kPaste is recommended for sending passwords, login credentials, serial numbers and any other sensitive information in a secure manner.",
+    "text": "The content is encrypted end-to-end, temporary and stored in Switzerland. Infomaniak respects privacy and cannot read your content.",
+    "title": "Share sensitive information in total peace of mind"
+  },
+  "menu": {
+    "login": "Login"
+  },
+  "meta": {
+    "title": "kPaste – The solution for sending ephemeral messages in total security",
+    "description": "Share your passwords, login credentials and any other sensitive information simply and in total peace of mind with kPaste. This service is free and encrypted."
+  },
+  "paste": {
+    "button": {
+      "continue": "Continue",
+      "go": "Generate the sharing link"
     },
-    "footer": {
-        "cgu": "GTCUs",
-        "know_more": "Further information about"
+    "info": {
+      "password": "Transmit this password through another channel for added security."
     },
-    "home": {
-        "button": "Send your secret",
-        "link": "Further information",
-        "subtitle": "kPaste is a free service for sending encrypted messages to your contacts.",
-        "text": "Infomaniak respects your privacy and cannot read your messages. kPaste is end-to-end encrypted and stores your data exclusively in Switzerland.",
-        "title": "Share your messages securely like a secret agent!"
+    "input": {
+      "code": "Code",
+      "copy": "Copy",
+      "tooltip": "Enlarge the editing window"
     },
-    "menu": {
-        "login": "Login"
+    "label": {
+      "destroy": "Delete after the first reading",
+      "input": "What is your content?",
+      "password": "Protect access by a password",
+      "validity": "Period of validity"
     },
-    "meta": {
-        "title": "Infomaniak Paste 🔐 Send messages like a secret agent"
+    "password": {
+      "input": "Please enter the password:"
     },
-    "paste": {
-        "button": {
-            "continue": "Continue",
-            "go": "Let’s get started!"
-        },
-        "info": {
-            "password": "Transmit this password through another channel for added security."
-        },
-        "input": {
-            "code": "Code",
-            "copy": "Copy",
-            "tooltip": "My message is of the utmost importance and needs more space"
-        },
-        "label": {
-            "destroy": "Delete the message after reading it",
-            "input": "What’s your message?",
-            "password": "Protect the message with a password",
-            "validity": "Message’s validity period"
-        },
-        "password": {
-            "input": "Enter the password to unlock this message"
-        },
-        "placeholder": {
-            "password": "Message protection password"
-        },
-        "text": {
-            "destroy": "This message can be read only once. It will then be permanently deleted.",
-            "password": "Your recipient will need to enter this password to view your message.",
-            "validity": "After that, the message will self-destruct permanently 💥"
-        },
-        "title": "Share your secret!"
+    "placeholder": {
+      "password": "Message protection password"
     },
-    "show_paste": {
-        "button": {
-            "password": "Unlock and read the message"
-        },
-        "info": {
-            "wrong_password": "Hmm, that password doesn’t seem to match this message"
-        },
-        "label": {
-            "burn": "Single-use link",
-            "destroy": "Don’t close this window because the secure link can only be used once!",
-            "message": "Here’s the message you’ve just been sent",
-            "validity": "Valid"
-        },
-        "link": {
-            "new_paste": "Fancy pretending to be a secret agent?",
-            "other_paste": "Send a new secret"
-        },
-        "new": {
-            "description": "A secure link has been generated. Share this link with the contacts intended to read your secret message.",
-            "title": "Autoclave procedure by convergence. Yes, great!"
-        },
-        "password": {
-            "title": "You shall not pass!"
-        },
-        "subtitle": {
-            "destroy": "This message will self-destruct in",
-            "error": "The message has self-destructed or never existed",
-            "password": "This message is protected with a password."
-        },
-        "text": {
-            "error": "Luckily it wasn’t about saving the world"
-        },
-        "title": {
-            "copy_link": "Copied!",
-            "error": "You’re too late!",
-            "normal": "Shhh, it’s a secret! "
-        }
+    "text": {
+      "validity": "After this deadline, the content will be permanently deleted."
+    },
+    "title": "Share sensitive information in total peace of mind"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Access the secure message"
+    },
+    "info": {
+      "wrong_password": "That password doesn’t seem to match this message"
+    },
+    "label": {
+      "burn": "Single-use link",
+      "destroy": "Don’t close this window because the secure link can only be used once!",
+      "message": "Only people with this secure link and the necessary authorisations can display this content.",
+      "post_message": "This content is encrypted end-to-end and stored in Switzerland by",
+      "post_message_after": "an independent cloud service provider committed to the environment.",
+      "validity": "Valid"
+    },
+    "link": {
+      "new_paste": "Send a secure message",
+      "other_paste": "Send a new message",
+      "text": "kPaste is a free solution for sharing sensitive information in total peace of mind."
+    },
+    "new": {
+      "description": "Share this link with contacts who need to be able to access this content.",
+      "title": "Your secure sharing link"
+    },
+    "password": {
+      "title": "Access to this content is subject to authorisation"
+    },
+    "subtitle": {
+      "destroy": "This message will be permanently deleted in",
+      "error": "The sharing link has expired or is invalid.",
+      "password": "This message is encrypted and protected with a password."
+    },
+    "title": {
+      "copy_link": "Copied !",
+      "error": "This content is no longer accessible",
+      "normal": "Your access has been authorised"
     }
+  }
 }

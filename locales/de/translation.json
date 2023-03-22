@@ -1,97 +1,96 @@
 {
-    "expiration": {
-        "10m": "10 Minuten",
-        "1d": "1 Tag",
-        "1h": "1 Stunde",
-        "1m": "1 Monat",
-        "1w": "1 Woche",
-        "5m": "5 Minuten"
+  "expiration": {
+    "10m": "10 Minuten",
+    "1d": "1 Tag",
+    "1h": "1 Stunde",
+    "1m": "1 Monat",
+    "1w": "1 Woche",
+    "5m": "5 Minuten"
+  },
+  "footer": {
+    "cgu": "CGU",
+    "know_more": "Mehr Infos zu"
+  },
+  "home": {
+    "button": "Sichere Nachricht versenden",
+    "link": "Weitere Infos",
+    "subtitle": "kPaste wird für das sichere Versenden von Kennwörtern, Benutzernamen, Seriennummern oder sonstigen sensiblen Informationen empfohlen.",
+    "text": "Der Inhalt wird mit End-to-End-Verschlüsselung geschützt, ist kurzlebig und wird in der Schweiz gespeichert. Infomaniak achtet die Privatsphäre und kann Ihren Inhalt nicht einsehen.",
+    "title": "Geben Sie sensible Informationen völlig sicher frei"
+  },
+  "menu": {
+    "login": "Anmelden"
+  },
+  "meta": {
+    "title": "kPaste – Die Lösung für das völlig sichere Versenden kurzlebiger Nachrichten",
+    "description": "Teilen Sie Ihre Kennwörter, Benutzernamen oder jegliche sensiblen Informationen völlig bedenkenlos über kPaste. Dieser Dienst ist kostenlos und verschlüsselt."
+  },
+  "paste": {
+    "button": {
+      "continue": "Weiter",
+      "go": "Freigabelink generieren"
     },
-    "footer": {
-        "cgu": "CGU",
-        "know_more": "Mehr Infos zu"
+    "info": {
+      "password": "Übermitteln Sie dieses Passwort mit Blick auf mehr Sicherheit über einen anderen Kanal."
     },
-    "home": {
-        "button": "Ihr Geheimnis versenden",
-        "link": "Weitere Infos",
-        "subtitle": "kPaste ist ein kostenloser Dienst, mit dem Sie Ihren Kontakten ganz einfach verschlüsselte Nachrichten senden können.",
-        "text": "Infomaniak achtet Ihre Privatsphäre und kann Ihre Nachrichten nicht lesen. kPaste funktioniert mit End-to-End-Verschlüsselung und speichert diese Daten ausschliesslich in der Schweiz.",
-        "title": "Teilen Sie Ihre Nachrichten völlig sicher – so wie ein Geheimagent!"
+    "input": {
+      "code": "Code",
+      "copy": "Kopie",
+      "tooltip": "Texteingabefenster vergrössern"
     },
-    "menu": {
-        "login": "Anmelden"
+    "label": {
+      "destroy": "Nach der ersten Kenntnisnahme löschen",
+      "input": "Welches ist Ihr Inhalt?",
+      "password": "Zugriff durch Kennwort schützen",
+      "validity": "Gültigkeitsdauer"
     },
-    "meta": {
-        "title": "Infomaniak Paste 🔐 Nachrichten senden wie ein Geheimagent"
+    "password": {
+      "input": "Bitte geben Sie das Kennwort ein:"
     },
-    "paste": {
-        "button": {
-            "continue": "Weiter",
-            "go": "Los geht‘s!"
-        },
-        "info": {
-            "password": "Übermitteln Sie dieses Passwort mit Blick auf mehr Sicherheit über einen anderen Kanal."
-        },
-        "input": {
-            "code": "Code",
-            "copy": "Kopie",
-            "tooltip": "Meine Nachricht ist von grösster Bedeutung und braucht mehr Platz."
-        },
-        "label": {
-            "destroy": "Nachricht nach Kenntnisnahme löschen",
-            "input": "Welches ist Ihre Nachricht?",
-            "password": "Nachricht durch Passwort schützen",
-            "validity": "Gültigkeitsdauer der Nachricht"
-        },
-        "password": {
-            "input": "Geben Sie das Passwort ein, um diese Nachricht zu entsperren"
-        },
-        "placeholder": {
-            "password": "Passwort für den Schutz der Nachricht"
-        },
-        "text": {
-            "destroy": "Diese Nachricht kann nur einmal gelesen werden. Danach wird sie endgültig gelöscht.",
-            "password": "Ihr Empfänger muss dieses Passwort eingeben, um Ihre Nachricht zu lesen.",
-            "validity": "Danach zerstört sich diese Nachricht selbst endgültig 💥"
-        },
-        "title": "Verraten Sie Ihr Geheimnis!"
+    "placeholder": {
+      "password": "Passwort für den Schutz der Nachricht"
     },
-    "show_paste": {
-        "button": {
-            "password": "Nachricht entsperren und lesen"
-        },
-        "info": {
-            "wrong_password": "Hmm, dieses Passwort passt anscheinend nicht zu dieser Nachricht"
-        },
-        "label": {
-            "burn": "Link für einmaligen Gebrauch",
-            "destroy": "Schliessen Sie dieses Fenster nicht, denn dieser gesicherte Link ist nur für den einmaligen Gebrauch bestimmt!",
-            "message": "Diese Nachricht wurde Ihnen gerade übermittelt",
-            "validity": "Gültig"
-        },
-        "link": {
-            "new_paste": "Sie wollen sich als Geheimagent ausgeben?",
-            "other_paste": "Ein neues Geheimnis senden"
-        },
-        "new": {
-            "description": "Es wurde ein gesicherter Link erstellt. Teilen Sie diesen Link mit Kontakten, die Ihre geheime Nachricht lesen können müssen.",
-            "title": "Autoklav-Verfahren durch Konvergenz. Tolle Sache!"
-        },
-        "password": {
-            "title": "Du kannst nich vorbei!"
-        },
-        "subtitle": {
-            "destroy": "Diese Nachricht zerstört sich in",
-            "error": "Die Nachricht hat sich zerstört oder hat nie existiert",
-            "password": "Diese Nachricht ist durch ein Passwort geschützt."
-        },
-        "text": {
-            "error": "Zum Glück geht es nicht darum, die Welt zu retten"
-        },
-        "title": {
-            "copy_link": "Kopiert!",
-            "error": "Sie kommen zu spät!",
-            "normal": "Pssst, das ist ein Geheimnis! "
-        }
+    "text": {
+      "validity": "Nach Ablauf dieser Frist wird der Inhalt endgültig gelöscht."
+    },
+    "title": "Geben Sie sensible Informationen völlig sicher frei"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Auf sichere Nachricht zugreifen"
+    },
+    "info": {
+      "wrong_password": "Dieses Passwort passt anscheinend nicht zu dieser Nachricht"
+    },
+    "label": {
+      "burn": "Link für einmaligen Gebrauch",
+      "destroy": "Schliessen Sie dieses Fenster nicht, denn dieser gesicherte Link ist nur für den einmaligen Gebrauch bestimmt!",
+      "message": "Nur Personen, die über diesen sicheren Link und die erforderlichen Genehmigungen verfügen, können diesen Inhalt anzeigen lassen.",
+      "post_message": "Dieser Inhalt wird durch End-to-End-Verschlüsselung geschützt und in der Schweiz von",
+      "post_message_after": "einem unabhängigen und für den Umweltschutz eintretenden Cloud-Anbieter, gespeichert.",
+      "validity": "Gültig"
+    },
+    "link": {
+      "new_paste": "Sichere Nachricht versenden",
+      "other_paste": "Neue Nachricht versenden",
+      "text": "kPaste ist eine kostenlose Lösung für die völlig sichere Freigabe sensibler Informationen."
+    },
+    "new": {
+      "description": "Teilen Sie diesen Link mit Kontakten, die auf diesen Inhalt zuzugreifen können müssen.",
+      "title": "Ihr sicherer Freigabelink"
+    },
+    "password": {
+      "title": "Der Zugang zu diesem Inhalt erfordert eine Genehmigung"
+    },
+    "subtitle": {
+      "destroy": "Diese Nachricht wird in",
+      "error": "Der Freigabelink ist entweder abgelaufen oder ungültig.",
+      "password": "Diese Nachricht ist verschlüsselt und durch ein Kennwort geschützt."
+    },
+    "title": {
+      "copy_link": "Kopiert!",
+      "error": "Dieser Inhalt ist nicht mehr zugänglich",
+      "normal": "Ihr Zugang wurde genehmigt"
     }
+  }
 }
