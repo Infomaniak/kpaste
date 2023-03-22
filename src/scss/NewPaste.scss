@@ -7,6 +7,10 @@
     max-width: none;
   }
 
+  #paste_container .title-section {
+    max-width: inherit;
+  }
+
   #welcome-container-newpaste {
     padding: 50px 50px 0 50px;
     flex-grow: 2;
@@ -116,6 +120,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 760px;
 
     .settings-title {
       font-size: 14px;
@@ -134,8 +139,6 @@
       flex: 0 0 70%;
       overflow-y: hidden;
     }
-
-    button {}
   }
 
   .validity-select {
@@ -156,6 +159,7 @@
 
   .password-info-section {
     margin-top: 15px;
+
     span {
       vertical-align: super;
 
@@ -180,6 +184,10 @@
     justify-content: flex-end;
     padding-top: 50px;
     margin-bottom: 20px;
+  }
+
+  .after-button-section {
+    padding-top: 10px;
   }
 
   strong {
@@ -263,7 +271,7 @@ button.copy-buton {
   .paste_container-main {
     z-index: 3;
 
-    >div {
+    > div {
       padding: 30px;
       margin: 30px 0;
     }
@@ -314,7 +322,7 @@ button.copy-buton {
 
 @media only screen and (max-height: 890px) {
   #root.expand #paste_container #new_paste_box {
-      height: 90%;
+    height: 90%;
   }
 }
 

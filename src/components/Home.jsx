@@ -46,9 +46,9 @@ class Home extends React.PureComponent {
                   <h1 className="header-text-title">
                     {t('home.title')}
                   </h1>
-                  <p className="header-text-description">
+                  <h2 className="header-text-description">
                     {t('home.subtitle')}
-                  </p>
+                  </h2>
                   <p className="header-text-sub">
                     <span className="icon icon-lock-2" />
                     {t('home.text')}

@@ -1,97 +1,96 @@
 {
-    "expiration": {
-        "10m": "10 minuti",
-        "1d": "1 giorno",
-        "1h": "1 ora",
-        "1m": "1 mese",
-        "1w": "1 settimana",
-        "5m": "5 minuti"
+  "expiration": {
+    "10m": "10 minuti",
+    "1d": "1 giorno",
+    "1h": "1 ora",
+    "1m": "1 mese",
+    "1w": "1 settimana",
+    "5m": "5 minuti"
+  },
+  "footer": {
+    "cgu": "CGU",
+    "know_more": "Per maggiori informazioni su"
+  },
+  "home": {
+    "button": "Invia un messaggio protetto",
+    "link": "Per maggiori informazioni",
+    "subtitle": "kPaste è consigliata per l'invio sicuro di password, credenziali, numeri di serie o informazioni sensibili.",
+    "text": "Il contenuto è crittografato end-to-end, effimero e archiviato in Svizzera. Infomaniak rispetta la privacy e non ha accesso ai tuoi contenuti.",
+    "title": "Condividi informazioni sensibili in tutta sicurezza"
+  },
+  "menu": {
+    "login": "Accesso"
+  },
+  "meta": {
+    "title": "kPaste - La soluzione per inviare messaggi effimeri in tutta sicurezza",
+    "description": "Condividi le tue password, le tue credenziali o qualsiasi informazione sensibile senza timori e in modo facile con kPaste. Il servizio è gratuito e crittografato."
+  },
+  "paste": {
+    "button": {
+      "continue": "Avanti",
+      "go": "Crea il link di condivisione"
     },
-    "footer": {
-        "cgu": "CGU",
-        "know_more": "Per maggiori informazioni su"
+    "info": {
+      "password": "Trasmetti questa password tramite un altro canale a garanzia di una maggiore sicurezza."
     },
-    "home": {
-        "button": "Invia i tuoi segreti",
-        "link": "Per maggiori informazioni",
-        "subtitle": "kPaste è un servizio gratuito che ti consente un facile invio di messaggi crittografati ai tuoi contatti.",
-        "text": "Infomaniak rispetta la tua privacy e non può leggere i tuoi messaggi. kPaste è crittografato end-to-end e archivia questi dati soltanto in Svizzera.",
-        "title": "Condividi i tuoi messaggi in tutta sicurezza, come un agente segreto!"
+    "input": {
+      "code": "Codice",
+      "copy": "Copia",
+      "tooltip": "Ingrandisci la finestra di composizione"
     },
-    "menu": {
-        "login": "Accesso"
+    "label": {
+      "destroy": "Elimina dopo la prima lettura",
+      "input": "Quale è il tuo contenuto?",
+      "password": "Proteggi l'accesso tramite password",
+      "validity": "Periodo di validità"
     },
-    "meta": {
-        "title": "Infomaniak Paste 🔐 Inviare messaggi come un agente segreto"
+    "password": {
+      "input": "Inserisci la password:"
     },
-    "paste": {
-        "button": {
-            "continue": "Avanti",
-            "go": "Ci siamo!"
-        },
-        "info": {
-            "password": "Trasmetti questa password tramite un altro canale a garanzia di una maggiore sicurezza."
-        },
-        "input": {
-            "code": "Codice",
-            "copy": "Copia",
-            "tooltip": "Il mio messaggio è di assoluta importanza e necessita di più spazio"
-        },
-        "label": {
-            "destroy": "Elimina il messaggio dopo la sua lettura",
-            "input": "Quale è il messaggio?",
-            "password": "Proteggi il messaggio tramite password",
-            "validity": "Periodo di validità del messaggio"
-        },
-        "password": {
-            "input": "Inserisci la password per sbloccare questo messaggio"
-        },
-        "placeholder": {
-            "password": "Password di protezione del messaggio"
-        },
-        "text": {
-            "destroy": "Questo messaggio potrà essere letto una sola volta, dopodiché verrà eliminato definitivamente.",
-            "password": "Per leggere il tuo messaggio, il destinatario dovrà inserire questa password.",
-            "validity": "Una volta scaduta la validità, il messaggio si autodistruggerà definitivamente 💥"
-        },
-        "title": "Condividi i tuoi segreti!"
+    "placeholder": {
+      "password": "Password di protezione del messaggio"
     },
-    "show_paste": {
-        "button": {
-            "password": "Sblocca e leggi il messaggio"
-        },
-        "info": {
-            "wrong_password": "Hmm, la password non sembra corrispondere a questo messaggio"
-        },
-        "label": {
-            "burn": "Link monouso",
-            "destroy": "Non chiudere questa finestra poiché il link protetto è monouso!",
-            "message": "Ecco il messaggio che ti abbiamo appena inviato",
-            "validity": "Valido"
-        },
-        "link": {
-            "new_paste": "Vuoi passare per un agente segreto?",
-            "other_paste": "Invia un nuovo segreto"
-        },
-        "new": {
-            "description": "È stato creato un link protetto. Condividi questo link con i contatti ai quali vuoi consentire la lettura del tuo messaggio segreto.",
-            "title": "Procedura autoclave per convergenza. Sì, è geniale!"
-        },
-        "password": {
-            "title": "Tu non passerai!"
-        },
-        "subtitle": {
-            "destroy": "Questo messaggio si autodistruggerà tra",
-            "error": "Il messaggio si è autodistrutto o non è mai esistito",
-            "password": "Questo messaggio è protetto da password."
-        },
-        "text": {
-            "error": "Per fortuna non si trattava di salvare il mondo"
-        },
-        "title": {
-            "copy_link": "Copiato!",
-            "error": "Sei arrivato troppo tardi!",
-            "normal": "Silenzio, è un segreto! "
-        }
+    "text": {
+      "validity": "Dopo tale periodo, il contenuto verrà eliminato definitivamente."
+    },
+    "title": "Condividi informazioni sensibili in tutta sicurezza"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Accedi al messaggio protetto"
+    },
+    "info": {
+      "wrong_password": "La password non sembra corrispondere a questo messaggio"
+    },
+    "label": {
+      "burn": "Link monouso",
+      "destroy": "Non chiudere questa finestra poiché il link protetto è monouso!",
+      "message": "Il presente contenuto può essere visualizzato soltanto da coloro che dispongono di questo link protetto e delle autorizzazioni richieste.",
+      "post_message": "Il presente contenuto è crittografato end-to-end e archiviato in Svizzera da",
+      "post_message_after": "un provider cloud indipendente e impegnato a favore della tutela dell'ambiente.",
+      "validity": "Periodo di validità"
+    },
+    "link": {
+      "new_paste": "Invia un messaggio protetto",
+      "other_paste": "Invia un nuovo messaggio",
+      "text": "kPaste è una soluzione gratuita pensata per condividere le informazioni sensibili in tutta sicurezza."
+    },
+    "new": {
+      "description": "Condividi questo link con i contatti ai quali vuoi consentire l'accesso a questo contenuto.",
+      "title": "Il tuo link di condivisione protetto"
+    },
+    "password": {
+      "title": "L’accesso a questo contenuto è soggetto ad autorizzazione"
+    },
+    "subtitle": {
+      "destroy": "Questo messaggio verrà definitivamente eliminato tra",
+      "error": "Il link di condivisione è scaduto o non è più valido.",
+      "password": "Questo messaggio è crittografato e protetto da password."
+    },
+    "title": {
+      "copy_link": "Copiato!",
+      "error": "Questo contenuto non è più accessibile",
+      "normal": "Il tuo accesso è stato autorizzato"
     }
+  }
 }

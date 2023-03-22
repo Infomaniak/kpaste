@@ -17,8 +17,12 @@ import HtmlTooltip from '../lib/Tooltip';
 import Footer from './Footer';
 
 /* global WEB_COMPONENT_API_ENDPOINT */
+
 // eslint-disable-next-line react/prop-types
-function TooltipContainer({ verboseDate, children }) {
+function TooltipContainer({
+  verboseDate,
+  children,
+}) {
   return (
     <HtmlTooltip placement="top" title={verboseDate}>
       {children}
@@ -78,7 +82,10 @@ class ShowPaste extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { location, match } = this.props;
+    const {
+      location,
+      match,
+    } = this.props;
     const { state } = location;
     const { params } = match;
 
@@ -179,7 +186,11 @@ class ShowPaste extends React.PureComponent {
 
   async submitPassword() {
     const {
-      key, message, vector, salt, passwordInput,
+      key,
+      message,
+      vector,
+      salt,
+      passwordInput,
     } = this.state;
 
     try {
@@ -205,8 +216,15 @@ class ShowPaste extends React.PureComponent {
 
   showNew() {
     let i: number;
-    const { t, location } = this.props;
-    const { error, newPaste, openTooltip } = this.state;
+    const {
+      t,
+      location,
+    } = this.props;
+    const {
+      error,
+      newPaste,
+      openTooltip,
+    } = this.state;
     const { state } = location;
 
     if (error || !newPaste) {
@@ -239,54 +257,54 @@ class ShowPaste extends React.PureComponent {
             </div>
 
             {document.queryCommandSupported('copy')
-            && (
-              <ClickAwayListener onClickAway={async () => {
-                await this.handleTooltipClose();
-              }}
-              >
-                <HtmlTooltip
-                  placement="top"
-                  open={openTooltip}
-                  disableFocusListener
-                  disableHoverListener
-                  disableTouchListener
-                  title={t('show_paste.title.copy_link')}
+              && (
+                <ClickAwayListener onClickAway={async () => {
+                  await this.handleTooltipClose();
+                }}
                 >
-                  <Button
-                    className="copy-buton"
-                    onClick={async () => {
-                      await this.copyLink();
-                    }}
+                  <HtmlTooltip
+                    placement="top"
+                    open={openTooltip}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                    title={t('show_paste.title.copy_link')}
                   >
-                    <span
-                      className="icon icon-common-file-double-2"
-                    />
-                  </Button>
-                </HtmlTooltip>
-              </ClickAwayListener>
-            )}
+                    <Button
+                      className="copy-buton"
+                      onClick={async () => {
+                        await this.copyLink();
+                      }}
+                    >
+                      <span
+                        className="icon icon-common-file-double-2"
+                      />
+                    </Button>
+                  </HtmlTooltip>
+                </ClickAwayListener>
+              )}
           </div>
           <div className="destroy-section paste_url_option">
             {state.destroy
-            && (
-              <span className="burn_info">
-                <span className="icon icon-lock-unlock" />
-                &nbsp;
-                {t('show_paste.label.burn')}
-              </span>
-            )}
+              && (
+                <span className="burn_info">
+                  <span className="icon icon-lock-unlock" />
+                  &nbsp;
+                  {t('show_paste.label.burn')}
+                </span>
+              )}
             {state.period
-            && (
-              <span className="expired_at">
-                <span
-                  className="icon icon-time-clock-circle-alternate"
-                />
-                &nbsp;
-                {t('show_paste.label.validity')}
-                &nbsp;
-                {period}
-              </span>
-            )}
+              && (
+                <span className="expired_at">
+                  <span
+                    className="icon icon-time-clock-circle-alternate"
+                  />
+                  &nbsp;
+                  {t('show_paste.label.validity')}
+                  &nbsp;
+                  {period}
+                </span>
+              )}
           </div>
         </Paper>
         <div className="button-section font-medium">
@@ -315,16 +333,16 @@ class ShowPaste extends React.PureComponent {
           <strong className="too_late_title">
             {t('show_paste.subtitle.error')}
           </strong>
-          <p className="too_late_message">
-            {t('show_paste.text.error')}
-            &nbsp;
-            <span role="img" aria-label="sunglass" className="emoji">😎</span>
-          </p>
         </Paper>
         <div className="button-section font-medium">
           <Link to="/new">
             {t('show_paste.link.new_paste')}
           </Link>
+        </div>
+        <div className="button-section after-button-section font-medium">
+          <span>
+            {t('show_paste.link.text')}
+          </span>
         </div>
       </>
     );
@@ -338,7 +356,8 @@ class ShowPaste extends React.PureComponent {
   showPassword() {
     const { t } = this.props;
     const {
-      password, invalidPassword,
+      password,
+      invalidPassword,
     } = this.state;
 
     if (!password) {
@@ -395,7 +414,13 @@ class ShowPaste extends React.PureComponent {
   showMessage() {
     const { t } = this.props;
     const {
-      error, newPaste, expiratedAt, burn, message, highlightCode, password,
+      error,
+      newPaste,
+      expiratedAt,
+      burn,
+      message,
+      highlightCode,
+      password,
     } = this.state;
 
     if (error || newPaste || password) {
@@ -408,19 +433,19 @@ class ShowPaste extends React.PureComponent {
           {t('show_paste.title.normal')}
         </h1>
         {expiratedAt
-        && (
-          <p className="group-name expiration_title">
-            {t('show_paste.subtitle.destroy')}
-            &nbsp;
-            <ReactTimeAgo
-              timeStyle="time"
-              date={expiratedAt}
-              locale={i18n.language.substr(0, 2)}
-              container={TooltipContainer}
-              tooltip={false}
-            />
-          </p>
-        )}
+          && (
+            <p className="group-name expiration_title">
+              {t('show_paste.subtitle.destroy')}
+              &nbsp;
+              <ReactTimeAgo
+                timeStyle="time"
+                date={expiratedAt}
+                locale={i18n.language.substr(0, 2)}
+                container={TooltipContainer}
+                tooltip={false}
+              />
+            </p>
+          )}
         <Paper id="new_paste_box">
 
           <div className="paste--head">
@@ -471,54 +496,73 @@ class ShowPaste extends React.PureComponent {
               </HtmlTooltip>
 
               {!highlightCode
-              && (
-                <HtmlTooltip
-                  placement="top"
-                  title={(
-                    <>
-                      {t('paste.input.code')}
-                    </>
-                  )}
-                >
-                  <Button
-                    className="expand_button"
-                    onClick={async () => {
-                      await this.highlightCode();
-                    }}
+                && (
+                  <HtmlTooltip
+                    placement="top"
+                    title={(
+                      <>
+                        {t('paste.input.code')}
+                      </>
+                    )}
                   >
-                    <span
-                      className="icon icon-type-code"
-                      id="expand_button"
-                    />
-                  </Button>
-                </HtmlTooltip>
-              )}
+                    <Button
+                      className="expand_button"
+                      onClick={async () => {
+                        await this.highlightCode();
+                      }}
+                    >
+                      <span
+                        className="icon icon-type-code"
+                        id="expand_button"
+                      />
+                    </Button>
+                  </HtmlTooltip>
+                )}
 
             </div>
 
           </div>
 
           {burn
-          && (
-            <p className="group-name message_will_burn">
-              <span
-                className="icon icon-warning"
-              />
-              &nbsp;
-              {t('show_paste.label.destroy')}
-            </p>
-          )}
+            && (
+              <p className="group-name message_will_burn">
+                <span
+                  className="icon icon-warning"
+                />
+                &nbsp;
+                {t('show_paste.label.destroy')}
+              </p>
+            )}
 
           <div className="pasteContent pasteMessage">
             <CodeHighlight code={highlightCode}>
               {message}
             </CodeHighlight>
           </div>
+
+          <span className="show_paste_post_message">
+            {t('show_paste.label.post_message')}
+            { ' ' }
+            <a
+              href="https://www.infomaniak.com"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Infomaniak
+            </a>
+            { ', ' }
+            {t('show_paste.label.post_message_after')}
+          </span>
         </Paper>
         <div className="button-section font-medium">
           <Link to="/new">
             {t('show_paste.link.new_paste')}
           </Link>
+        </div>
+        <div className="button-section after-button-section font-medium">
+          <span>
+            {t('show_paste.link.text')}
+          </span>
         </div>
       </>
     );

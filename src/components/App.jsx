@@ -37,6 +37,10 @@ class App extends React.PureComponent {
       <Suspense fallback={<Loader />}>
         <Helmet>
           <title>{t('meta.title')}</title>
+          <meta property="og:title" content={t('meta.title')} />
+          <meta property="og:image:alt" content={t('meta.title')} />
+          <meta property="og:description" content={t('meta.description')} />
+          <meta name="description" content={t('meta.description')} />
         </Helmet>
         <IkHeader />
         <Switch>
@@ -50,7 +54,13 @@ class App extends React.PureComponent {
             exact
             path="/:id"
             render={(props) => (
-              <ShowPaste background={background} id={props.match.params.id} match={props.match} location={props.location} history={props.history} />
+              <ShowPaste
+                background={background}
+                id={props.match.params.id}
+                match={props.match}
+                location={props.location}
+                history={props.history}
+              />
             )}
           />
           <Route
