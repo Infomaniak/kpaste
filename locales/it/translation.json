@@ -39,10 +39,10 @@
       "tooltip": "Ingrandisci la finestra di composizione"
     },
     "label": {
-      "destroy": "Questo messaggio verrà definitivamente eliminato tra",
+      "destroy": "Elimina dopo la prima lettura",
       "input": "Quale è il tuo contenuto?",
       "password": "Proteggi l'accesso tramite password",
-      "validity": "Periodo di validità del messaggio"
+      "validity": "Periodo di validità"
     },
     "password": {
       "input": "Inserisci la password:"
@@ -60,7 +60,7 @@
       "password": "Accedi al messaggio protetto"
     },
     "info": {
-      "wrong_password": "Hmm, la password non sembra corrispondere a questo messaggio"
+      "wrong_password": "La password non sembra corrispondere a questo messaggio"
     },
     "label": {
       "burn": "Link monouso",
@@ -77,18 +77,15 @@
     },
     "new": {
       "description": "Condividi questo link con i contatti ai quali vuoi consentire l'accesso a questo contenuto.",
-      "title": "Procedura autoclave per convergenza. Sì, è geniale!"
+      "title": "Il tuo link di condivisione protetto"
     },
     "password": {
       "title": "L’accesso a questo contenuto è soggetto ad autorizzazione"
     },
     "subtitle": {
-      "destroy": "Questo messaggio si autodistruggerà tra",
+      "destroy": "Questo messaggio verrà definitivamente eliminato tra",
       "error": "Il link di condivisione è scaduto o non è più valido.",
       "password": "Questo messaggio è crittografato e protetto da password."
-    },
-    "text": {
-      "error": "Per fortuna non si trattava di salvare il mondo"
     },
     "title": {
       "copy_link": "Copiato!",
