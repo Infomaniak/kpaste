@@ -7,7 +7,7 @@
     max-width: none;
   }
 
-  .title-section {
+  #paste_container .title-section {
     max-width: inherit;
   }
 
@@ -139,8 +139,6 @@
       flex: 0 0 70%;
       overflow-y: hidden;
     }
-
-    button {}
   }
 
   .validity-select {
@@ -161,6 +159,7 @@
 
   .password-info-section {
     margin-top: 15px;
+
     span {
       vertical-align: super;
 
@@ -272,7 +271,7 @@ button.copy-buton {
   .paste_container-main {
     z-index: 3;
 
-    >div {
+    > div {
       padding: 30px;
       margin: 30px 0;
     }
@@ -323,7 +322,7 @@ button.copy-buton {
 
 @media only screen and (max-height: 890px) {
   #root.expand #paste_container #new_paste_box {
-      height: 90%;
+    height: 90%;
   }
 }
 
