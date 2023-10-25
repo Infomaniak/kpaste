@@ -11,10 +11,12 @@ const config = {
   entry: './src/index.jsx',
   devtool: 'inline-source-map',
   devServer: {
+    allowedHosts: 'all',
     compress: true,
     port: 3000,
     open: true,
     historyApiFallback: true,
+    https: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
