@@ -3,12 +3,8 @@
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import React from 'react';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { withTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import logo from '../images/logo.svg';
-import logoInfomaniak from '../images/logo-infomaniak.svg';
 import iconMenu from '../images/menu.svg';
 import i18n from '../lib/i18n';
 import StyledSelect from '../lib/Select';
@@ -71,39 +67,6 @@ class IkHeader extends React.PureComponent {
    */
   static onLogin() {
     window.location = `${WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
-  }
-
-  showHeaderTitle() {
-    const { session } = this.state;
-
-    return (
-      <>
-        {session && session.current_group && !session.current_group.logo
-        && (
-          <p
-            className="group-name"
-          >
-            {session.current_group.organization_name}
-          </p>
-        )}
-        {session && session.current_group && session.current_group.logo
-        && (
-          <img
-            alt="logo"
-            src={session.current_group.logo}
-            width="70"
-          />
-        )}
-        {session && session.user && session.user.length === 0
-        && (
-          <img
-            alt="logo"
-            src={logoInfomaniak}
-            width="70"
-          />
-        )}
-      </>
-    );
   }
 
   showNotConnectedMenu() {
@@ -209,28 +172,6 @@ class IkHeader extends React.PureComponent {
     );
   }
 
-  showProductMenuLeft() {
-    const { session } = this.state;
-
-    return (
-      <module-change-group-component>
-        {(session && session.groups && session.groups.length > 1) && (
-          <span
-            className="header-icon"
-            slot="trigger"
-          >
-            <span>
-              <KeyboardArrowDownIcon
-                label="expand"
-                size="large"
-              />
-            </span>
-          </span>
-        )}
-      </module-change-group-component>
-    );
-  }
-
   /**
    * Implements React's {@link Component#render()}.
    *
@@ -242,20 +183,7 @@ class IkHeader extends React.PureComponent {
       <header className="ik-header">
         <div className="flex">
           <div className="header-title-wrapper">
-            <Link to="/">
-              <img
-                className="product-icon"
-                src={logo}
-                alt="logo"
-              />
-            </Link>
-            <div className="header-title">
-              {this.showHeaderTitle()}
-              <p className="product-name">kPaste</p>
-            </div>
-            <div>
-              {this.showProductMenuLeft()}
-            </div>
+            <module-header-title-component />
           </div>
         </div>
         <div className="flex flex--v-center flex--h-center">
