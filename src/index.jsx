@@ -12,8 +12,6 @@ import es from 'javascript-time-ago/locale/es';
 import App from './components/App';
 import ScrollToTop from './lib/ScrollToTop';
 
-window.WEB_COMPONENT_API_ENDPOINT = WEB_COMPONENT_API_ENDPOINT;
-
 JavascriptTimeAgo.addLocale(en);
 JavascriptTimeAgo.addLocale(fr);
 JavascriptTimeAgo.addLocale(de);
