@@ -95,6 +95,7 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       WEB_COMPONENT_API_ENDPOINT: JSON.stringify(process.env.WEB_COMPONENT_API_ENDPOINT),
+      KSUITE_API: JSON.stringify(process.env.KSUITE_API || 'https://ksuite.infomaniak.com'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

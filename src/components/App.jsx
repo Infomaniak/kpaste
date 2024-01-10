@@ -3,9 +3,12 @@ import '../scss/App.scss';
 import React, { Suspense } from 'react';
 import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import {
+  Redirect, Route, Switch, withRouter,
+} from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+import { KSuiteBridge } from '@infomaniak/ksuite-bridge';
 import IkHeader from './Header';
 import Home from './Home';
 import Loader from './Loader';
@@ -27,11 +30,18 @@ class App extends React.PureComponent {
     App.getBackground().then((background) => {
       this.setState({ background });
     });
+
+    this.bridge = new KSuiteBridge(KSUITE_API);
+    this.bridge.sendMessage({ type: 'app-ready' });
   }
 
   render() {
-    const { t } = this.props;
+    const { t, location } = this.props;
     const { background } = this.state;
+
+    if (this.bridge) {
+      this.bridge.sendMessage({ type: 'navigate', path: location.pathname });
+    }
 
     return (
       <Suspense fallback={<Loader />}>
@@ -93,4 +103,4 @@ App.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(App);
+export default withRouter(withTranslation()(App));
