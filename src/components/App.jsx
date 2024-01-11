@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { KSuiteBridge } from '@infomaniak/ksuite-bridge';
+import { AppReadyMessageKey, KSuiteBridge, NavigateMessageKey } from '@infomaniak/ksuite-bridge';
 import IkHeader from './Header';
 import Home from './Home';
 import Loader from './Loader';
@@ -31,8 +31,8 @@ class App extends React.PureComponent {
       this.setState({ background });
     });
 
-    this.bridge = new KSuiteBridge(KSUITE_API);
-    this.bridge.sendMessage({ type: 'app-ready' });
+    this.bridge = new KSuiteBridge();
+    this.bridge.sendMessage({ type: AppReadyMessageKey });
   }
 
   render() {
@@ -40,7 +40,7 @@ class App extends React.PureComponent {
     const { background } = this.state;
 
     if (this.bridge) {
-      this.bridge.sendMessage({ type: 'navigate', path: location.pathname });
+      this.bridge.sendMessage({ type: NavigateMessageKey, path: location.pathname });
     }
 
     return (
