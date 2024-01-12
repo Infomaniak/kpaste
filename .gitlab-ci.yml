@@ -71,7 +71,6 @@ build_front:
     - |
       export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
       export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
-      export KSUITE_API=$KSUITE_API_PREPROD
 
       if [ -z "$CI_MERGE_REQUEST_ID" ]
       then
@@ -82,7 +81,6 @@ build_front:
           *)
             export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
             export WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
-            export KSUITE_API=$KSUITE_API_PROD
             echo "BUILDING PROD!"
             ;;
         esac
