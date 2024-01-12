@@ -17,6 +17,7 @@ const config = {
     open: true,
     historyApiFallback: true,
     https: true,
+    watchFiles: ['src/**/*'],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
