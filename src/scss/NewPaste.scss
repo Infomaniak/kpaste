@@ -320,12 +320,6 @@ button.copy-buton {
   }
 }
 
-@media only screen and (max-height: 890px) {
-  #root.expand #paste_container #new_paste_box {
-    height: 90%;
-  }
-}
-
 @media only screen and (max-width: 735px) {
   #welcome-container-newpaste {
     padding: 15px;
