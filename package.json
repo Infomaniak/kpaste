@@ -89,7 +89,7 @@
     "husky": "8.0.3",
     "i18next-parser": "7.9.0",
     "mini-css-extract-plugin": "2.8.0",
-    "sass-loader": "13.2.0",
+    "sass-loader": "13.3.3",
     "start-server-and-test": "1.15.4",
     "style-loader": "3.3.4",
     "terser-webpack-plugin": "5.3.10",
