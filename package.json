@@ -88,7 +88,7 @@
     "http-server": "0.13.0",
     "husky": "8.0.3",
     "i18next-parser": "7.9.0",
-    "mini-css-extract-plugin": "2.7.6",
+    "mini-css-extract-plugin": "2.8.0",
     "sass-loader": "13.2.0",
     "start-server-and-test": "1.15.4",
     "style-loader": "3.3.4",
