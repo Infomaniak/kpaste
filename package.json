@@ -87,7 +87,7 @@
     "html-webpack-plugin": "5.6.0",
     "http-server": "0.13.0",
     "husky": "8.0.3",
-    "i18next-parser": "7.7.0",
+    "i18next-parser": "7.9.0",
     "mini-css-extract-plugin": "2.7.6",
     "sass-loader": "13.2.0",
     "start-server-and-test": "1.15.4",
