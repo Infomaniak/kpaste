@@ -86,7 +86,7 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[name].[contenthash].[ext]',
+            name: '[name].[ext]?_=[contenthash]',
             outputPath: 'images/',
           },
         }],
@@ -99,7 +99,7 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
+      chunkFilename: '[id].css?_=[contenthash]',
     }),
     new HtmlWebPackPlugin({
       template: 'index.html',
@@ -110,7 +110,7 @@ const config = {
     }),
   ],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js?_=[contenthash]',
     path: path.resolve(process.cwd(), 'dist'),
   },
   optimization: {
