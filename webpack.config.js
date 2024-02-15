@@ -98,7 +98,7 @@ const config = {
       WEB_COMPONENT_API_ENDPOINT: JSON.stringify(process.env.WEB_COMPONENT_API_ENDPOINT),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css?_=[contenthash]',
+      filename: '[name].css?_=[contenthash]',
       chunkFilename: '[id].[contenthash].css',
     }),
     new HtmlWebPackPlugin({
