@@ -52,7 +52,7 @@ class App extends React.PureComponent {
           <meta property="og:description" content={t('meta.description')} />
           <meta name="description" content={t('meta.description')} />
         </Helmet>
-        <IkHeader />
+        <IkHeader bridge={this.bridge} />
         <Switch>
           <Route
             path="/new"

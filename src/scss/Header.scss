@@ -97,6 +97,20 @@
     font-weight: 100;
     object-fit: cover;
   }
+
+  &.bridge-header {
+    border-bottom: 1px solid #E0E0E0;
+    .header-icon {
+        min-width: 45px;
+        width: 45px;
+        height: 100%;
+        color: #000;
+
+        &:hover {
+            background-color: unset;
+        }
+    }
+  }
 }
 
 @media only screen and (max-width: 450px) {
