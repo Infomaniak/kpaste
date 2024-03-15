@@ -1,7 +1,11 @@
 /* global WEB_COMPONENT_API_ENDPOINT */
 
+import { CloseSidePanelMessageKey } from '@infomaniak/ksuite-bridge';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import MenuItem from '@material-ui/core/MenuItem';
+import CloseIcon from '@material-ui/icons/Close';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -23,6 +27,8 @@ class IkHeader extends React.PureComponent {
     this.state = {
       session: null,
     };
+
+    this.onCloseSidepanel = this.onCloseSidepanel.bind(this);
   }
 
   /**
@@ -173,12 +179,51 @@ class IkHeader extends React.PureComponent {
   }
 
   /**
+     * Closes sidepanel in ksuite context.
+     *
+     */
+  onCloseSidepanel() {
+    const { bridge } = this.props;
+
+    bridge.sendMessage({ type: CloseSidePanelMessageKey });
+  }
+
+  /**
    * Implements React's {@link Component#render()}.
    *
    * @inheritdoc
    * @returns {ReactElement}
    */
   render() {
+    const { bridge } = this.props;
+    if (window.location.search.includes('ksuite-mode=side') && bridge && bridge.isConnected) {
+      return (
+        <header className="ik-header bridge-header">
+          <div className="flex flex--v-center">
+            <Typography
+              style={{
+                marginLeft: 32,
+                fontSize: 16,
+                color: 'black',
+              }}
+            >
+              <strong>kPaste</strong>
+            </Typography>
+          </div>
+          <div className="flex flex--v-center flex--h-center">
+            <div
+              className="header-icon"
+              onClick={this.onCloseSidepanel}
+            >
+              <SvgIcon style={{ color: '#666' }}>
+                <CloseIcon />
+              </SvgIcon>
+            </div>
+          </div>
+        </header>
+      );
+    }
+
     return (
       <header className="ik-header">
         <div className="flex">
@@ -198,6 +243,7 @@ class IkHeader extends React.PureComponent {
 
 IkHeader.propTypes = {
   t: PropTypes.func.isRequired,
+  bridge: PropTypes.object,
 };
 
 export default withTranslation()(IkHeader);
