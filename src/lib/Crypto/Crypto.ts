@@ -10,7 +10,7 @@ interface ICrypto {
   salt: string;
 }
 
-class Crypto implements ICrypto{
+export class Crypto implements ICrypto{
   key: string;
   vector: string;
   salt: string;
@@ -80,7 +80,7 @@ class Crypto implements ICrypto{
       keyArray = newKeyArray;
     }
 
-    const importedKey = await window.crypto.subtle.importKey(
+    const importedKey = await globalThis.crypto.subtle.importKey(
       'raw',
       keyArray,
       { name: 'PBKDF2' },
@@ -88,7 +88,7 @@ class Crypto implements ICrypto{
       ['deriveKey'],
     );
 
-    return window.crypto.subtle.deriveKey(
+    return globalThis.crypto.subtle.deriveKey(
       {
         name: 'PBKDF2',
         salt: Crypto.stringToArraybuffer(this.salt),
@@ -116,8 +116,8 @@ class Crypto implements ICrypto{
 
   static utf16To8(message: string) {
     return encodeURIComponent(message).replace(
-      /%([0-9A-F]{2})/g,
-      (hexCharacter) => String.fromCharCode(parseInt(hexCharacter, 16)),
+        /%([0-9A-F]{2})/g,
+        (_, hexCharacter) => String.fromCharCode(parseInt(hexCharacter, 16))
     );
   }
 
@@ -131,7 +131,7 @@ class Crypto implements ICrypto{
       Crypto.utf16To8(plaintext),
     );
 
-    const ctBuffer = await window.crypto.subtle.encrypt(
+    const ctBuffer = await globalThis.crypto.subtle.encrypt(
       alg,
       derivedKey,
       pako.deflate(message),
@@ -156,7 +156,7 @@ class Crypto implements ICrypto{
     let i;
     let bytes = '';
     const byteArray = new Uint8Array(length);
-    window.crypto.getRandomValues(byteArray);
+    globalThis.crypto.getRandomValues(byteArray);
     for (i = 0; i < length; i += 1) {
       bytes += String.fromCharCode(byteArray[i]);
     }
@@ -164,7 +164,7 @@ class Crypto implements ICrypto{
   }
 
   static getPasteKey() {
-    let newKey = window.location.hash.substring(1);
+    let newKey = globalThis.location.hash.substring(1);
 
     if (newKey === '') {
       throw new Error('no encryption key given');
@@ -201,7 +201,7 @@ class Crypto implements ICrypto{
       tagLength: Crypto.tagSize(),
     };
 
-    const plainBuffer = await window.crypto.subtle.decrypt(
+    const plainBuffer = await globalThis.crypto.subtle.decrypt(
       alg,
       derivedKey,
       Crypto.stringToArraybuffer(atob(ciphertext)),

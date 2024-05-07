@@ -16,7 +16,6 @@ import Loader from './components/Loader/Loader';
 import NewPaste from './pages/NewPaste/NewPaste';
 import ShowPaste from './pages/ShowPaste/ShowPaste';
 import { Background } from './types/background';
-import { ThemeProvider,  } from '@mui/styles';
 import { createTheme } from '@mui/material';
 
 const theme = createTheme();
@@ -50,7 +49,6 @@ const App: FC = () => {
   }, [bridge, location]);
 
   return (
-    <ThemeProvider theme={theme}>
       <Suspense fallback={<Loader />}>
         <Helmet>
           <title>{t('meta.title')}</title>
@@ -74,7 +72,6 @@ const App: FC = () => {
             <Route path="/" element={<Home background={background} />} />
           </Routes>
       </Suspense>
-    </ThemeProvider>
   );
 };
 

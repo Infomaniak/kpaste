@@ -11,11 +11,11 @@ import { ResponseData } from '../../types/paste';
 import { Background } from '../../types/background';
 
 import HtmlTooltip from '../../components/HtmlTooltip/HtmlTooltip';
-import i18n from '../../lib/i18n';
+import i18n from '../../lib/i18n/i18n';
 import CodeHighlight from '../../components/CodeHighlight/CodeHighlight';
 import pasteExpiration from '../../data/PasteExpiration';
-import Crypto from '../../lib/Crypto';
-import expandTextarea from '../../lib/ExpandPage';
+import Crypto from '../../lib/Crypto/Crypto';
+import expandTextarea from '../../lib/ExpandPage/ExpandPage';
 import Footer from '../../components/Footer/Footer';
 
 type Props = {
@@ -78,6 +78,9 @@ const ShowPaste: FC<Props> =({ background }) => {
   };
 
   const decrypt = async (datas: string, key: string, vector: string, salt: string, password: string) => {
+    console.log('key', key)
+    console.log('vector', vector)
+    console.log('salt', salt)
     const crypt = new Crypto(
       key,
       atob(vector),
@@ -94,6 +97,8 @@ const ShowPaste: FC<Props> =({ background }) => {
       ? response.json()
       : Promise.reject(new Error(response.statusText))));
 
+      console.log('paste', paste)
+
     const state = {
       key,
       vector: paste.data.vector,
@@ -104,7 +109,7 @@ const ShowPaste: FC<Props> =({ background }) => {
     };
 
     let messageDecrypted;
-
+    console.log('key', key)
     if (!paste.data.password) {
       messageDecrypted = await decrypt(
         paste.data.data,
@@ -113,6 +118,7 @@ const ShowPaste: FC<Props> =({ background }) => {
         paste.data.salt,
         password,
       );
+      console.log('messageDecrypted', messageDecrypted)
       setMessage(messageDecrypted);
     } else {
       messageDecrypted = paste.data.data;
@@ -123,7 +129,7 @@ const ShowPaste: FC<Props> =({ background }) => {
 
 
   useEffect(() => {
-    if (location && location.state.newPaste) {
+    if (location && location.state?.newPaste) {
       setNewPaste(true);
       const stateCopy = { ...location.state };
       delete stateCopy.newPaste;
