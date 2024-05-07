@@ -1,14 +1,20 @@
+import pako from 'pako';
+import base from 'base-x';
+
 const BASE58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-const baseX = require('base-x')(BASE58);
-const pako = require('pako');
+const baseX = base(BASE58);
 
-class Crypto {
-  key: String;
+interface ICrypto {
+  key: string;
+  vector: string;
+  salt: string;
+}
 
-  vector: String;
-
-  salt: String;
-
+class Crypto implements ICrypto{
+  key: string;
+  vector: string;
+  salt: string;
+  
   static interation() {
     return 100000;
   }
@@ -21,7 +27,7 @@ class Crypto {
     return 128;
   }
 
-  constructor(key, vector, salt) {
+  constructor(key?: string, vector?: string, salt?: string) {
     if (key) {
       this.key = key;
     } else {
@@ -41,7 +47,7 @@ class Crypto {
     }
   }
 
-  async crypt(text, password) {
+  async crypt(text: string, password:string) {
     const derivedKey = await this.deriveKey(password);
     const message = await this.aesGcmEncrypt(text, derivedKey);
 
@@ -53,18 +59,18 @@ class Crypto {
     };
   }
 
-  async decrypt(text, password) {
+  async decrypt(text: string, password: string) {
     const derivedKey = await this.deriveKey(password);
     return this.aesGcmDecrypt(text, derivedKey);
   }
 
-  static base58encode(input) {
+  static base58encode(input: string) {
     return baseX.encode(
       Crypto.stringToArraybuffer(input),
     );
   }
 
-  async deriveKey(password) {
+  async deriveKey(password: string) {
     let keyArray = Crypto.stringToArraybuffer(this.key);
     if (password.length > 0) {
       const passwordArray = Crypto.stringToArraybuffer(password);
@@ -99,8 +105,8 @@ class Crypto {
     );
   }
 
-  static stringToArraybuffer(message) {
-    let i: number;
+  static stringToArraybuffer(message: string) {
+    let i;
     const messageArray = new Uint8Array(message.length);
     for (i = 0; i < message.length; i += 1) {
       messageArray[i] = message.charCodeAt(i);
@@ -108,14 +114,14 @@ class Crypto {
     return messageArray;
   }
 
-  static utf16To8(message) {
+  static utf16To8(message: string) {
     return encodeURIComponent(message).replace(
       /%([0-9A-F]{2})/g,
-      (match, hexCharacter) => String.fromCharCode(`0x${hexCharacter}`),
+      (hexCharacter) => String.fromCharCode(parseInt(hexCharacter, 16)),
     );
   }
 
-  async aesGcmEncrypt(plaintext, derivedKey) {
+  async aesGcmEncrypt(plaintext: string, derivedKey: CryptoKey) {
     const alg = {
       name: 'AES-GCM',
       iv: Crypto.stringToArraybuffer(this.vector),
@@ -136,8 +142,8 @@ class Crypto {
     );
   }
 
-  static arraybufferToString(messageArray) {
-    let i: number;
+  static arraybufferToString(messageArray: ArrayBuffer) {
+    let i;
     const array = new Uint8Array(messageArray);
     let message = '';
     for (i = 0; i < array.length; i += 1) {
@@ -146,8 +152,8 @@ class Crypto {
     return message;
   }
 
-  static getRandomBytes(length) {
-    let i: number;
+  static getRandomBytes(length: number) {
+    let i;
     let bytes = '';
     const byteArray = new Uint8Array(length);
     window.crypto.getRandomValues(byteArray);
@@ -174,13 +180,13 @@ class Crypto {
     return Crypto.base58decode(newKey).padStart(32, '\u0000');
   }
 
-  static base58decode(input) {
+  static base58decode(input: string) {
     return Crypto.arraybufferToString(
       baseX.decode(input),
     );
   }
 
-  static utf8To16(message) {
+  static utf8To16(message: string) {
     return decodeURIComponent(
       message.split('').map(
         (character) => `%${(`00${character.charCodeAt(0).toString(16)}`).slice(-2)}`,
@@ -188,7 +194,7 @@ class Crypto {
     );
   }
 
-  async aesGcmDecrypt(ciphertext, derivedKey) {
+  async aesGcmDecrypt(ciphertext: string, derivedKey: CryptoKey) {
     const alg = {
       name: 'AES-GCM',
       iv: Crypto.stringToArraybuffer(this.vector),

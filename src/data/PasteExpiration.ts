@@ -1,11 +1,11 @@
-/**
- * t('expiration.5m')
- * t('expiration.10m')
- * t('expiration.1h')
- * t('expiration.1d')
- * t('expiration.1w')
- * t('expiration.1m')
- */
+// /**
+//  * t('expiration.5m')
+//  * t('expiration.10m')
+//  * t('expiration.1h')
+//  * t('expiration.1d')
+//  * t('expiration.1w')
+//  * t('expiration.1m')
+//  */
 const pasteExpiration = [
   {
     label: 'expiration.5m',

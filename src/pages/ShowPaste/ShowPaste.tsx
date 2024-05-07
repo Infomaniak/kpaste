@@ -1,28 +1,47 @@
-import { Paper } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import React from 'react';
-import { withTranslation } from 'react-i18next';
+import React, { useState, useEffect, useCallback, useMemo, FC } from 'react';
 import { Link } from 'react-router-dom';
 import ReactTimeAgo from 'react-time-ago';
+import { Paper } from '@mui/material';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import TextField from '@mui/material/TextField';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { ResponseData } from '../../types/paste';
+import { Background } from '../../types/background';
 
-import TextField from '@material-ui/core/TextField';
-import PropTypes from 'prop-types';
-import CodeHighlight from '../lib/CodeHighlight';
-import Crypto from '../lib/Crypto';
-import expandTextarea from '../lib/ExpandPage';
-import i18n from '../lib/i18n';
-import pasteExpiration from '../lib/PasteExpiration';
-import HtmlTooltip from '../lib/Tooltip';
-import Footer from './Footer';
+import HtmlTooltip from '../../components/HtmlTooltip/HtmlTooltip';
+import i18n from '../../lib/i18n';
+import CodeHighlight from '../../components/CodeHighlight/CodeHighlight';
+import pasteExpiration from '../../data/PasteExpiration';
+import Crypto from '../../lib/Crypto';
+import expandTextarea from '../../lib/ExpandPage';
+import Footer from '../../components/Footer/Footer';
 
-/* global WEB_COMPONENT_API_ENDPOINT */
+type Props = {
+  background: Background;
+};
 
-// eslint-disable-next-line react/prop-types
+const initialState = {
+  burn: false,
+  expiratedAt: new Date(),
+  destroy: false,
+  message: '',
+  vector: '',
+  password: false,
+  key: '',
+  salt:'',
+};
+
+type TooltipContainerProps = {
+  verboseDate: string;
+  children: React.ReactElement;
+};
+
 function TooltipContainer({
   verboseDate,
   children,
-}) {
+}: TooltipContainerProps) {
   return (
     <HtmlTooltip placement="top" title={verboseDate}>
       {children}
@@ -30,104 +49,46 @@ function TooltipContainer({
   );
 }
 
-/**
- * @extends Component
- */
-class ShowPaste extends React.PureComponent {
-  static displayRaw() {
-    document.getElementsByTagName('html')[0].innerHTML = document.getElementsByClassName('pasteMessage')[0].textContent;
-  }
+const ShowPaste: FC<Props> =({ background }) => {
+  const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {t} = useTranslation()
+  
+  const [response, setResponse] = useState<ResponseData>(initialState);
+  const {burn, expiratedAt, key, destroy, vector, password, salt } = response;
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
+  const [newPaste, setNewPaste] = useState(false);
+  const [openTooltip, setOpenTooltip] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [period, setPeriod] = useState('');
+  const [highlight, setHighlight] = useState(false);
+  const periodLabel = useMemo(() => {
+    const periodObject = pasteExpiration.find((p: { value: string }) => p.value === period);
+    return periodObject ? t(periodObject.label) : '';
+  }, [period, t]);
 
-  static copyText() {
-    navigator.clipboard.writeText(document.getElementsByTagName('code')[0].textContent);
-  }
+  const copyText = () => {
+    const codeElement = document.getElementsByTagName('code')[0];
+    if (codeElement) {
+      navigator.clipboard.writeText(codeElement.textContent ?? '');
+    }
+  };
 
-  static async decrypt(datas, key, vector, salt, password) {
+  const decrypt = async (datas: string, key: string, vector: string, salt: string, password: string) => {
     const crypt = new Crypto(
       key,
       atob(vector),
       atob(salt),
     );
-
     const decrypted = await crypt.decrypt(datas, password);
-
     return decrypted;
-  }
+  };
 
-  onChangePassword: (Object) => void;
-
-  onKeyDown: (Object) => void;
-
-  /**
-   * @inheritdoc
-   */
-  constructor(props) {
-    super(props);
-
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-
-    this.state = {
-      message: '',
-      burn: false,
-      expiratedAt: false,
-      error: false,
-      newPaste: false,
-      openTooltip: false,
-      highlightCode: false,
-      invalidPassword: false,
-      passwordInput: '',
-      password: false,
-    };
-  }
-
-  componentDidMount() {
-    const {
-      location,
-      match,
-    } = this.props;
-    const { state } = location;
-    const { params } = match;
-
-    if (state && state.newPaste) {
-      this.setState({
-        newPaste: true,
-      });
-
-      const stateCopy = { ...state };
-      delete stateCopy.newPaste;
-      // eslint-disable-next-line react/destructuring-assignment
-      this.props.history.replace({ state: stateCopy });
-    } else {
-      try {
-        const pasteId = params.id;
-        const key = Crypto.getPasteKey();
-        const password = '';
-        ShowPaste.getPaste(pasteId, key, password).then((datas) => {
-          this.setState(datas);
-
-          if (datas.expiratedAt) {
-            setInterval(() => {
-              if (new Date(datas.expiratedAt) <= new Date()) {
-                window.location.reload();
-              }
-            }, 1000);
-          }
-        }).catch(() => {
-          this.setState({
-            error: true,
-          });
-        });
-      } catch (e) {
-        this.setState({
-          error: true,
-        });
-      }
-    }
-  }
-
-  static async getPaste(pasteId, key, password) {
-    const paste = await fetch(`${WEB_COMPONENT_API_ENDPOINT}/api/components/paste/${pasteId}`, {
+  const getPaste = useCallback(async ({ pasteId, key, password }) => {
+    const paste = await fetch(`${window.WEB_COMPONENT_API_ENDPOINT}/api/components/paste/${pasteId}`, {
       method: 'GET',
     }).then((response) => (response.ok
       ? response.json()
@@ -138,111 +99,114 @@ class ShowPaste extends React.PureComponent {
       vector: paste.data.vector,
       salt: paste.data.salt,
       burn: paste.data.burn,
-      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at * 1000) : false,
+      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at * 1000) : new Date(), 
       password: paste.data.password,
     };
 
+    let messageDecrypted;
+
     if (!paste.data.password) {
-      state.message = await ShowPaste.decrypt(
+      messageDecrypted = await decrypt(
         paste.data.data,
         key,
         paste.data.vector,
         paste.data.salt,
         password,
       );
+      setMessage(messageDecrypted);
     } else {
-      state.message = paste.data.data;
+      messageDecrypted = paste.data.data;
+      setMessage(messageDecrypted);
     }
-
     return state;
-  }
+  }, []);
 
-  handleTooltipClose() {
-    this.setState({ openTooltip: false });
-  }
 
-  async onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.submitPassword();
-    }
-  }
+  useEffect(() => {
+    if (location && location.state.newPaste) {
+      setNewPaste(true);
+      const stateCopy = { ...location.state };
+      delete stateCopy.newPaste;
+      navigate(location, { replace: true, state: stateCopy });
+    } else {
+      try {
+        const key = Crypto.getPasteKey();
+        const passwordT = '';
+        getPaste({ pasteId: id, key, password:passwordT }).then((data) => {
+          setResponse((s) => ({ ...s, ...data }));
+          if (data.expiratedAt) {
+            setInterval(() => {
+              if (new Date(data.expiratedAt) <= new Date()) {
+                window.location.reload();
+              }
+            }, 1000);
+          }
+        }).catch(() => {
+          setError(true);
 
-  /**
-   *
-   * @param {object} event - Keyboard event.
-   * @private
-   * @returns {void}
-   */
-  onChangePassword(event) {
-    this.setState({ passwordInput: event.target.value });
-  }
+        });
+      
+      } catch (e) {
+        setError(true);
+      }
+    } 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  copyLink() {
-    this.setState({ openTooltip: true });
-    navigator.clipboard.writeText(window.location.href);
-  }
+  const handleTooltipClose = () => {
+    setOpenTooltip(false);
+  };
 
-  async submitPassword() {
-    const {
-      key,
-      message,
-      vector,
-      salt,
-      passwordInput,
-    } = this.state;
-
+  const submitPassword = async () => {
     try {
-      const decrypted = await ShowPaste.decrypt(
+      const decrypted = await decrypt(
         message,
         key,
         vector,
         salt,
         passwordInput,
       );
-
-      this.setState({
-        message: decrypted,
-        password: false,
-      });
+      setMessage(decrypted);
+      setResponse((s) => ({ ...s, password: false }));
+      
     } catch (_) {
-      this.setState({
-        invalidPassword: true,
-        password: true,
-      });
+      setInvalidPassword(true);
+      setResponse((s) => ({ ...s, password: true }));
     }
-  }
+  };
 
-  showNew() {
-    let i: number;
-    const {
-      t,
-      location,
-    } = this.props;
-    const {
-      error,
-      newPaste,
-      openTooltip,
-    } = this.state;
-    const { state } = location;
+  const onKeyDown = async (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      submitPassword();
+    }
+  };
+
+  const onChangePassword = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setPasswordInput(event.target.value);
+  };
+
+  const copyLink = () => {
+    setOpenTooltip(true);
+    navigator.clipboard.writeText(window.location.href);
+  };
+
+  useEffect(() => {
+    if (location?.state?.period) {
+      setPeriod(location.state.period)
+    }
+  }, [location.state]);
+
+
+  const showNew = () => {
 
     if (error || !newPaste) {
       return false;
     }
 
-    let { period } = state;
-
-    if (period) {
-      for (i = 0; i <= pasteExpiration.length; i += 1) {
-        if (pasteExpiration[i].value === state.period) {
-          period = t(pasteExpiration[i].label);
-          break;
-        }
-      }
-    }
-
     return (
+      console.log('period', period),
       <>
         <h1 id="new_paste_title">{t('show_paste.new.title')}</h1>
 
@@ -255,56 +219,55 @@ class ShowPaste extends React.PureComponent {
             <div className="desc pasteContent">
               <pre className="font-medium">{window.location.href}</pre>
             </div>
-
-            {document.queryCommandSupported('copy')
-              && (
+            {navigator.clipboard
+                && (
                 <ClickAwayListener onClickAway={async () => {
-                  await this.handleTooltipClose();
+                    handleTooltipClose();
                 }}
                 >
-                  <HtmlTooltip
+                    <HtmlTooltip
                     placement="top"
                     open={openTooltip}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
                     title={t('show_paste.title.copy_link')}
-                  >
-                    <Button
-                      className="copy-buton"
-                      onClick={async () => {
-                        await this.copyLink();
-                      }}
                     >
-                      <span
+                    <Button
+                        className="copy-buton"
+                        onClick={async () => {
+                        copyLink();
+                        }}
+                    >
+                        <span
                         className="icon icon-common-file-double-2"
-                      />
+                        />
                     </Button>
-                  </HtmlTooltip>
+                    </HtmlTooltip>
                 </ClickAwayListener>
-              )}
+                )}
           </div>
           <div className="destroy-section paste_url_option">
-            {state.destroy
-              && (
-                <span className="burn_info">
-                  <span className="icon icon-lock-unlock" />
-                  &nbsp;
-                  {t('show_paste.label.burn')}
-                </span>
-              )}
-            {state.period
-              && (
-                <span className="expired_at">
-                  <span
-                    className="icon icon-time-clock-circle-alternate"
-                  />
-                  &nbsp;
-                  {t('show_paste.label.validity')}
-                  &nbsp;
-                  {period}
-                </span>
-              )}
+            {destroy
+                && (
+                  <span className="burn_info">
+                    <span className="icon icon-lock-unlock" />
+                    &nbsp;
+                    {t('show_paste.label.burn')}
+                  </span>
+                )}
+            {periodLabel
+                && (
+                  <span className="expired_at">
+                    <span
+                      className="icon icon-time-clock-circle-alternate"
+                    />
+                    &nbsp;
+                    {t('show_paste.label.validity')}
+                    &nbsp;
+                    {periodLabel}
+                  </span>
+                )}
           </div>
         </Paper>
         <div className="button-section font-medium">
@@ -314,12 +277,9 @@ class ShowPaste extends React.PureComponent {
         </div>
       </>
     );
-  }
+  };
 
-  showError() {
-    const { t } = this.props;
-    const { error } = this.state;
-
+  const showError = () => {
     if (!error) {
       return false;
     }
@@ -346,20 +306,13 @@ class ShowPaste extends React.PureComponent {
         </div>
       </>
     );
-  }
+  };
 
-  highlightCode() {
-    const { highlightCode } = this.state;
-    this.setState({ highlightCode: !highlightCode });
-  }
+  const highlightCode = () => {
+     setHighlight(!highlight);
+  };
 
-  showPassword() {
-    const { t } = this.props;
-    const {
-      password,
-      invalidPassword,
-    } = this.state;
-
+  const showPassword = () => {
     if (!password) {
       return false;
     }
@@ -384,8 +337,8 @@ class ShowPaste extends React.PureComponent {
             autoFocus
             id="standard-password-input"
             type="password"
-            onChange={this.onChangePassword}
-            onKeyDown={this.onKeyDown}
+            onChange={onChangePassword}
+            onKeyDown={onKeyDown}
           />
           {invalidPassword && (
             <div className="password-info-section font-medium">
@@ -401,7 +354,7 @@ class ShowPaste extends React.PureComponent {
             disableElevation
             variant="contained"
             onClick={async () => {
-              await this.submitPassword();
+              await submitPassword();
             }}
           >
             {t('show_paste.button.password')}
@@ -409,20 +362,9 @@ class ShowPaste extends React.PureComponent {
         </div>
       </>
     );
-  }
+  };
 
-  showMessage() {
-    const { t } = this.props;
-    const {
-      error,
-      newPaste,
-      expiratedAt,
-      burn,
-      message,
-      highlightCode,
-      password,
-    } = this.state;
-
+  const showMessage = () => {
     if (error || newPaste || password) {
       return false;
     }
@@ -440,7 +382,7 @@ class ShowPaste extends React.PureComponent {
               <ReactTimeAgo
                 timeStyle="time"
                 date={expiratedAt}
-                locale={i18n.language.substr(0, 2)}
+                locale={i18n.language.substring(0, 2)}
                 container={TooltipContainer}
                 tooltip={false}
               />
@@ -467,7 +409,7 @@ class ShowPaste extends React.PureComponent {
                 <Button
                   className="expand_button"
                   onClick={async () => {
-                    await ShowPaste.copyText();
+                    copyText();
                   }}
                 >
                   <span
@@ -495,7 +437,7 @@ class ShowPaste extends React.PureComponent {
                 </Button>
               </HtmlTooltip>
 
-              {!highlightCode
+              {!highlight
                 && (
                   <HtmlTooltip
                     placement="top"
@@ -507,9 +449,7 @@ class ShowPaste extends React.PureComponent {
                   >
                     <Button
                       className="expand_button"
-                      onClick={async () => {
-                        await this.highlightCode();
-                      }}
+                      onClick={highlightCode}
                     >
                       <span
                         className="icon icon-type-code"
@@ -535,7 +475,7 @@ class ShowPaste extends React.PureComponent {
             )}
 
           <div className="pasteContent pasteMessage">
-            <CodeHighlight code={highlightCode}>
+            <CodeHighlight code={highlight}>
               {message}
             </CodeHighlight>
           </div>
@@ -566,50 +506,32 @@ class ShowPaste extends React.PureComponent {
         </div>
       </>
     );
-  }
+  };
 
-  /**
-   * @inheritdoc
-   * @returns {ReactElement}
-   */
-  render() {
-    const { background } = this.props;
 
-    return (
+  return (
+    <div
+      id="welcome-showpaste"
+      className="welcome"
+      style={{
+        backgroundImage: `url(${background.image})`,
+      }}
+    >
       <div
-        id="welcome-showpaste"
-        className="welcome"
-        style={{
-          backgroundImage: `url(${background.image})`,
-        }}
+        id="welcome-container-showpaste"
+        className="welcome-container"
       >
-        <div
-          id="welcome-container-showpaste"
-          className="welcome-container"
-        >
-          <div id="paste_container">
-            {this.showNew()}
-            {this.showError()}
-            {this.showMessage()}
-            {this.showPassword()}
-          </div>
+        <div id="paste_container">
+          {showNew()}
+          {showError()}
+          {showMessage()}
+          {showPassword()}
         </div>
-        <Footer background={background} />
       </div>
-    );
-  }
+      <Footer background={background} />
+    </div>
+
+  );
 }
 
-ShowPaste.propTypes = {
-  t: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  match: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  location: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  history: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  background: PropTypes.object.isRequired,
-};
-
-export default withTranslation()(ShowPaste);
+export default ShowPaste;

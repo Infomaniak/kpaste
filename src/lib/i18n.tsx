@@ -37,7 +37,7 @@ i18n
       escapeValue: false,
     },
   }, () => {
-    window.CONST_LANG = i18n.language.substr(0, 2);
+    window.CONST_LANG = i18n.language.substring(0, 2);
   });
 
 export default i18n;
