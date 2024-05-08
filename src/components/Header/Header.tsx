@@ -12,16 +12,16 @@ import StyledSelect from '../StyledSelect/StyledSelect';
 import { InputBase, SelectChangeEvent } from '@mui/material';
 import { Session } from '../../types/user';
 
-type Props =  {
+type Props = {
   bridge: KSuiteBridge;
 };
 
 const IkHeader: FC<Props> = ({ bridge }) => {
   const [session, setSession] = useState<Session>();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
-    fetch(`${window.WEB_COMPONENT_API_ENDPOINT}/api/components/profile/me?with=current_group,user,groups,products`, {
+    fetch(`${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/api/components/profile/me?with=current_group,user,groups,products`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -46,7 +46,7 @@ const IkHeader: FC<Props> = ({ bridge }) => {
   };
 
   const onLogin = () => {
-    window.location.href = `${window.WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
+    window.location.href = `${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
   };
 
   const onCloseSidepanel = () => {
@@ -71,7 +71,7 @@ const IkHeader: FC<Props> = ({ bridge }) => {
         <div className="select-wrapper" id="menu-lang-selector">
           <StyledSelect
             defaultValue={i18n.language.substring(0, 2)}
-            input={<InputBase/>}
+            input={<InputBase />}
             onChange={onHandleMenuItemClick}
             variant="outlined"
           >

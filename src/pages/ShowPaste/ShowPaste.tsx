@@ -30,7 +30,7 @@ const initialState = {
   vector: '',
   password: false,
   key: '',
-  salt:'',
+  salt: '',
 };
 
 type TooltipContainerProps = {
@@ -49,14 +49,14 @@ function TooltipContainer({
   );
 }
 
-const ShowPaste: FC<Props> =({ background }) => {
+const ShowPaste: FC<Props> = ({ background }) => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const {t} = useTranslation()
-  
+  const { t } = useTranslation()
+
   const [response, setResponse] = useState<ResponseData>(initialState);
-  const {burn, expiratedAt, key, destroy, vector, password, salt } = response;
+  const { burn, expiratedAt, key, destroy, vector, password, salt } = response;
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
   const [newPaste, setNewPaste] = useState(false);
@@ -91,7 +91,7 @@ const ShowPaste: FC<Props> =({ background }) => {
   };
 
   const getPaste = useCallback(async ({ pasteId, key, password }) => {
-    const paste = await fetch(`${window.WEB_COMPONENT_API_ENDPOINT}/api/components/paste/${pasteId}`, {
+    const paste = await fetch(`${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/api/components/paste/${pasteId}`, {
       method: 'GET',
     }).then((response) => (response.ok
       ? response.json()
@@ -104,7 +104,7 @@ const ShowPaste: FC<Props> =({ background }) => {
       vector: paste.data.vector,
       salt: paste.data.salt,
       burn: paste.data.burn,
-      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at * 1000) : new Date(), 
+      expiratedAt: paste.data.expirated_at ? new Date(paste.data.expirated_at * 1000) : new Date(),
       password: paste.data.password,
     };
 
@@ -138,7 +138,7 @@ const ShowPaste: FC<Props> =({ background }) => {
       try {
         const key = Crypto.getPasteKey();
         const passwordT = '';
-        getPaste({ pasteId: id, key, password:passwordT }).then((data) => {
+        getPaste({ pasteId: id, key, password: passwordT }).then((data) => {
           setResponse((s) => ({ ...s, ...data }));
           if (data.expiratedAt) {
             setInterval(() => {
@@ -151,12 +151,12 @@ const ShowPaste: FC<Props> =({ background }) => {
           setError(true);
 
         });
-      
+
       } catch (e) {
         setError(true);
       }
-    } 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTooltipClose = () => {
@@ -174,7 +174,7 @@ const ShowPaste: FC<Props> =({ background }) => {
       );
       setMessage(decrypted);
       setResponse((s) => ({ ...s, password: false }));
-      
+
     } catch (_) {
       setInvalidPassword(true);
       setResponse((s) => ({ ...s, password: true }));
@@ -226,54 +226,54 @@ const ShowPaste: FC<Props> =({ background }) => {
               <pre className="font-medium">{window.location.href}</pre>
             </div>
             {navigator.clipboard
-                && (
+              && (
                 <ClickAwayListener onClickAway={async () => {
-                    handleTooltipClose();
+                  handleTooltipClose();
                 }}
                 >
-                    <HtmlTooltip
+                  <HtmlTooltip
                     placement="top"
                     open={openTooltip}
                     disableFocusListener
                     disableHoverListener
                     disableTouchListener
                     title={t('show_paste.title.copy_link')}
-                    >
+                  >
                     <Button
-                        className="copy-buton"
-                        onClick={async () => {
+                      className="copy-buton"
+                      onClick={async () => {
                         copyLink();
-                        }}
+                      }}
                     >
-                        <span
+                      <span
                         className="icon icon-common-file-double-2"
-                        />
+                      />
                     </Button>
-                    </HtmlTooltip>
+                  </HtmlTooltip>
                 </ClickAwayListener>
-                )}
+              )}
           </div>
           <div className="destroy-section paste_url_option">
             {destroy
-                && (
-                  <span className="burn_info">
-                    <span className="icon icon-lock-unlock" />
-                    &nbsp;
-                    {t('show_paste.label.burn')}
-                  </span>
-                )}
+              && (
+                <span className="burn_info">
+                  <span className="icon icon-lock-unlock" />
+                  &nbsp;
+                  {t('show_paste.label.burn')}
+                </span>
+              )}
             {periodLabel
-                && (
-                  <span className="expired_at">
-                    <span
-                      className="icon icon-time-clock-circle-alternate"
-                    />
-                    &nbsp;
-                    {t('show_paste.label.validity')}
-                    &nbsp;
-                    {periodLabel}
-                  </span>
-                )}
+              && (
+                <span className="expired_at">
+                  <span
+                    className="icon icon-time-clock-circle-alternate"
+                  />
+                  &nbsp;
+                  {t('show_paste.label.validity')}
+                  &nbsp;
+                  {periodLabel}
+                </span>
+              )}
           </div>
         </Paper>
         <div className="button-section font-medium">
@@ -315,7 +315,7 @@ const ShowPaste: FC<Props> =({ background }) => {
   };
 
   const highlightCode = () => {
-     setHighlight(!highlight);
+    setHighlight(!highlight);
   };
 
   const showPassword = () => {
@@ -374,6 +374,8 @@ const ShowPaste: FC<Props> =({ background }) => {
     if (error || newPaste || password) {
       return false;
     }
+    console.log('highlight', highlight);
+
 
     return (
       <>
@@ -479,7 +481,6 @@ const ShowPaste: FC<Props> =({ background }) => {
                 {t('show_paste.label.destroy')}
               </p>
             )}
-
           <div className="pasteContent pasteMessage">
             <CodeHighlight code={highlight}>
               {message}
@@ -488,7 +489,7 @@ const ShowPaste: FC<Props> =({ background }) => {
 
           <span className="show_paste_post_message">
             {t('show_paste.label.post_message')}
-            { ' ' }
+            {' '}
             <a
               href="https://www.infomaniak.com"
               rel="noopener noreferrer"
@@ -496,7 +497,7 @@ const ShowPaste: FC<Props> =({ background }) => {
             >
               Infomaniak
             </a>
-            { ', ' }
+            {', '}
             {t('show_paste.label.post_message_after')}
           </span>
         </Paper>
