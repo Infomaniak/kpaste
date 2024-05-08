@@ -8,8 +8,8 @@ type Props = {
   background: Background;
 };
 
-const Footer: FC<Props> = ({ background }) =>{
-  const {t} = useTranslation();
+const Footer: FC<Props> = ({ background }) => {
+  const { t } = useTranslation();
 
   return (
     <div className="footer">
@@ -21,7 +21,6 @@ const Footer: FC<Props> = ({ background }) =>{
               rel="noopener noreferrer"
               target="_blank"
             >
-            
             </Link>
             <a
               href={background.link}

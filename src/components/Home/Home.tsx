@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Home: FC<Props> = ({ background }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -46,7 +46,7 @@ const Home: FC<Props> = ({ background }) => {
                 <p className="header-text-sub">
                   <span className="icon icon-lock-2" />
                   {t('home.text')}
-                    &nbsp;
+                  &nbsp;
                   <a
                     href="https://faq.infomaniak.com/2459"
                     rel="noopener noreferrer"

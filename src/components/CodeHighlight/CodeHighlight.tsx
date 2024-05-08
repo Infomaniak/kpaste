@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import hljs from 'highlight.js/lib/common';
 import 'highlight.js/styles/github.css';
 
@@ -21,7 +21,7 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({ children, code }) => {
     }
   }, [code, loaded]);
 
-  if (!loaded) return null; 
+  if (!loaded) return null;
 
   return (
     <pre>

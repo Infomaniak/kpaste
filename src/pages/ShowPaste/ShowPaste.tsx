@@ -90,7 +90,7 @@ const ShowPaste: FC<Props> = ({ background }) => {
     return decrypted;
   };
 
-  const getPaste = useCallback(async ({ pasteId, key, password }) => {
+  const getPaste = useCallback(async ({ pasteId, key, password }: { pasteId: string | undefined, key: string, password: string }) => {
     const paste = await fetch(`${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/api/components/paste/${pasteId}`, {
       method: 'GET',
     }).then((response) => (response.ok
@@ -388,6 +388,7 @@ const ShowPaste: FC<Props> = ({ background }) => {
               {t('show_paste.subtitle.destroy')}
               &nbsp;
               <ReactTimeAgo
+                className="override-time"
                 timeStyle="time"
                 date={expiratedAt}
                 locale={i18n.language.substring(0, 2)}

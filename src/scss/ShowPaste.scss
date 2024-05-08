@@ -104,3 +104,13 @@ h2 {
     padding: 10px 0 0 0;
   }
 }
+
+.override-time {
+  background-color: unset !important;
+  color: unset !important;
+  max-width: unset !important;
+  font-size: unset !important;
+  border: unset !important;
+  border-radius: unset !important;
+  padding: unset !important;
+}

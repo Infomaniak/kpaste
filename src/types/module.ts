@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export {};
+export { };
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-namespace

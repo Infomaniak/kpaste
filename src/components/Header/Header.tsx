@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import CloseIcon from '@mui/icons-material/Close';
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import iconMenu from '../../images/menu.svg';
+import iconMenu from '../../images/menu.svg'
 import i18n from '../../lib/i18n/i18n';
 import StyledSelect from '../StyledSelect/StyledSelect';
 import { InputBase, SelectChangeEvent } from '@mui/material';
