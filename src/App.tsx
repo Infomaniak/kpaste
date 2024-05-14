@@ -29,7 +29,6 @@ const App: FC = () => {
       ? response.json()
       : Promise.reject(new Error(response.statusText))))
       .then((data) => {
-        console.log(data);
         return data.data;
       });
   }

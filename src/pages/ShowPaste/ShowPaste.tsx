@@ -78,9 +78,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
   };
 
   const decrypt = async (datas: string, key: string, vector: string, salt: string, password: string) => {
-    console.log('key', key)
-    console.log('vector', vector)
-    console.log('salt', salt)
     const crypt = new Crypto(
       key,
       atob(vector),
@@ -97,8 +94,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
       ? response.json()
       : Promise.reject(new Error(response.statusText))));
 
-      console.log('paste', paste)
-
     const state = {
       key,
       vector: paste.data.vector,
@@ -109,7 +104,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
     };
 
     let messageDecrypted;
-    console.log('key', key)
     if (!paste.data.password) {
       messageDecrypted = await decrypt(
         paste.data.data,
@@ -118,7 +112,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
         paste.data.salt,
         password,
       );
-      console.log('messageDecrypted', messageDecrypted)
       setMessage(messageDecrypted);
     } else {
       messageDecrypted = paste.data.data;
@@ -212,7 +205,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
     }
 
     return (
-      console.log('period', period),
       <>
         <h1 id="new_paste_title">{t('show_paste.new.title')}</h1>
 
@@ -374,9 +366,6 @@ const ShowPaste: FC<Props> = ({ background }) => {
     if (error || newPaste || password) {
       return false;
     }
-    console.log('highlight', highlight);
-
-
     return (
       <>
         <h1>
@@ -392,7 +381,7 @@ const ShowPaste: FC<Props> = ({ background }) => {
                 timeStyle="time"
                 date={expiratedAt}
                 locale={i18n.language.substring(0, 2)}
-                container={TooltipContainer}
+                wrapperComponent={TooltipContainer}
                 tooltip={false}
               />
             </p>
