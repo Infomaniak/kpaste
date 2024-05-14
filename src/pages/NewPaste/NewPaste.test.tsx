@@ -18,6 +18,6 @@ describe('New paste', () => {
         fireEvent.change(screen.getByTestId('new_paste_textarea'), { target: { value: 'Test message' } });
         expect(screen.getByText('paste.button.go')).toBeEnabled();
         await user.click(screen.getByText('paste.button.go'))
-        expect(screen.getByText('paste.buton.go')).toBeInTheDocument();
+        expect(screen.getByText('paste.button.go')).toBeInTheDocument();
     });
 });
