@@ -104,12 +104,13 @@ build_front:
 cypress_chrome:
   stage: cypress
   extends: .base-dind
-  image: cypress/browsers:node12.14.1-chrome83-ff77
+  image: cypress/browsers:node-20.13.0-chrome-124.0.6367.155-1-ff-125.0.3-edge-124.0.2478.80-1
   rules:
     - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /-rc/'
       when: on_success
     - when: never
   before_script:
+    - printenv
     - npm i --cache .npm --prefer-offline
   script:
     - npm run test-chrome
