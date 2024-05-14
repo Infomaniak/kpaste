@@ -89,5 +89,10 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)"
+    ]
   }
 }
