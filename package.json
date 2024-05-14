@@ -37,8 +37,8 @@
     "cy:open": "cypress open",
     "test": "vitest",
     "test-edge": "start-server-and-test server-edge 3000 browserstack-run",
-    "test-firefox": "CYPRESS_BASE_URL=http://localhost:3001 start-server-and-test server-firefox 3001 cy:run-firefox",
-    "test-chrome": "CYPRESS_BASE_URL=http://localhost:3002 start-server-and-test server-chrome 3002 cy:run-chrome",
+    "test-firefox": "CYPRESS_BASE_URL=http://localhost:5173 start-server-and-test server-firefox 3001 cy:run-firefox",
+    "test-chrome": "CYPRESS_BASE_URL=http://localhost:5173 start-server-and-test server-chrome 3002 cy:run-chrome",
     "translations": "node node_modules/i18next-parser/bin/cli.js 'src/**/*.{js,jsx}'",
     "browserstack-run": "browserstack-cypress run",
     "browserstack-info": "browserstack-cypress build-info"
@@ -80,6 +80,7 @@
     "husky": "^9.0.0",
     "i18next-parser": "^8.0.0",
     "sass": "^1.75.0",
+    "start-server-and-test": "^2.0.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vitest": "^1.6.0"
