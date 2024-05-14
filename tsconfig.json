@@ -10,7 +10,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": [
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
     ],
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -31,6 +31,9 @@
   "references": [
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.cypress.json"
     }
   ]
 }

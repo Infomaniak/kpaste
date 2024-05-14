@@ -1,5 +1,3 @@
-/* global cy */
-
 describe('menu', () => {
   // eslint-disable-next-line no-undef
   before(() => {

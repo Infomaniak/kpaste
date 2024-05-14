@@ -6,8 +6,12 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "types": [
+      "cypress",
+      "node"
+    ]
   },
   "include": [
-    "vite.config.ts"
+    "cypress"
   ]
 }

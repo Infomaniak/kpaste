@@ -1,6 +1,3 @@
-/* global cy */
-/* global Cypress */
-
 describe('homepage', () => {
   // eslint-disable-next-line no-undef
   before(() => {

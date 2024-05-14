@@ -1,6 +1,3 @@
-/* global cy */
-let pastUrl;
-
 describe('new paste', () => {
   // eslint-disable-next-line no-undef
   before(() => {
@@ -17,15 +14,12 @@ describe('new paste', () => {
       cy.get('#new_paste_submit_button').click();
       cy.url().should('match', /\/[a-zA-Z0-9_-]{32}#.*$/);
       cy.get('#new_paste_title').should('exist');
-      cy.url().then((url) => {
-        pastUrl = url;
-      });
     });
   });
 
   it('paste exists', () => {
     cy.fixture('new_paste.json').then((paste) => {
-      cy.visit(pastUrl);
+      cy.reload();
       cy.get('.pasteContent.pasteMessage > pre').contains(paste.text);
     });
   });
