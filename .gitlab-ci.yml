@@ -73,8 +73,6 @@ build_front:
   extends: .base-dind
   image: node:22
   stage: build_front
-  before_script:
-    - npm i --cache .npm --prefer-offline --no-audit
   rules:
     - if: $DEPLOY_VARIABLE == "production"
       when: on_success
@@ -85,6 +83,7 @@ build_front:
     name: $DEPLOY_VARIABLE
   before_script:
     - export ENVIRONMENT=${DEPLOY_VARIABLE}
+    - npm i --cache .npm --prefer-offline --no-audit
   script:
     - |
       export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
