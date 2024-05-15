@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import hljs from 'highlight.js/lib/common';
 import 'highlight.js/styles/github.css';
-
 interface CodeHighlightProps {
   children: React.ReactNode;
   code: boolean;
