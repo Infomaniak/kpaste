@@ -6,7 +6,15 @@ services:
 
 workflow:
   rules:
-    - when: always
+  - if: "$CI_COMMIT_TAG =~ /\\-rc.*/"
+      variables:
+        DEPLOY_VARIABLE: alpha
+        NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
+    - if: "$CI_COMMIT_TAG"
+      variables:
+        DEPLOY_VARIABLE: production
+        NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
+    - when: never
 
 include:
   - project: 'docker-public/renovate'
@@ -67,6 +75,16 @@ build_front:
   stage: build_front
   before_script:
     - npm i --cache .npm --prefer-offline --no-audit
+  rules:
+    - if: $DEPLOY_VARIABLE == "production"
+      when: on_success
+      allow_failure: false
+    - if: $DEPLOY_VARIABLE == "alpha"
+    - when: on_success
+  environment:
+    name: $DEPLOY_VARIABLE
+  before_script:
+    - export ENVIRONMENT=${DEPLOY_VARIABLE}
   script:
     - |
       export WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
