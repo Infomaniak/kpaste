@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import { createRoot } from 'react-dom/client';
+
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import JavascriptTimeAgo from 'javascript-time-ago';
@@ -16,11 +17,12 @@ JavascriptTimeAgo.addLocale(de);
 JavascriptTimeAgo.addLocale(it);
 JavascriptTimeAgo.addLocale(es);
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(
   <React.StrictMode>
     <Router>
-      <App/>
+      <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root'),
+  </React.StrictMode>
 );

@@ -1,7 +1,7 @@
 
 import './scss/App.scss';
 import { Suspense, useState, useEffect, FC } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import {
   Routes,
@@ -47,29 +47,31 @@ const App: FC = () => {
   }, [bridge, location]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Helmet>
-        <title>{t('meta.title')}</title>
-        <meta property="og:title" content={t('meta.title') as string} />
-        <meta property="og:image:alt" content={t('meta.title') as string} />
-        <meta property="og:description" content={t('meta.description') as string} />
-        <meta name="description" content={t('meta.description') as string} />
-      </Helmet>
-      <IkHeader bridge={bridge} />
-      <Routes>
-        <Route path="/new" element={
-          <NewPaste
-            background={background}
-          />
-        } />
-        <Route path="/:id" element={
-          <ShowPaste
-            background={background}
-          />
-        } />
-        <Route path="/" element={<Home background={background} />} />
-      </Routes>
-    </Suspense>
+    <HelmetProvider>
+      <Suspense fallback={<Loader />}>
+        <Helmet>
+          <title>{t('meta.title')}</title>
+          <meta property="og:title" content={t('meta.title') as string} />
+          <meta property="og:image:alt" content={t('meta.title') as string} />
+          <meta property="og:description" content={t('meta.description') as string} />
+          <meta name="description" content={t('meta.description') as string} />
+        </Helmet>
+        <IkHeader bridge={bridge} />
+        <Routes>
+          <Route path="/new" element={
+            <NewPaste
+              background={background}
+            />
+          } />
+          <Route path="/:id" element={
+            <ShowPaste
+              background={background}
+            />
+          } />
+          <Route path="/" element={<Home background={background} />} />
+        </Routes>
+      </Suspense>
+    </HelmetProvider>
   );
 };
 
