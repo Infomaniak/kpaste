@@ -6,7 +6,7 @@ services:
 
 workflow:
   rules:
-    - if: "$CI_COMMIT_TAG =~ /\\-rc.*/"
+    - if: "$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /\\-rc.*/"
       variables:
         DEPLOY_VARIABLE: alpha
         NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
