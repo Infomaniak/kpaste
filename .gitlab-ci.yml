@@ -6,7 +6,15 @@ services:
 
 workflow:
   rules:
-    - when: always
+    - if: "$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /\\-rc.*/"
+      variables:
+        DEPLOY_VARIABLE: alpha
+        NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
+    - if: "$CI_COMMIT_TAG"
+      variables:
+        DEPLOY_VARIABLE: production
+        NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
+    - when: never
 
 include:
   - project: 'docker-public/renovate'
@@ -63,9 +71,18 @@ variables:
 # build
 build_front:
   extends: .base-dind
-  image: node:19.7.0
+  image: node:18.20.4
   stage: build_front
+  rules:
+    - if: $DEPLOY_VARIABLE == "production"
+      when: on_success
+      allow_failure: false
+    - if: $DEPLOY_VARIABLE == "alpha"
+    - when: on_success
+  environment:
+    name: $DEPLOY_VARIABLE
   before_script:
+    - export ENVIRONMENT=${DEPLOY_VARIABLE}
     - npm i --cache .npm --prefer-offline --no-audit
   script:
     - |
@@ -104,12 +121,13 @@ build_front:
 cypress_chrome:
   stage: cypress
   extends: .base-dind
-  image: cypress/browsers:node12.14.1-chrome83-ff77
+  image: cypress/browsers:node-20.13.0-chrome-124.0.6367.155-1-ff-125.0.3-edge-124.0.2478.80-1
   rules:
     - if: '$CI_MERGE_REQUEST_ID || $CI_COMMIT_TAG =~ /-rc/'
       when: on_success
     - when: never
   before_script:
+    - printenv
     - npm i --cache .npm --prefer-offline
   script:
     - npm run test-chrome
