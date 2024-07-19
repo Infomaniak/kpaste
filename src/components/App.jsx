@@ -91,6 +91,7 @@ class App extends React.PureComponent {
   static async getBackground() {
     const background = await fetch(`${WEB_COMPONENT_API_ENDPOINT}/api/components/paste/promotion`, {
       method: 'GET',
+      credentials: 'include',
     }).then((response) => (response.ok
       ? response.json()
       : Promise.reject(new Error(response.statusText))));
