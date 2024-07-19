@@ -71,7 +71,7 @@ variables:
 # build
 build_front:
   extends: .base-dind
-  image: node:22
+  image: node:18.20.4
   stage: build_front
   rules:
     - if: $DEPLOY_VARIABLE == "production"
