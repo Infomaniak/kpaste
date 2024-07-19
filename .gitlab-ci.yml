@@ -14,6 +14,7 @@ workflow:
       variables:
         DEPLOY_VARIABLE: production
         NOTIFY_CHANNEL: ${KCHAT_WHOOK_URL}/986f3435-6c53-4648-a86c-33c64fc14daf
+    - if: $CI_PIPELINE_SOURCE == "schedule"
     - when: never
 
 include:
