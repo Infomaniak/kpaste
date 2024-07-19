@@ -25,6 +25,7 @@ const App: FC = () => {
   async function getBackground() {
     return fetch(`${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/api/components/paste/promotion`, {
       method: 'GET',
+      credentials: 'include',
     }).then((response) => (response.ok
       ? response.json()
       : Promise.reject(new Error(response.statusText))))
