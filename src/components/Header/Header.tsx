@@ -13,7 +13,7 @@ import { InputBase, SelectChangeEvent } from '@mui/material';
 import { Session } from '../../types/user';
 
 type Props = {
-  bridge: KSuiteBridge;
+  bridge: KSuiteBridge | null;
 };
 
 const IkHeader: FC<Props> = ({ bridge }) => {
@@ -50,7 +50,7 @@ const IkHeader: FC<Props> = ({ bridge }) => {
   };
 
   const onCloseSidepanel = () => {
-    bridge.sendMessage({ type: CloseSidePanelMessageKey });
+    bridge?.sendMessage({ type: CloseSidePanelMessageKey });
   };
 
   const showNotConnectedMenu = () => {
