@@ -8,7 +8,7 @@ import {
   useLocation,
   Route,
 } from "react-router-dom";
-import { AppReadyMessageKey, KSuiteBridge, NavigateMessageKey } from '@infomaniak/ksuite-bridge';
+import { AppReadyMessageKey, BridgeConnected, KSuiteBridge, NavigateMessageKey } from '@infomaniak/ksuite-bridge';
 import IkHeader from './components/Header/Header';
 import Home from './components/Home/Home';
 import Loader from './components/Loader/Loader';
@@ -16,9 +16,10 @@ import NewPaste from './pages/NewPaste/NewPaste';
 import ShowPaste from './pages/ShowPaste/ShowPaste';
 import { Background } from './types/background';
 
+
 const App: FC = () => {
   const [background, setBackground] = useState<Background>({ image: '', link: '', author: '' });
-  const [bridge, setBridge] = useState<KSuiteBridge>(new KSuiteBridge());
+  const [bridge, setBridge] = useState<KSuiteBridge | null>(null);
   const location = useLocation();
   const { t } = useTranslation();
 
@@ -36,9 +37,13 @@ const App: FC = () => {
 
   useEffect(() => {
     getBackground().then(setBackground);
-    const newBridge = new KSuiteBridge();
-    newBridge.sendMessage({ type: AppReadyMessageKey });
-    setBridge(newBridge);
+    if (!bridge) {
+      const kSuiteBridge = new KSuiteBridge({ debug: true });
+      kSuiteBridge.on(BridgeConnected, () => {
+        void kSuiteBridge.sendMessage({ type: AppReadyMessageKey });
+        setBridge(kSuiteBridge);
+      })
+    }
   }, []);
 
   useEffect(() => {
