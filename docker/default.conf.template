@@ -28,6 +28,7 @@ server {
        add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS HEAD';
        add_header 'Access-Control-Allow-Headers' 'Origin,Content-Type,Accept';
        add_header 'Content-Security-Policy' 'frame-ancestors https://*.infomaniak.com https://*.infomaniak.ch';
+       add_header 'X-Version-Id' '$CI_COMMIT_TAG';
        try_files $uri /index.html;
     }
 
