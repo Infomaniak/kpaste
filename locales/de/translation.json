@@ -83,7 +83,7 @@
       "title": "Der Zugang zu diesem Inhalt erfordert eine Genehmigung"
     },
     "subtitle": {
-      "destroy": "Diese Nachricht wird in",
+      "destroy": "Diese Nachricht wird endgültig gelöscht in",
       "error": "Der Freigabelink ist entweder abgelaufen oder ungültig.",
       "password": "Diese Nachricht ist verschlüsselt und durch ein Kennwort geschützt."
     },
