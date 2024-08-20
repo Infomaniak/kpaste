@@ -1,6 +1,6 @@
 .ik-header {
   background: white;
-  height: 66px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   z-index: 1;
@@ -29,11 +29,12 @@
 
   .header-icon-wrapper {
     width: auto;
-    min-width: 66px;
+    min-width: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
     &.products-component {
       @media only screen and (max-width: 400px) {
         display: none;
@@ -51,17 +52,21 @@
   .relative {
     position: relative;
     z-index: 5;
+
+    &:hover {
+      background-color: #3F435014;
+    }
   }
 
   .header-icon {
-    padding: 0 15px;
-    height: 66px;
+    padding: 0 22px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
 
-    > span {
+    >span {
       cursor: pointer;
       background-color: #f5f5f5;
       color: $gray;
@@ -82,12 +87,13 @@
   }
 
   .user-avatar-wrapper {
-    height: 66px;
+    height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 15px;
-    margin-left: 15px;
+    margin-left: 9px;
+    max-width: 64px;
   }
 
   .avatar {
@@ -100,15 +106,16 @@
 
   &.bridge-header {
     border-bottom: 1px solid #E0E0E0;
-    .header-icon {
-        min-width: 45px;
-        width: 45px;
-        height: 100%;
-        color: #000;
 
-        &:hover {
-            background-color: unset;
-        }
+    .header-icon {
+      min-width: 45px;
+      width: 45px;
+      height: 100%;
+      color: #000;
+
+      &:hover {
+        background-color: unset;
+      }
     }
   }
 }
