@@ -9,6 +9,7 @@ declare global {
             'module-header-title-component': any;
             'module-menu-user': any;
             'module-avatar-component': any;
+            'wc-user-panel': any;
         }
     }
 }
