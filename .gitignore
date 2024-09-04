@@ -8,3 +8,4 @@ cypress/videos
 translation_old.json
 public/.htaccess
 .scannerwork
+.env
