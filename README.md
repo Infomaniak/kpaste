@@ -23,8 +23,8 @@ The data are encrypted and decrypted directly in your Internet browser via the 2
 ## install
 
 ```bash
-export WEB_COMPONENT_ENDPOINT="https://web-components.storage.infomaniak.com/next/init.js"
-export WEB_COMPONENT_API_ENDPOINT="https://welcome.infomaniak.com"
+export VITE_WEB_COMPONENT_ENDPOINT="https://web-components.storage.infomaniak.com/next/init.js"
+export VITE_WEB_COMPONENT_API_ENDPOINT="https://welcome.infomaniak.com"
 ```
 
 ```bash
