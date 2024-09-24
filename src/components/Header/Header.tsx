@@ -109,7 +109,12 @@ const IkHeader: FC<Props> = ({ bridge }) => {
       <div
         className="relative header-icon-wrapper header-icon-wrapper--hide-overflow"
       >
-        <wc-user-panel user-id={session.user.id} user-avatar-src={session.user.avatar}/>
+        <wc-user-panel
+          user-id={session.user.id}
+          user-avatar-src={session.user.avatar}
+          user-mail={session.user.email}
+          user-name={session.user.display_name}
+        />
       </div>
     );
   };
