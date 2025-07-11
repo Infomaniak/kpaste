@@ -91,6 +91,7 @@ build_front:
     - |
       export VITE_WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
       export VITE_WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PREPROD
+      export VITE_SHOP_ENDPOINT=$SHOP_ENDPOINT_PREPROD
 
       if [ -z "$CI_MERGE_REQUEST_ID" ]
       then
@@ -101,6 +102,7 @@ build_front:
           *)
             export VITE_WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PROD
             export VITE_WEB_COMPONENT_ENDPOINT=$WEB_COMPONENT_ENDPOINT_PROD
+            export VITE_SHOP_ENDPOINT=$SHOP_ENDPOINT_PROD
             echo "BUILDING PROD!"
             ;;
         esac

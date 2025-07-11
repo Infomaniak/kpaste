@@ -46,7 +46,7 @@ const IkHeader: FC<Props> = ({ bridge }) => {
   };
 
   const onLogin = () => {
-    window.location.href = `${import.meta.env.VITE_WEB_COMPONENT_API_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
+    window.location.href = `${import.meta.env.VITE_SHOP_ENDPOINT}/auth/login/paste?uri=${window.location.pathname}`;
   };
 
   const onCloseSidepanel = () => {
