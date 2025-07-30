@@ -68,3 +68,30 @@ see `cypress` folder
 ## precommit hook
 
 there is a precommit hook based on eslint check
+
+## common errors
+
+localhost don't work because of https
+
+this plugin automatically enables HTTPS for Vite development servers by generating self-signed SSL certificates.
+```bash
+npm install -D @vitejs/plugin-basic-ssl\n
+```
+
+in vite.config.ts
+
+add BasicSsl :
+```bash
+import basicSsl from '@vitejs/plugin-basic-ssl'
+```
+defineConfig plugin :
+```bash
+  plugins: [
+    react(),
+    basicSsl({
+      name: 'test',
+      domains: ['*.custom.com'],
+      certDir: '/Users/.../.devServer/cert'
+    })
+  ],
+```
