@@ -38,7 +38,7 @@ const App: FC = () => {
   useEffect(() => {
     getBackground().then(setBackground);
     if (!bridge) {
-      const kSuiteBridge = new KSuiteBridge({ debug: true });
+      const kSuiteBridge = new KSuiteBridge({ debugPrefix: 'kpaste' });
       kSuiteBridge.on(BridgeConnected, () => {
         void kSuiteBridge.sendMessage({ type: AppReadyMessageKey });
         setBridge(kSuiteBridge);
