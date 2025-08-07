@@ -1,4 +1,4 @@
-FROM nginx:1.27.0-alpine
+FROM nginx:1.29.0-alpine
 
 ARG CI_COMMIT_TAG
 ENV CI_COMMIT_TAG=$CI_COMMIT_TAG
