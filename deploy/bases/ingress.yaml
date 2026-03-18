@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: paste
 spec:
-  ingressClassName: nginx-paste
+  ingressClassName: nginx-misc
   rules:
   - host: kpaste.infomaniak.com
     http:
