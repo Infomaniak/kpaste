@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minuuttia",
+    "1d": "1 päivä",
+    "1h": "1 tunti",
+    "1m": "1 kuukausi",
+    "1w": "1 viikko",
+    "5m": "5 minuuttia"
+  },
+  "footer": {
+    "cgu": "Käyttöehdot",
+    "know_more": "Lisätietoja aiheesta"
+  },
+  "home": {
+    "button": "Lähetä suojattu viesti",
+    "link": "Lisätietoja",
+    "subtitle": "kPastea suositellaan salasanojen, kirjautumistietojen, sarjanumeroiden ja muiden arkaluontoisten tietojen turvalliseen lähettämiseen.",
+    "text": "Sisältö on päästä päähän -salattu, väliaikainen ja tallennettu Sveitsiin. Infomaniak kunnioittaa yksityisyyttä, eikä sillä ole pääsyä sisältöösi.",
+    "title": "Jaa arkaluonteisia tietoja täysin turvallisesti"
+  },
+  "menu": {
+    "login": "Kirjaudu sisään"
+  },
+  "meta": {
+    "title": "kPaste – Ratkaisu turvallisten, lyhytaikaisten viestien lähettämiseen",
+    "description": "Jaa salasanasi, kirjautumistietosi ja muut arkaluonteiset tiedot helposti ja täysin huoletta kPasten avulla. Tämä palvelu on ilmainen ja salattu."
+  },
+  "paste": {
+    "button": {
+      "continue": "Jatka",
+      "go": "Luo jaon linkki"
+    },
+    "info": {
+      "password": "Lähetä tämä salasana toista kanavaa käyttäen, jotta turvallisuus paranee entisestään."
+    },
+    "input": {
+      "code": "Koodi",
+      "copy": "Kopioi",
+      "tooltip": "Suurenna muokkausikkunaa"
+    },
+    "label": {
+      "destroy": "Poista ensimmäisen lukemisen jälkeen",
+      "input": "Mitä sisältöä sinulla on?",
+      "password": "Suojaa pääsy salasanalla",
+      "validity": "Voimassaoloaika"
+    },
+    "password": {
+      "input": "Anna salasana:"
+    },
+    "placeholder": {
+      "password": "Viestin suojauksen salasana"
+    },
+    "text": {
+      "validity": "Tämän määräajan jälkeen sisältö poistetaan pysyvästi."
+    },
+    "title": "Jaa herkkiä tietoja täysin turvallisesti"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Avaa suojattu viesti"
+    },
+    "info": {
+      "wrong_password": "Tämä salasana ei näytä sopivan tähän viestiin"
+    },
+    "label": {
+      "burn": "Yhdellä käyttökerralla toimiva linkki",
+      "destroy": "Älä sulje tätä ikkunaa, sillä suojattu linkki on tarkoitettu käytettäväksi vain kerran!",
+      "message": "Vain ne henkilöt, joilla on tämä suojattu linkki ja tarvittavat käyttöoikeudet, voivat näyttää tämän sisällön.",
+      "post_message": "Tämä sisältö on päästä päähän salattu ja tallennettu Sveitsiin",
+      "post_message_after": "itsenäinen pilvipalveluntarjoaja, joka on sitoutunut ympäristönsuojeluun.",
+      "validity": "Voimassa"
+    },
+    "link": {
+      "new_paste": "Lähetä suojattu viesti",
+      "other_paste": "Lähetä uusi viesti",
+      "text": "kPaste on ilmainen ratkaisu arkaluonteisten tietojen jakamiseen täysin turvallisesti."
+    },
+    "new": {
+      "description": "Jaa tämä linkki niiden kontaktien kanssa, joiden tulisi päästä käsiksi tähän sisältöön.",
+      "title": "Suojattu jakamislinkkisi"
+    },
+    "password": {
+      "title": "Tämän sisällön käyttö edellyttää lupaa"
+    },
+    "subtitle": {
+      "destroy": "Tämä viesti poistetaan pysyvästi seuraavan ajan kuluttua:",
+      "error": "Jakamislinkki on vanhentunut tai se on virheellinen.",
+      "password": "Tämä viesti on salattu ja suojattu salasanalla."
+    },
+    "title": {
+      "copy_link": "Kopioitu!",
+      "error": "Tähän sisältöön ei pääse enää käsiksi",
+      "normal": "Pääsy on myönnetty"
+    }
+  }
+}

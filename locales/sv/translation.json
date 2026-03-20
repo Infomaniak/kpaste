@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minuter",
+    "1d": "1 dag",
+    "1h": "1 timme",
+    "1m": "1 månad",
+    "1w": "1 vecka",
+    "5m": "5 minuter"
+  },
+  "footer": {
+    "cgu": "Användarvillkor",
+    "know_more": "Mer information om"
+  },
+  "home": {
+    "button": "Skicka ett säkert meddelande",
+    "link": "Mer information",
+    "subtitle": "kPaste rekommenderas för att på ett säkert sätt skicka lösenord, inloggningsuppgifter, serienummer och annan känslig information.",
+    "text": "Innehållet är krypterat från början till slut, är temporärt och lagras i Schweiz. Infomaniak respekterar din integritet och kan inte läsa ditt innehåll.",
+    "title": "Dela känslig information med fullständig trygghet"
+  },
+  "menu": {
+    "login": "Logga in"
+  },
+  "meta": {
+    "title": "kPaste – Lösningen för att skicka meddelanden som raderas automatiskt och som garanterar fullständig säkerhet",
+    "description": "Dela dina lösenord, inloggningsuppgifter och all annan känslig information enkelt och med fullständig trygghet med kPaste. Den här tjänsten är gratis och krypterad."
+  },
+  "paste": {
+    "button": {
+      "continue": "Fortsätt",
+      "go": "Skapa delningslänken"
+    },
+    "info": {
+      "password": "Skicka detta lösenord via en annan kanal för ökad säkerhet."
+    },
+    "input": {
+      "code": "Kod",
+      "copy": "Kopiera",
+      "tooltip": "Gör redigeringsfönstret större"
+    },
+    "label": {
+      "destroy": "Radera efter första läsningen",
+      "input": "Vad är innehållet?",
+      "password": "Skydda åtkomsten med ett lösenord",
+      "validity": "Giltighetsperiod"
+    },
+    "password": {
+      "input": "Ange lösenordet:"
+    },
+    "placeholder": {
+      "password": "Lösenord för meddelandeskydd"
+    },
+    "text": {
+      "validity": "Efter detta datum kommer innehållet att raderas permanent."
+    },
+    "title": "Dela känslig information med fullständig trygghet"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Öppna det säkra meddelandet"
+    },
+    "info": {
+      "wrong_password": "Det verkar som att det här lösenordet inte stämmer överens med det här meddelandet"
+    },
+    "label": {
+      "burn": "Engångslänk",
+      "destroy": "Stäng inte det här fönstret, eftersom den säkra länken bara kan användas en gång!",
+      "message": "Endast de som har den här säkra länken och de nödvändiga behörigheterna kan visa detta innehåll.",
+      "post_message": "Det här innehållet är krypterat från slutpunkt till slutpunkt och lagras i Schweiz av",
+      "post_message_after": "en oberoende molntjänstleverantör som är engagerad i miljöfrågor.",
+      "validity": "Giltig"
+    },
+    "link": {
+      "new_paste": "Skicka ett säkert meddelande",
+      "other_paste": "Skicka ett nytt meddelande",
+      "text": "kPaste är en kostnadsfri lösning för att dela känslig information på ett säkert sätt."
+    },
+    "new": {
+      "description": "Dela den här länken med de kontakter som behöver kunna komma åt detta innehåll.",
+      "title": "Din säkra delningslänk"
+    },
+    "password": {
+      "title": "Åtkomst till detta innehåll kräver godkännande"
+    },
+    "subtitle": {
+      "destroy": "Det här meddelandet kommer att raderas permanent inom",
+      "error": "Delningslänken har upphört att gälla eller är ogiltig.",
+      "password": "Det här meddelandet är krypterat och skyddat med ett lösenord."
+    },
+    "title": {
+      "copy_link": "Kopierat!",
+      "error": "Det här innehållet är inte längre tillgängligt",
+      "normal": "Din åtkomst har godkänts"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minuten",
+    "1d": "1 dag",
+    "1h": "1 uur",
+    "1m": "1 maand",
+    "1w": "1 week",
+    "5m": "5 minuten"
+  },
+  "footer": {
+    "cgu": "Algemene voorwaarden",
+    "know_more": "Meer informatie over"
+  },
+  "home": {
+    "button": "Stuur een beveiligd bericht",
+    "link": "Meer informatie",
+    "subtitle": "kPaste wordt aanbevolen voor het veilig verzenden van wachtwoorden, inloggegevens, serienummers en andere gevoelige informatie.",
+    "text": "De inhoud is end-to-end versleuteld, tijdelijk en wordt opgeslagen in Zwitserland. Infomaniak respecteert uw privacy en kan uw inhoud niet inzien.",
+    "title": "Deel vertrouwelijke informatie met volledige zekerheid"
+  },
+  "menu": {
+    "login": "Inloggen"
+  },
+  "meta": {
+    "title": "kPaste – De oplossing voor het veilig verzenden van tijdelijke berichten",
+    "description": "Deel uw wachtwoorden, inloggegevens en andere gevoelige informatie eenvoudig en met een gerust hart via kPaste. Deze dienst is gratis en versleuteld."
+  },
+  "paste": {
+    "button": {
+      "continue": "Ga verder",
+      "go": "Genereer de deelkoppeling"
+    },
+    "info": {
+      "password": "Verzend dit wachtwoord via een ander kanaal voor extra beveiliging."
+    },
+    "input": {
+      "code": "Code",
+      "copy": "Kopiëren",
+      "tooltip": "Vergroot het bewerkingsvenster"
+    },
+    "label": {
+      "destroy": "Verwijder na de eerste keer lezen",
+      "input": "Wat is de inhoud?",
+      "password": "Beveilig de toegang met een wachtwoord",
+      "validity": "Geldigheidsperiode"
+    },
+    "password": {
+      "input": "Voer het wachtwoord in:"
+    },
+    "placeholder": {
+      "password": "Wachtwoord voor berichtbeveiliging"
+    },
+    "text": {
+      "validity": "Na deze deadline wordt de inhoud definitief verwijderd."
+    },
+    "title": "Deel vertrouwelijke informatie met volledige zekerheid"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Open de beveiligde bericht"
+    },
+    "info": {
+      "wrong_password": "Dat wachtwoord lijkt niet te kloppen voor dit bericht"
+    },
+    "label": {
+      "burn": "Link voor eenmalig gebruik",
+      "destroy": "Sluit dit venster niet, want de beveiligde link kan slechts één keer worden gebruikt!",
+      "message": "Alleen personen met deze beveiligde link en de vereiste machtigingen kunnen deze inhoud bekijken.",
+      "post_message": "Deze inhoud is end-to-end versleuteld en wordt opgeslagen in Zwitserland door",
+      "post_message_after": "een onafhankelijke cloudprovider die zich inzet voor het milieu.",
+      "validity": "Geldig"
+    },
+    "link": {
+      "new_paste": "Verzend een beveiligd bericht",
+      "other_paste": "Stuur een nieuw bericht",
+      "text": "kPaste is een gratis oplossing voor het veilig delen van vertrouwelijke informatie."
+    },
+    "new": {
+      "description": "Deel deze link met contacten die toegang moeten hebben tot deze inhoud.",
+      "title": "Uw beveiligde deelkoppeling"
+    },
+    "password": {
+      "title": "De toegang tot deze inhoud vereist een autorisatie"
+    },
+    "subtitle": {
+      "destroy": "Dit bericht wordt over [tijdsduur] permanent verwijderd",
+      "error": "De deelkoppeling is verlopen of ongeldig.",
+      "password": "Deze boodschap is versleuteld en beveiligd met een wachtwoord."
+    },
+    "title": {
+      "copy_link": "Gekopieerd!",
+      "error": "Deze inhoud is niet meer beschikbaar",
+      "normal": "Uw toegang is toegestaan"
+    }
+  }
+}
