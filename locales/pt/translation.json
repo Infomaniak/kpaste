@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minutos",
+    "1d": "1 dia",
+    "1h": "1 hora",
+    "1m": "1 mês",
+    "1w": "1 semana",
+    "5m": "5 minutos"
+  },
+  "footer": {
+    "cgu": "Termos e Condições Gerais de Uso",
+    "know_more": "Mais informações sobre"
+  },
+  "home": {
+    "button": "Enviar uma mensagem segura",
+    "link": "Mais informações",
+    "subtitle": "O kPaste é recomendado para enviar, de forma segura, senhas, credenciais de acesso, números de série ou qualquer outra informação confidencial.",
+    "text": "O conteúdo é criptografado de ponta a ponta, é temporário e armazenado na Suíça. A Infomaniak respeita a privacidade e não pode ler o seu conteúdo.",
+    "title": "Compartilhe informações confidenciais com total segurança"
+  },
+  "menu": {
+    "login": "Iniciar sessão"
+  },
+  "meta": {
+    "title": "kPaste – A solução para enviar mensagens temporárias com total segurança",
+    "description": "Compartilhe suas senhas, credenciais de login e qualquer outra informação confidencial de forma simples e com total tranquilidade usando o kPaste. Este serviço é gratuito e criptografado."
+  },
+  "paste": {
+    "button": {
+      "continue": "Continuar",
+      "go": "Gerar o link de compartilhamento"
+    },
+    "info": {
+      "password": "Transmita esta senha por outro canal para aumentar a segurança."
+    },
+    "input": {
+      "code": "Código",
+      "copy": "Copiar",
+      "tooltip": "Aumentar a janela de edição"
+    },
+    "label": {
+      "destroy": "Excluir após a primeira leitura",
+      "input": "Qual é o seu conteúdo?",
+      "password": "Proteger o acesso com uma senha",
+      "validity": "Período de validade"
+    },
+    "password": {
+      "input": "Por favor, insira a senha:"
+    },
+    "placeholder": {
+      "password": "Senha de proteção da mensagem"
+    },
+    "text": {
+      "validity": "Após este prazo, o conteúdo será apagado permanentemente."
+    },
+    "title": "Compartilhe informações confidenciais com total segurança"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Aceda à mensagem segura"
+    },
+    "info": {
+      "wrong_password": "Essa senha não parece corresponder a esta mensagem"
+    },
+    "label": {
+      "burn": "Link de uso único",
+      "destroy": "Não feche esta janela, pois o link seguro só pode ser usado uma vez!",
+      "message": "Apenas as pessoas que possuem este link seguro e as permissões necessárias podem visualizar este conteúdo.",
+      "post_message": "Este conteúdo é criptografado de ponta a ponta e armazenado na Suíça por",
+      "post_message_after": "um fornecedor de serviços de nuvem independente e comprometido com a proteção do meio ambiente.",
+      "validity": "Válido"
+    },
+    "link": {
+      "new_paste": "Enviar uma mensagem segura",
+      "other_paste": "Enviar uma nova mensagem",
+      "text": "kPaste é uma solução gratuita para compartilhar informações confidenciais com total segurança."
+    },
+    "new": {
+      "description": "Compartilhe este link com os contatos que precisam ter acesso a este conteúdo.",
+      "title": "Seu link seguro para compartilhamento"
+    },
+    "password": {
+      "title": "O acesso a este conteúdo está sujeito a autorização"
+    },
+    "subtitle": {
+      "destroy": "Esta mensagem será apagada permanentemente em",
+      "error": "O link de compartilhamento expirou ou é inválido.",
+      "password": "Esta mensagem está criptografada e protegida por uma senha."
+    },
+    "title": {
+      "copy_link": "Copiado!",
+      "error": "Este conteúdo não está mais disponível",
+      "normal": "O seu acesso foi autorizado"
+    }
+  }
+}

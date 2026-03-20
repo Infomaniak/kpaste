@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minutter",
+    "1d": "1 dag",
+    "1h": "1 time",
+    "1m": "1 måned",
+    "1w": "1 uke",
+    "5m": "5 minutter"
+  },
+  "footer": {
+    "cgu": "Generelle vilkår og betingelser",
+    "know_more": "Mer informasjon om"
+  },
+  "home": {
+    "button": "Send en sikker melding",
+    "link": "Mer informasjon",
+    "subtitle": "kPaste anbefales for sikker overføring av passord, brukernavn, serienumre eller annen sensitiv informasjon.",
+    "text": "Innholdet er kryptert fra ende til ende, er midlertidig og lagres i Sveits. Infomaniak respekterer personvernet og kan ikke lese innholdet ditt.",
+    "title": "Del sensitiv informasjon med full trygghet"
+  },
+  "menu": {
+    "login": "Logg inn"
+  },
+  "meta": {
+    "title": "kPaste – Løsningen for å sende midlertidige meldinger på en sikker måte",
+    "description": "Del passordene dine, påloggingsinformasjonen og all annen sensitiv informasjon enkelt og med full trygghet ved hjelp av kPaste. Denne tjenesten er gratis og kryptert."
+  },
+  "paste": {
+    "button": {
+      "continue": "Fortsett",
+      "go": "Generer delingslenken"
+    },
+    "info": {
+      "password": "Send dette passordet via en annen kanal for økt sikkerhet."
+    },
+    "input": {
+      "code": "Kode",
+      "copy": "Kopier",
+      "tooltip": "Gjør redigeringsvinduet større"
+    },
+    "label": {
+      "destroy": "Slett etter første gangs gjennomlesing",
+      "input": "Hva er innholdet ditt?",
+      "password": "Beskytt tilgangen med et passord",
+      "validity": "Gyldighetsperiode"
+    },
+    "password": {
+      "input": "Vennligst skriv inn passordet:"
+    },
+    "placeholder": {
+      "password": "Passord for beskyttelse av meldingen"
+    },
+    "text": {
+      "validity": "Etter denne fristen vil innholdet bli slettet permanent."
+    },
+    "title": "Del sensitiv informasjon med full trygghet"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Få tilgang til den sikre meldingen"
+    },
+    "info": {
+      "wrong_password": "Det ser ut til at passordet ikke stemmer overens med denne meldingen"
+    },
+    "label": {
+      "burn": "Engangslenke",
+      "destroy": "Lukk ikke dette vinduet, for den sikre lenken kan bare brukes én gang!",
+      "message": "Bare de som har denne sikre lenken og de nødvendige tillatelsene kan vise dette innholdet.",
+      "post_message": "Dette innholdet er kryptert fra ende til ende og lagret i Sveits av",
+      "post_message_after": "en uavhengig skytjenesteleverandør som er opptatt av miljøet.",
+      "validity": "Gyldig"
+    },
+    "link": {
+      "new_paste": "Send en sikker melding",
+      "other_paste": "Send en ny melding",
+      "text": "kPaste er en gratis løsning for å dele sensitiv informasjon på en helt sikker måte."
+    },
+    "new": {
+      "description": "Del denne lenken med kontakter som trenger tilgang til dette innholdet.",
+      "title": "Din sikre delingslenke"
+    },
+    "password": {
+      "title": "Tilgang til dette innholdet krever godkjenning"
+    },
+    "subtitle": {
+      "destroy": "Denne meldingen vil bli permanent slettet om",
+      "error": "Delingslenken er utløpt eller er ugyldig.",
+      "password": "Denne meldingen er kryptert og beskyttet med et passord."
+    },
+    "title": {
+      "copy_link": "Kopiert!",
+      "error": "Dette innholdet er ikke lenger tilgjengelig",
+      "normal": "Tilgangen din er godkjent"
+    }
+  }
+}
