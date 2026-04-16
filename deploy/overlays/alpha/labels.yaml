@@ -1,9 +1,0 @@
-apiVersion: builtin
-kind: LabelTransformer
-metadata:
-  name: labels
-labels:
-  env: alpha
-fieldSpecs:
-- path: metadata/labels
-  create: true

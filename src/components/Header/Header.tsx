@@ -60,6 +60,14 @@ const IkHeader: FC<Props> = ({ bridge }) => {
       'it',
       'de',
       'es',
+      'pt',
+      'nl',
+      'fi',
+      'sv',
+      'da',
+      'no',
+      'el',
+      'pl',
     ];
 
     if (!session || !session.user || session.user.length !== 0) {

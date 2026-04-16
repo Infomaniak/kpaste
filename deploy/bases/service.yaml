@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: paste
   labels:
-    app: paste
+    app.kubernetes.io/name: paste
 spec:
   ports:
   - targetPort: http
@@ -12,4 +12,4 @@ spec:
     protocol: TCP
   type: ClusterIP
   selector:
-    app: paste
+    app.kubernetes.io/name: paste

@@ -1,0 +1,96 @@
+{
+  "expiration": {
+    "10m": "10 minut",
+    "1d": "1 dzień",
+    "1h": "1 godzina",
+    "1m": "1 miesiąc",
+    "1w": "1 tydzień",
+    "5m": "5 minut"
+  },
+  "footer": {
+    "cgu": "Ogólne warunki korzystania",
+    "know_more": "Więcej informacji na temat"
+  },
+  "home": {
+    "button": "Wyślij wiadomość w sposób bezpieczny",
+    "link": "Więcej informacji",
+    "subtitle": "kPaste jest zalecane do bezpiecznego przesyłania haseł, danych logowania, numerów seryjnych i wszelkich innych poufnych informacji.",
+    "text": "Treść jest szyfrowana od początku do końca, ma charakter tymczasowy i jest przechowywana w Szwajcarii. Infomaniak dba o prywatność i nie ma możliwości odczytywania Twoich danych.",
+    "title": "Dziel się poufnymi informacjami bez obaw o ich bezpieczeństwo"
+  },
+  "menu": {
+    "login": "Zaloguj się"
+  },
+  "meta": {
+    "title": "kPaste – rozwiązanie umożliwiające bezpieczne wysyłanie wiadomości, które po pewnym czasie ulegają usunięciu",
+    "description": "Dzięki kPaste możesz łatwo i bez obaw udostępniać hasła, dane logowania i wszelkie inne poufne informacje. Ta usługa jest bezpłatna i szyfrowana."
+  },
+  "paste": {
+    "button": {
+      "continue": "Kontynuuj",
+      "go": "Wygeneruj link do udostępniania"
+    },
+    "info": {
+      "password": "Prześlij to hasło inną drogą, aby zwiększyć poziom bezpieczeństwa."
+    },
+    "input": {
+      "code": "Kod",
+      "copy": "Kopiuj",
+      "tooltip": "Powiększ okno edycji"
+    },
+    "label": {
+      "destroy": "Usuń po pierwszym przeczytaniu",
+      "input": "Jaka jest Twoja zawartość?",
+      "password": "Zabezpiecz dostęp hasłem",
+      "validity": "Okres ważności"
+    },
+    "password": {
+      "input": "Wprowadź hasło:"
+    },
+    "placeholder": {
+      "password": "Hasło do ochrony wiadomości"
+    },
+    "text": {
+      "validity": "Po upływie tego terminu zawartość zostanie trwale usunięta."
+    },
+    "title": "Dziel się poufnymi informacjami bez obaw o ich bezpieczeństwo"
+  },
+  "show_paste": {
+    "button": {
+      "password": "Otwórz bezpieczną wiadomość"
+    },
+    "info": {
+      "wrong_password": "Wygląda na to, że to hasło nie pasuje do tej wiadomości"
+    },
+    "label": {
+      "burn": "Link do jednorazowego użytku",
+      "destroy": "Nie zamykaj tego okna, ponieważ ten bezpieczny link można użyć tylko raz!",
+      "message": "Tylko osoby posiadające ten bezpieczny link i wymagane uprawnienia mogą wyświetlić tę zawartość.",
+      "post_message": "Ta zawartość jest szyfrowana metodą end-to-end i przechowywana w Szwajcarii przez",
+      "post_message_after": "niezależny dostawca usług chmurowych, który dba o środowisko.",
+      "validity": "Ważny"
+    },
+    "link": {
+      "new_paste": "Wyślij wiadomość w bezpieczny sposób",
+      "other_paste": "Wyślij nową wiadomość",
+      "text": "kPaste to darmowe rozwiązanie umożliwiające bezpieczne udostępnianie poufnych informacji."
+    },
+    "new": {
+      "description": "Udostępnij ten link osobom, które powinny mieć dostęp do tych treści.",
+      "title": "Twój bezpieczny link do udostępniania"
+    },
+    "password": {
+      "title": "Dostęp do tych treści wymaga uprzedniej autoryzacji"
+    },
+    "subtitle": {
+      "destroy": "Ta wiadomość zostanie definitywnie usunięta za {czas}",
+      "error": "Link do udostępniania wygasł lub jest nieprawidłowy.",
+      "password": "Ta wiadomość jest zaszyfrowana i zabezpieczona hasłem."
+    },
+    "title": {
+      "copy_link": "Skopiowano!",
+      "error": "Ta treść jest już niedostępna",
+      "normal": "Twój dostęp został autoryzowany"
+    }
+  }
+}

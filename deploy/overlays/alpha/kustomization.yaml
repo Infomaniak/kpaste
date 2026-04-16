@@ -1,17 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: paste
+namespace: kpaste
 resources:
   - ../../bases
-transformers:
-  - labels.yaml
-patchesStrategicMerge:
-  - ingress.yaml
+patches:
+  - path: ingress.yaml
 replicas:
   - name: paste
     count: 2
 images:
   - name: registry.infomaniak.com:443/infomaniak/paste
-    newTag: 2.0.8-rc.2 # {"$imagepolicy": "flux-system:kpaste-preprod:tag"}
-  - name: nginx/nginx-prometheus-exporter
+    newTag: 2.0.9-rc.1 # {"$imagepolicy": "flux-system:kpaste-preprod:tag"}
+  - name: docker.io/nginx/nginx-prometheus-exporter
     newTag: 0.11.0
