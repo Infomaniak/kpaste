@@ -83,7 +83,7 @@
       "title": "Dostęp do tych treści wymaga uprzedniej autoryzacji"
     },
     "subtitle": {
-      "destroy": "Ta wiadomość zostanie definitywnie usunięta za {czas}",
+      "destroy": "Ta wiadomość zostanie definitywnie usunięta za",
       "error": "Link do udostępniania wygasł lub jest nieprawidłowy.",
       "password": "Ta wiadomość jest zaszyfrowana i zabezpieczona hasłem."
     },
