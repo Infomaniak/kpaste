@@ -48,7 +48,7 @@ server {
 
     location / {
        set $CSP_DEFAULT "default-src 'self' https://${CSP_SOURCE_DOMAINS}";
-       set $CSP_SCRIPT "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'nonce-$cspNonce' https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://analytics.infomaniak.com";
+       set $CSP_SCRIPT "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://analytics.infomaniak.com";
        set $CSP_WORKER "worker-src blob:";
        set $CSP_CONNECT "connect-src 'self' blob: wss://${CSP_SOURCE_DOMAINS} wss://*.infomaniak.com https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://fonts.storage.infomaniak.com https://analytics.infomaniak.com https://sentry-kchat.infomaniak.com";
        set $CSP_STYLE "style-src 'self' 'unsafe-inline' https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
