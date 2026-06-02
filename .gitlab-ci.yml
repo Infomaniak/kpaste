@@ -72,7 +72,7 @@ variables:
 # build
 build_front:
   extends: .base-dind
-  image: node:18.20.4
+  image: node:20.19.0
   stage: build_front
   rules:
     - if: $DEPLOY_VARIABLE == "production"
@@ -86,7 +86,7 @@ build_front:
     name: $DEPLOY_VARIABLE
   before_script:
     - export ENVIRONMENT=${DEPLOY_VARIABLE}
-    - npm i --cache .npm --prefer-offline --no-audit
+    - npm ci --cache .npm --prefer-offline --no-audit
   script:
     - |
       export VITE_WEB_COMPONENT_API_ENDPOINT=$WEB_COMPONENT_API_ENDPOINT_PREPROD
@@ -120,7 +120,6 @@ build_front:
     paths:
       - .npm
       - cache/Cypress
-      - node_modules/
 
 # Cypress
 cypress_chrome:
@@ -133,7 +132,7 @@ cypress_chrome:
     - when: never
   before_script:
     - printenv
-    - npm i --cache .npm --prefer-offline
+    - npm ci --cache .npm --prefer-offline
   script:
     - npm run test-chrome
   artifacts:
