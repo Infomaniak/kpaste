@@ -1,3 +1,26 @@
+map $http_host $CSP_SOURCE_DOMAINS {
+    hostnames;
+
+    default               "*.infomaniak.ch";
+    kpaste.infomaniak.com  "*.infomaniak.com";
+}
+
+
+map $http_host $CSP_FRAME_ANCESTORS {
+    hostnames;
+
+    default               "https://*.dev.infomaniak.ch https://*.dev.infomaniak.ch:4433";
+    kpaste.infomaniak.com "https://ksuite.infomaniak.com";
+}
+
+map $http_host $CSP_REPORT_URI {
+    hostnames;
+
+    default               "https://welcome.preprod.dev.infomaniak.ch/api/csp-report";
+    # While waiting for SoC's associated decision, use welcome's CSP report endpoint
+    kpaste.infomaniak.com "https://welcome.infomaniak.com/api/csp-report";
+}
+
 server {
     listen 8080;
     server_name  localhost;
@@ -24,10 +47,25 @@ server {
     try_files $uri /index.html;
 
     location / {
+       set $CSP_DEFAULT "default-src 'self' https://${CSP_SOURCE_DOMAINS}";
+       set $CSP_SCRIPT "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://analytics.infomaniak.com";
+       set $CSP_WORKER "worker-src blob:";
+       set $CSP_CONNECT "connect-src 'self' blob: wss://${CSP_SOURCE_DOMAINS} wss://*.infomaniak.com https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://fonts.storage.infomaniak.com https://analytics.infomaniak.com https://sentry-kchat.infomaniak.com";
+       set $CSP_STYLE "style-src 'self' 'unsafe-inline' https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
+       set $CSP_IMG "img-src 'self' data: blob: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
+       set $CSP_FONT "font-src 'self' data: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
+       set $CSP_OBJECT "object-src 'none'";
+       set $CSP_FRAME_ANCESTORS "frame-ancestors $CSP_FRAME_ANCESTORS";
+       set $CSP_BASE_URI "base-uri 'self'";
+       set $CSP_FORM_ACTION "form-action 'none'";
+       # Make use of the deprecated `report-uri`, its the single solution working in all browser.
+       # And can't be used with `report-to` in parallel.
+       set $CSP_MISC "upgrade-insecure-requests; block-all-mixed-content; report-uri ${CSP_REPORT_URI}";
+
+       add_header Content-Security-Policy "${CSP_DEFAULT}; ${CSP_SCRIPT}; ${CSP_WORKER}; ${CSP_CONNECT}; ${CSP_STYLE}; ${CSP_IMG}; ${CSP_FONT}; ${CSP_OBJECT}; ${CSP_FRAME_ANCESTORS}; ${CSP_BASE_URI}; ${CSP_FORM_ACTION}; ${CSP_MISC}" always;
        add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0' always;
        add_header 'Access-Control-Allow-Methods' 'GET, OPTIONS HEAD';
        add_header 'Access-Control-Allow-Headers' 'Origin,Content-Type,Accept';
-       add_header Content-Security-Policy "frame-ancestors https://*.infomaniak.com https://*.infomaniak.ch; form-action 'none'; report-uri https://manager.infomaniak.com/v3/csp-report;" always;
        add_header 'X-Version-Id' '$CI_COMMIT_TAG';
        try_files $uri /index.html;
     }

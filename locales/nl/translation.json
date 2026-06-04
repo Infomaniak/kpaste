@@ -83,7 +83,7 @@
       "title": "De toegang tot deze inhoud vereist een autorisatie"
     },
     "subtitle": {
-      "destroy": "Dit bericht wordt over [tijdsduur] permanent verwijderd",
+      "destroy": "Dit bericht wordt permanent verwijderd over",
       "error": "De deelkoppeling is verlopen of ongeldig.",
       "password": "Deze boodschap is versleuteld en beveiligd met een wachtwoord."
     },
