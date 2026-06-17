@@ -47,15 +47,20 @@ server {
     try_files $uri /index.html;
 
     location / {
+       set $cspNonce $request_id;
+       sub_filter_once off;
+       sub_filter_types text/html;
+       sub_filter IK-CSP-NONCE $cspNonce;
+
        set $CSP_DEFAULT "default-src 'self' https://${CSP_SOURCE_DOMAINS}";
-       set $CSP_SCRIPT "script-src 'self' 'unsafe-eval' https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://analytics.infomaniak.com";
+       set $CSP_SCRIPT "script-src 'self' 'unsafe-eval' 'nonce-$cspNonce' https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://analytics.infomaniak.com";
        set $CSP_WORKER "worker-src blob:";
        set $CSP_CONNECT "connect-src 'self' blob: wss://${CSP_SOURCE_DOMAINS} wss://*.infomaniak.com https://${CSP_SOURCE_DOMAINS} https://web-components.storage.infomaniak.com https://fonts.storage.infomaniak.com https://analytics.infomaniak.com https://sentry-kchat.infomaniak.com";
        set $CSP_STYLE "style-src 'self' 'unsafe-inline' https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
        set $CSP_IMG "img-src 'self' data: blob: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
        set $CSP_FONT "font-src 'self' data: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
        set $CSP_OBJECT "object-src 'none'";
-       set $CSP_FRAME_ANCESTORS "frame-ancestors $CSP_FRAME_ANCESTORS";
+       set $CSP_FRAME_ANCESTORS "frame-ancestors ${CSP_FRAME_ANCESTORS}";
        set $CSP_BASE_URI "base-uri 'self'";
        set $CSP_FORM_ACTION "form-action 'none'";
        # Make use of the deprecated `report-uri`, its the single solution working in all browser.
