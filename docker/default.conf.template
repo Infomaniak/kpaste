@@ -6,7 +6,7 @@ map $http_host $CSP_SOURCE_DOMAINS {
 }
 
 
-map $http_host $CSP_FRAME_ANCESTORS {
+map $http_host $CSP_FRAME_ANCESTORS_DOMAINS {
     hostnames;
 
     default               "https://*.dev.infomaniak.ch https://*.dev.infomaniak.ch:4433";
@@ -60,7 +60,7 @@ server {
        set $CSP_IMG "img-src 'self' data: blob: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
        set $CSP_FONT "font-src 'self' data: https://${CSP_SOURCE_DOMAINS} https://*.infomaniak.com";
        set $CSP_OBJECT "object-src 'none'";
-       set $CSP_FRAME_ANCESTORS "frame-ancestors ${CSP_FRAME_ANCESTORS}";
+       set $CSP_FRAME_ANCESTORS "frame-ancestors ${CSP_FRAME_ANCESTORS_DOMAINS}";
        set $CSP_BASE_URI "base-uri 'self'";
        set $CSP_FORM_ACTION "form-action 'none'";
        # Make use of the deprecated `report-uri`, its the single solution working in all browser.
