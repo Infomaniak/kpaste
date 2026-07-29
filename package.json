@@ -76,7 +76,7 @@
     "browserstack-cypress-cli": "1.36.8",
     "cypress": "13.9.0",
     "cypress-vite": "1.5.0",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "eslint-plugin-react-hooks": "4.6.2",
     "eslint-plugin-react-refresh": "0.4.7",
     "flow-bin": "0.245.0",
