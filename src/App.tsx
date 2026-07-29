@@ -36,7 +36,10 @@ const App: FC = () => {
   }
 
   useEffect(() => {
-    getBackground().then(setBackground);
+    getBackground().then(setBackground).catch(() => { });
+  }, []);
+
+  useEffect(() => {
     if (!bridge) {
       const kSuiteBridge = new KSuiteBridge({ debugPrefix: 'kpaste' });
       kSuiteBridge.on(BridgeConnected, () => {
@@ -44,7 +47,7 @@ const App: FC = () => {
         setBridge(kSuiteBridge);
       })
     }
-  }, []);
+  }, [bridge]);
 
   useEffect(() => {
     if (bridge) {

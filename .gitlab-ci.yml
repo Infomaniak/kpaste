@@ -69,6 +69,49 @@ variables:
       when: on_success
     - when: never
 
+# Tests
+lint:
+  extends: .base-dind
+  image: node:20.19.0
+  stage: test
+  before_script:
+    - npm ci --cache .npm --prefer-offline --no-audit
+  script:
+    - npm run lint
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .npm
+      - cache/Cypress
+
+typecheck:
+  extends: .base-dind
+  image: node:20.19.0
+  stage: test
+  before_script:
+    - npm ci --cache .npm --prefer-offline --no-audit
+  script:
+    - npm run typecheck
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .npm
+      - cache/Cypress
+
+unit_test:
+  extends: .base-dind
+  image: node:20.19.0
+  stage: test
+  before_script:
+    - npm ci --cache .npm --prefer-offline --no-audit
+  script:
+    - npm run test
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}"
+    paths:
+      - .npm
+      - cache/Cypress
+
 # build
 build_front:
   extends: .base-dind
