@@ -44,7 +44,7 @@ const App: FC = () => {
         setBridge(kSuiteBridge);
       })
     }
-  }, []);
+  }, [bridge]);
 
   useEffect(() => {
     if (bridge) {
