@@ -72,7 +72,7 @@
     "@types/react-helmet": "6.1.11",
     "@typescript-eslint/eslint-plugin": "7.9.0",
     "@typescript-eslint/parser": "7.9.0",
-    "@vitejs/plugin-react-swc": "3.6.0",
+    "@vitejs/plugin-react-swc": "3.11.0",
     "browserstack-cypress-cli": "1.36.8",
     "cypress": "13.9.0",
     "cypress-vite": "1.5.0",
