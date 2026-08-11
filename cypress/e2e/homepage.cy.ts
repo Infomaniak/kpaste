@@ -1,5 +1,4 @@
 describe('homepage', () => {
-  // eslint-disable-next-line no-undef
   before(() => {
     cy.viewport(1600, 1080);
     cy.visit('/');
