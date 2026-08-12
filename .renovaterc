@@ -1,9 +1,10 @@
 {
-    "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
+    "extends": ["config:base", ":semanticCommitTypeAll(chore)", ":pinAllExceptPeerDependencies"],
     "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit20"],
     "baseBranches": ["develop"],
     "labels": ["dependencies"],
     "separateMinorPatch": true,
+    "lockFileMaintenance": true,
     "packageRules": [
         {
             "matchUpdateTypes": ["patch", "minor"],
