@@ -1,14 +1,34 @@
 {
-    "extends": ["config:base", ":semanticCommitTypeAll(chore)", ":pinAllExceptPeerDependencies"],
-    "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit20"],
-    "baseBranches": ["develop"],
-    "labels": ["dependencies"],
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:recommended",
+        ":semanticCommitTypeAll(chore)"
+    ],
+    "ignorePresets": [
+        ":prHourlyLimit2",
+        ":prConcurrentLimit20"
+    ],
+    "baseBranches": [
+        "develop"
+    ],
+    "labels": [
+        "dependencies"
+    ],
     "separateMinorPatch": true,
+    "rangeStrategy": "replace",
     "lockFileMaintenance": true,
+    "postUpdateOptions": [
+        "npmDedupe"
+    ],
     "packageRules": [
         {
-            "matchUpdateTypes": ["patch", "minor"],
-            "matchManagers": ["npm"],
+            "matchUpdateTypes": [
+                "patch",
+                "minor"
+            ],
+            "matchManagers": [
+                "npm"
+            ],
             "groupName": "node dependencies (non-major)"
         }
     ],
