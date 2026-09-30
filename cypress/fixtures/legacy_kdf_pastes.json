@@ -1,0 +1,34 @@
+{
+  "comment": "Pastes encrypted by the pre-migration Crypto implementation (truncating UTF-16 password conversion), extracted from commit 616c848. These fixtures pin the legacy-KDF fallback compatibility - do not regenerate by hand.",
+  "generatedFrom": "616c848",
+  "generatedAt": "2026-09-30T14:23:23.444Z",
+  "pastes": [
+    {
+      "name": "ascii-password",
+      "password": "correct-horse",
+      "text": "Legacy paste sealed before the UTF-8 password migration (ASCII password).",
+      "key": "5Qz7bWPfTQsghZFJNPn3VN9RFETJG3cgnshRK4wmeeM",
+      "vector": "mJA8ZWtZeYiRYd/4vxTayQ==",
+      "salt": "fLn3j3YfZIQ=",
+      "message": "U0yhSEH5+k8aOEp0gbKrFWquIKACJNNiUe3/JlPoCnRY58TaMJ4YoYR5gqJS+PDlye7RAojmlUammyFzquRBPeRvP2Ee/rTdu7HDA4eSTEBGpt0LlSMb"
+    },
+    {
+      "name": "unicode-password",
+      "password": "Łukasz123",
+      "text": "Legacy paste scellé avant la migration UTF-8 — Łukasz 日本語 ✓",
+      "key": "F9Ur5tryxBt9anpVwX2hQXDhpUvWeBiXgGusdEVw12T9",
+      "vector": "ko7EdAMS95H7xW+unnNoow==",
+      "salt": "1iJyYJhdjPY=",
+      "message": "ZUyfzT+YDO73FdTGNQsB6YPEHlTH6Gjg7NXvBhv95u9+1r69s2bQvWVjJxwcevWJ5m/xpwZ6uEyzCgQ1c51+u5XHejtey3NjxDbbzgLEmspTJyV6wx2KFgxRezFo4OZ0mrM="
+    },
+    {
+      "name": "empty-password",
+      "password": "",
+      "text": "Legacy paste without any password.",
+      "key": "8cFssPmq7vxjB3sjFhpPDEa3nAsUd2m5D9nqVUz8vQAJ",
+      "vector": "nu1G68xZbamOwZSo6gT7/w==",
+      "salt": "fdaQ18jqJWw=",
+      "message": "N2CSeUxtN/GbavsDTlx5fck5L6yDEW4EyjwkFPb848OerbkgilWJ7XuNHM+hDF4LbW1pmWKudQ=="
+    }
+  ]
+}
