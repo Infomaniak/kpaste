@@ -60,8 +60,32 @@ export class Crypto implements ICrypto{
   }
 
   async decrypt(text: string, password: string) {
-    const derivedKey = await this.deriveKey(password);
-    return this.aesGcmDecrypt(text, derivedKey);
+    try {
+      const derivedKey = await this.deriveKey(password);
+      return await this.aesGcmDecrypt(text, derivedKey);
+    } catch (primaryError) {
+      // Fallback: pastes created before the UTF-8 migration used the truncating
+      // legacy conversion. Wrong passwords fail on both KDFs - rethrow the primary error.
+      // For a pure-ASCII password (including '') both conversions produce identical
+      // bytes, so the legacy retry cannot succeed - skip it to avoid a second
+      // 100k-iteration PBKDF2 on every wrong-password attempt.
+      if (password.split('').every((character) => character.charCodeAt(0) <= 0x7f)) {
+        throw primaryError;
+      }
+      try {
+        const legacyKey = await this.deriveKeyLegacy(password);
+        return await this.aesGcmDecrypt(text, legacyKey);
+      } catch (_) {
+        throw primaryError;
+      }
+    }
+  }
+
+  // LEGACY - pre-UTF-8 password conversion (UTF-16 code units truncated mod 256).
+  // Kept ONLY so pastes encrypted before the UTF-8 migration still decrypt.
+  // Never use for encryption - it produces colliding keys for non-Latin-1 passwords.
+  async deriveKeyLegacy(password: string) {
+    return this.deriveKeyFromPasswordBytes(password.length > 0 ? Crypto.stringToArraybuffer(password) : null);
   }
 
   static base58encode(input: string) {
@@ -71,12 +95,15 @@ export class Crypto implements ICrypto{
   }
 
   async deriveKey(password: string) {
+    return this.deriveKeyFromPasswordBytes(password.length > 0 ? Crypto.passwordToBytes(password) : null);
+  }
+
+  async deriveKeyFromPasswordBytes(passwordBytes: Uint8Array | null) {
     let keyArray = Crypto.stringToArraybuffer(this.key);
-    if (password.length > 0) {
-      const passwordArray = Crypto.stringToArraybuffer(password);
-      const newKeyArray = new Uint8Array(keyArray.length + passwordArray.length);
+    if (passwordBytes !== null && passwordBytes.length > 0) {
+      const newKeyArray = new Uint8Array(keyArray.length + passwordBytes.length);
       newKeyArray.set(keyArray, 0);
-      newKeyArray.set(passwordArray, keyArray.length);
+      newKeyArray.set(passwordBytes, keyArray.length);
       keyArray = newKeyArray;
     }
 
@@ -112,6 +139,14 @@ export class Crypto implements ICrypto{
       messageArray[i] = message.charCodeAt(i);
     }
     return messageArray;
+  }
+
+  // UTF-8 encoding - correct for any Unicode character.
+  // The legacy conversion above (stringToArraybuffer) wrote UTF-16 code units into a
+  // Uint8Array, truncating them mod 256 (e.g. 'Ł' U+0141 -> 'A'), which made different
+  // passwords derive the same AES key. Never use stringToArraybuffer for passwords.
+  static passwordToBytes(message: string) {
+    return new TextEncoder().encode(message);
   }
 
   static utf16To8(message: string) {
