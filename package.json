@@ -80,7 +80,7 @@
     "eslint-plugin-react-hooks": "4.6.2",
     "eslint-plugin-react-refresh": "0.4.7",
     "flow-bin": "0.245.0",
-    "happy-dom": "20.9.0",
+    "happy-dom": "21.0.4",
     "husky": "9.0.11",
     "i18next-parser": "9.4.0",
     "sass": "1.102.0",
